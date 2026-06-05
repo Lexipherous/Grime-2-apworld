@@ -1,0 +1,30 @@
+from enum import StrEnum
+
+class EnumRegions(StrEnum):
+    """List of all Temple of Hands enums"""
+    TEMPLE_OF_HANDS = "Temple of Hands"
+    MUDFALLS = "Mudfalls"
+    FACELESS_MOUNTAINS = "Faceless Mountains"
+    MARAHS_ORCHARD = "Marah's Orchard"
+    UNDERHEADS = "Underheads"
+    KANKAN = "Kankan"
+    JAGGED_FOREST = "Jagged Forest"
+    BLADE_GARDEN = "Blade Garden"
+    NAILGLADE = "Nailglade"
+    TREE_ROOTS = "Tree Roots"
+    DREGBOURG = "Dregbourg"
+    PAINT_REEF = "Paint Reef"
+    PALLADIUM = "Palladium"
+    FALLEN_PATH = "Fallen Path"
+    MUDPITS = "Mudpits"
+    SKYRISE = "Skyrise"
+    STARMIRE = "Starmire"
+    WANTING_TREE = "Wanting Tree"
+
+class LocTemple(StrEnum):
+    """List of all Temple of Hands enums"""
+    BIRTHPLACE_MAUL_AXE = "ToH-Birthplace: Maul Axe"
+    BIRTHPLACE_ATRIUM_1 = "ToH-Birthplace: Atrium Left"
+    BIRTHPLACE_ATRIUM_2 = "ToH-Birthplace: Atrium Right"
+    HANDCLOTH_CHEST = "ToH-Dried Paint: Handcloth Chest"
+    OVERGROWN_BARRIER = "ToH: Overgrown Barrier"
