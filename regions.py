@@ -24,7 +24,9 @@ def create_and_connect_regions(world: Grime2World) -> None:
 def create_all_regions(world: Grime2World) -> None:
     # Creating a region is as simple as calling the constructor of the Region class.
     menu = Region("Menu", world.player, world.multiworld)
-    temple_of_hands = Region("Temple of Hands", world.player, world.multiworld)
+    temple_of_hands_birthplace_lower = Region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, world.player, world.multiworld)
+    temple_of_hands_birthplace_upper = Region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_UPPER.value, world.player, world.multiworld)
+    temple_of_hands_dried_paint = Region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, world.player, world.multiworld)
     mudfalls = Region("Mudfalls", world.player, world.multiworld)
     faceless_mountains = Region("Faceless Mountains", world.player, world.multiworld)
     marahs_orchard = Region("Marah's Orchard", world.player, world.multiworld)
@@ -46,7 +48,9 @@ def create_all_regions(world: Grime2World) -> None:
     # Let's put all these regions in a list.
     regions = [
         menu,
-        temple_of_hands,
+        temple_of_hands_birthplace_lower,
+        temple_of_hands_birthplace_upper,
+        temple_of_hands_dried_paint,
         mudfalls,
         faceless_mountains,
         marahs_orchard,
@@ -82,34 +86,39 @@ def connect_regions(world: Grime2World) -> None:
     # Luckily, once you've submitted your regions to multiworld.regions,
     # you can get them at any time using world.get_region(...).
     menu = world.get_region("Menu")
-    temple_of_hands = world.get_region(EnumRegions.TEMPLE_OF_HANDS)
-    mudfalls = world.get_region(EnumRegions.MUDFALLS)
-    faceless_mountains = world.get_region(EnumRegions.FACELESS_MOUNTAINS)
-    marahs_orchard = world.get_region(EnumRegions.MARAHS_ORCHARD)
-    underheads = world.get_region(EnumRegions.UNDERHEADS)
-    kankan = world.get_region(EnumRegions.KANKAN)
-    jagged_forest = world.get_region(EnumRegions.JAGGED_FOREST)
-    blade_garden = world.get_region(EnumRegions.BLADE_GARDEN)
-    nailglade = world.get_region(EnumRegions.NAILGLADE)
-    tree_roots = world.get_region(EnumRegions.TREE_ROOTS)
-    dregbourg = world.get_region(EnumRegions.DREGBOURG)
-    paint_reef = world.get_region(EnumRegions.PAINT_REEF)
-    palladium = world.get_region(EnumRegions.PALLADIUM)
-    fallen_path = world.get_region(EnumRegions.FALLEN_PATH)
-    mudpits = world.get_region(EnumRegions.MUDPITS)
-    skyrise = world.get_region(EnumRegions.SKYRISE)
-    starmire = world.get_region(EnumRegions.STARMIRE)
-    wanting_tree = world.get_region(EnumRegions.WANTING_TREE)
+    temple_of_hands_birthplace_lower = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value)
+    temple_of_hands_birthplace_upper = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_UPPER.value)
+    temple_of_hands_dried_paint = world.get_region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value)
+    mudfalls = world.get_region(EnumRegions.MUDFALLS.value)
+    faceless_mountains = world.get_region(EnumRegions.FACELESS_MOUNTAINS.value)
+    marahs_orchard = world.get_region(EnumRegions.MARAHS_ORCHARD.value)
+    underheads = world.get_region(EnumRegions.UNDERHEADS.value)
+    kankan = world.get_region(EnumRegions.KANKAN.value)
+    jagged_forest = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    blade_garden = world.get_region(EnumRegions.BLADE_GARDEN.value)
+    nailglade = world.get_region(EnumRegions.NAILGLADE.value)
+    tree_roots = world.get_region(EnumRegions.TREE_ROOTS.value)
+    dregbourg = world.get_region(EnumRegions.DREGBOURG.value)
+    paint_reef = world.get_region(EnumRegions.PAINT_REEF.value)
+    palladium = world.get_region(EnumRegions.PALLADIUM.value)
+    fallen_path = world.get_region(EnumRegions.FALLEN_PATH.value)
+    mudpits = world.get_region(EnumRegions.MUDPITS.value)
+    skyrise = world.get_region(EnumRegions.SKYRISE.value)
+    starmire = world.get_region(EnumRegions.STARMIRE.value)
+    wanting_tree = world.get_region(EnumRegions.WANTING_TREE.value)
 
     # Okay, now we can get connecting. For this, we need to create Entrances.
     # Entrances are inherently one-way, but crucially, AP assumes you can always return to the origin region.
 
     # An even easier way is to use the region.connect helper.
-    menu.connect(temple_of_hands, "Menu to Temple of Hands")
+    menu.connect(temple_of_hands_birthplace_lower, "Menu to Temple of Hands")
+
+    temple_of_hands_birthplace_lower.connect(temple_of_hands_dried_paint, "ToH Birthplace Lower to ToH Dried Paint")
     
-    temple_of_hands.connect(mudfalls, "Temple of Hands to Mudfalls")
-    temple_of_hands.connect(paint_reef, "Temple of Hands to Paint Reef")
-    mudfalls.connect(temple_of_hands, "Mudfalls to Temple of Hands")
+    temple_of_hands_dried_paint.connect(temple_of_hands_birthplace_upper, "ToH Dried Paint to ToH Birthplace Upper")
+    temple_of_hands_dried_paint.connect(mudfalls, "ToH Dried Paint to Mudfalls")
+    
+    mudfalls.connect(temple_of_hands_dried_paint, "Mudfalls to Temple of Hands")
     mudfalls.connect(faceless_mountains, "Mudfalls to Faceless Mountains")
     mudfalls.connect(underheads, "Mudfalls to Underheads")
     mudfalls.connect(dregbourg, "Mudfalls to Dregbourg")
@@ -146,7 +155,7 @@ def connect_regions(world: Grime2World) -> None:
     dregbourg.connect(mudfalls, "Dregbourg to Mudfalls")
     # dregbourg.connect(underheads, "Dregbourg to Underheads") # This is generally only a one-way in game.
     dregbourg.connect(nailglade, "Dregbourg to Nailglade")
-    paint_reef.connect(temple_of_hands, "Paint Reef to Temple of Hands")
+    paint_reef.connect(temple_of_hands_birthplace_lower, "Paint Reef to Temple of Hands Birthplace Lower")
     paint_reef.connect(dregbourg, "Paint Reef to Dregbourg")
     paint_reef.connect(nailglade, "Paint Reef to Nailglade")
     palladium.connect(mudfalls, "Palladium to Mudfalls")

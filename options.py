@@ -14,17 +14,6 @@ from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 # https://github.com/ArchipelagoMW/Archipelago/blob/main/docs/options%20api.md
 
 
-class Goal(Choice):
-    """
-    Set what base game conditions need to be met to complete the game
-    Goel: The standard intended ending for the game.
-    """
-    display_name = "Goal"
-    option_goel = 0
-    
-    default = option_goel
-
-@dataclass
 class CompletionGoal(Choice):
     """
     Act 1 - Return to Manzil after Kankan.
@@ -35,25 +24,26 @@ class CompletionGoal(Choice):
     option_act_1 = 0
     option_act_2 = 1
     option_act_3 = 2
-    default = 0
+    option_test_bound_shell = 3
+    default = 3
 
-@dataclass
 class StartWithWeapon(Toggle):
     """
-    Start with a random weapon.
+    If yes, you will randomly be assigned a weapon
     """
-    display_name = "Goal"
-    option_act_1 = 0
-    option_act_2 = 1
-    option_act_3 = 2
+    display_name = "Start with weapon"
     default = 0
-    
-# If we want to group our options by similar type, we can do so as well. This looks nice on the website.
+
 option_groups = [
     OptionGroup(
         "Gameplay Options",
-        [Goal],
+        [CompletionGoal, StartWithWeapon],
     ),
 ]
+
+@dataclass
+class Grime2Options(PerGameCommonOptions):
+    completion_goal: CompletionGoal
+    start_with_weapon: StartWithWeapon
 
 option_presets = {}

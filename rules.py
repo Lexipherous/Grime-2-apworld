@@ -139,6 +139,6 @@ def set_completion_condition(world: Grime2World) -> None:
 # 
 #     # In our case, we went for the Victory event design pattern (see create_events() in locations.py).
 #     # So lets undo what we just did, and instead set the completion condition to:
-    # world.multiworld.completion_condition[world.player] = lambda state: state.has(("Bloodmetal Scythe",), world.player)
+    world.multiworld.completion_condition[world.player] = lambda state: state.has("Victory", world.player)
     # world.multiworld.completion_condition[world.player] = lambda state: state.has_all(("Bloodmetal Scythe",), world.player)
-    world.multiworld.completion_condition[world.player] = lambda state: state.has("Locked Sphere", world.player)
+    # world.multiworld.completion_condition[world.player] = lambda state: state.has(enums.LocTemple.SEALED_CHAMBER_BOUND_SHELL, world.player)

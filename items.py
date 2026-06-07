@@ -69,15 +69,15 @@ def populate_items():
         # Grime2ItemData("Zev Blades", IC.useful, "e5f49c7f-29cf-4f12-8fdc-3d675051e435", 10033, ),
         
         # Quest Items
-        Grime2ItemData("Locked Sphere", IC.progression, "96f4e840-0412-4231-824f-bba5ecbb0503", 11001),
+        Grime2ItemData("Locked Sphere", IC.progression, 11001),
         
         # Misc Items
-        # Grime2ItemData("Bloodroot Chunk", IC.filler, "924cc1b9-8b66-4302-9cf1-ae2b949a0ee6", 12001),
-        # Grime2ItemData("Bloodroot Shard", IC.filler, "3317fe57-2dd2-4d46-a124-050ad9e2754a", 12002),
-        Grime2ItemData("Bloodroot Splinter", IC.filler, "cc3fc898-f110-418f-89be-72fa681469f9", 12003),
-        # Grime2ItemData("Thin Marah Strand", IC.filler, "2bdaab02-ba9f-4455-a907-f091e93c493b", 12004),
-        # Grime2ItemData("Long Marah Strand", IC.filler, "1d18e1f8-1cae-4498-8465-fb4c7ae13817", 12005),
-        # Grime2ItemData("Luscious Marah Strand", IC.filler, "dfcc44ec-44b9-4694-8f75-af64ec09fba5", 12006),
+        Grime2ItemData("Bloodroot Chunk", IC.filler, 12001),
+        Grime2ItemData("Bloodroot Shard", IC.filler, 12002),
+        Grime2ItemData("Bloodroot Splinter", IC.filler, 12003),
+        Grime2ItemData("Thin Marah Strand", IC.filler, 12004),
+        Grime2ItemData("Long Marah Strand", IC.filler, 12005),
+        Grime2ItemData("Luscious Marah Strand", IC.filler, 12006),
     ]
     return item_list
 
@@ -92,56 +92,33 @@ def create_item_with_correct_classification(world: Grime2World, name: str) -> Gr
 
 # With those two helper functions defined, let's now get to actually creating and submitting our itempool.
 def create_all_items(world: Grime2World) -> None:
-    # This is the function in which we will create all the items that this world submits to the multiworld item pool.
-    # There must be exactly as many items as there are locations.
-    # In our case, there are either six or seven locations.
-    # We must make sure that when there are six locations, there are six items,
-    # and when there are seven locations, there are seven items.
-
-    # Creating items should generally be done via the world's create_item method.
-    # First, we create a list containing all the items that always exist.
+    # Populate an item pool list
     item_pool: list[Item] = []
     for item_data in ITEM_TABLE.values():
         item_pool += [world.create_item(item_data.name) for _ in range(item_data.count)]
+        
+    # Consider if we're starting with a weapon
+    if world.options.start_with_weapon:
+        weapon_name = world.random.choice([
+            item for item in ITEM_TABLE.values() if item.isStarterWeapon
+        ])
+        world.push_precollected(world.create_item(weapon_name.name))
+        
+        # Remove start weapon from item_pool
+        for i, item in enumerate(item_pool):
+            if item.name == weapon_name.name:
+                item_pool.pop(i)
+                break
     
-    # The length of our itempool is easy to determine, since we have it as a list.
+    # We have our item pool, now check if we need filler items
     number_of_items = len(item_pool)
-
-    # The number of locations is also easy to determine, but we have to be careful.
-    # Just calling len(world.get_locations()) would report an incorrect number, because of our *event locations*.
-    # What we actually want is the number of *unfilled* locations. Luckily, there is a helper method for this:
+    print("Pool items")
     number_of_unfilled_locations = len(world.multiworld.get_unfilled_locations(world.player))
-
-    # Now, we just subtract the number of items from the number of locations to get the number of empty item slots.
     needed_number_of_filler_items = number_of_unfilled_locations - number_of_items
-
-    # Finally, we create that many filler items and add them to the itempool.
-    # To create our filler, we could just use world.create_item("Confetti Cannon").
-    # But there is an alternative that works even better for most worlds, including APQuest.
-    # As discussed above, our world must have a get_filler_item_name() function defined,
-    # which must return the name of an infinitely repeatable filler item.
-    # Defining this function enables the use of a helper function called world.create_filler().
-    # You can just use this function directly to create as many filler items as you need to complete your itempool.
+    # Action on any needed filler items
     item_pool += [world.create_filler() for _ in range(needed_number_of_filler_items)]
 
-    # But... is that the right option for your game? Let's explore that.
-    # For some games, the concepts of "regular itempool filler" and "additionally created filler" are different.
-    # These games might want / require specific amounts of specific filler items in their regular pool.
-    # To achieve this, they will have to intentionally create the correct quantities using world.create_item().
-    # They may still use world.create_filler() to fill up the rest of their itempool with "repeatable filler",
-    # after creating their "specific quantity" filler and still having room left over.
-
-    # But there are many other games which *only* have infinitely repeatable filler items.
-    # They don't care about specific amounts of specific filler items, instead only caring about the proportions.
-    # In this case, world.create_filler() can just be used for the entire filler itempool.
-    # APQuest is one of these games:
-    # Regardless of whether it's filler for the regular itempool or additional filler for item links / etc.,
-    # we always just want a Confetti Cannon or a Math Trap depending on the "trap_chance" option.
-    # We defined this behavior in our get_random_filler_item_name() function, which in world.py,
-    # we'll bind to world.get_filler_item_name(). So, we can just use world.create_filler() for all of our filler.
-
-    # Anyway. With our world's itempool finalized, we now need to submit it to the multiworld itempool.
-    # This is how the generator actually knows about the existence of our items.
+    # Submit the pool to the multiworld itempool.
     world.multiworld.itempool += item_pool
 
     # # Sometimes, you might want the player to start with certain items already in their inventory.
