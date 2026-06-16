@@ -1,10 +1,12 @@
-
-
-
 from __future__ import annotations
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Self
 from BaseClasses import CollectionState, Location
+from rule_builder.rules import CanReachLocation, Has, CanReachRegion
 from worlds.generic.Rules import add_rule, set_rule
+
+from .options import ItemGrasp
+from .enums import EnumItem, EnumLoc, EnumRegions
+
 # from .locations import location_table, Grime2LocationData
 # from .options import GRIME2Options
 
@@ -27,7 +29,21 @@ def set_all_entrance_rules(world: Grime2World) -> None:
         Placeholder
     """
 #     # First, we need to actually grab our entrances. Luckily, there is a helper method for this.
-#         # overworld_to_bottom_right_room = world.get_entrance("Overworld to Bottom Right Room")
+#     dried_paint_from_overgrown_barrier = world.get_entrance("ToH Birthplace Lower to ToH Dried Paint")
+#     set_rule(
+#         dried_paint_from_overgrown_barrier, 
+#         lambda state: state.has(LocTemple.BIRTHPLACE_LOWER_OVERGROWN_BARRIER.value, world.player),)
+
+    
+    
+    
+    
+    
+
+    # self._add_entrance_rule("Undead Settlement", lambda state: (
+    #         state.has("Small Lothric Banner", self.player)
+    #         and self._can_get(state, "HWL: Soul of Boreal Valley Vordt")
+    
 #         # overworld_to_top_left_room = world.get_entrance("Overworld to Top Left Room")
 #         # right_room_to_final_boss_room = world.get_entrance("Right Room to Final Boss Room")
 # 
@@ -115,6 +131,47 @@ def set_all_location_rules(world: Grime2World) -> None:
 #         )
 #     else:
 #         set_rule(right_room_enemy, lambda state: state.has("Sword", world.player))
+    set_rule(world.get_location(EnumLoc.BIRTHPLACE_UPPER_FORCE_CAPACITY.value),
+             lambda state: canClimbWalls(world.player, state) and canCrossSpikeTunnels(world.player, state))
+    
+    # Discarded Flesh requires Grasp
+    set_rule(world.get_location(EnumLoc.KANKAN_DISCARDED_FLESH.value), lambda state: canGrasp(world.player, state))
+    set_rule(world.get_location(EnumLoc.MARAHS_DISCARDED_FLESH.value), lambda state: canGrasp(world.player, state))
+
+    # Entrance to Kankan, requires Mountainborn Kill
+    #set_rule(world.get_entrance("Marah's Orchard to Kankan"),lambda state: state.can_reach_location(EnumLoc.UNDERHEADS_MOUNTAINBORN.value, world.player))
+    world.set_rule(
+        world.get_entrance("Marah's Orchard to Kankan"), 
+        CanReachLocation(EnumLoc.UNDERHEADS_MOUNTAINBORN.value))
+    
+    # Entrance to Palace, requires Tankawrd Warden kill
+    #manzils_breathcrown = world.get_entrance("Marah's Orchard to Kankan")
+    #manzils_breathcrown.access_rule =)
+    
+    # Entrance to Palace Jail, requires Locked Sphere
+    world.set_rule(
+        world.get_entrance("Kankan Upper Palace to Kankan Upper Jail"), 
+        Has("Locked Sphere") & CanReachLocation(EnumLoc.UNDERHEADS_MOUNTAINBORN.value))
+
+    
+    # Getting Manzil's Breathcrown, requires Yr'Gog being freed
+    # manzil_breathcrown = world.get_location(EnumLoc.MUDFALLS_MANZIL_BREATHCROWN.value)
+    # manzil_breathcrown_rule_1 = world.has(EnumItem.QI_LOCKED_SPHERE.value)
+    # manzil_breathcrown.set_rule(manzil_breathcrown_rule_1)
+    # set_rule(
+    #     world.get_location(EnumLoc.MUDFALLS_MANZIL_BREATHCROWN.value),
+    #     lambda state: state.can_reach_region(EnumRegions.KANKAN_UPPER_JAIL.value, world.player)
+    # )
+    world.set_rule(
+        world.get_location(EnumLoc.MUDFALLS_MANZIL_BREATHCROWN.value),
+        CanReachRegion(EnumRegions.KANKAN_UPPER_JAIL.value))
+    
+    
+    
+    # birthplace_force_capacity = world.get_location(LocTemple.BIRTHPLACE_UPPER_FORCE_CAPACITY)
+    # set_rule(
+    #     birthplace_force_capacity,
+    #     lambda state: canClimbWalls(world.player, state) and canCrossSpikeTunnels(world.player, state))
 # 
 #     # Another way to chain multiple conditions is via the add_rule function.
 #     # This makes the access rules a bit slower though, so it should only be used if your structure justifies it.
@@ -127,18 +184,67 @@ def set_all_location_rules(world: Grime2World) -> None:
 #     if world.options.hard_mode:
 #         # You can check for multiple copies of an item by using the optional count parameter of state.has().
 #         add_rule(final_boss, lambda state: state.has("Health Upgrade", world.player, 2))
-# 
-# 
+
+
 def set_completion_condition(world: Grime2World) -> None:
     """
         Placeholder
     """
-#     # Finally, we need to set a completion condition for our world, defining what the player needs to win the game.
-#     # You can just set a completion condition directly like any other condition, referencing items the player receives:
-#     world.multiworld.completion_condition[world.player] = lambda state: state.has_all(("Sword", "Shield"), world.player)
-# 
-#     # In our case, we went for the Victory event design pattern (see create_events() in locations.py).
-#     # So lets undo what we just did, and instead set the completion condition to:
     world.multiworld.completion_condition[world.player] = lambda state: state.has("Victory", world.player)
-    # world.multiworld.completion_condition[world.player] = lambda state: state.has_all(("Bloodmetal Scythe",), world.player)
-    # world.multiworld.completion_condition[world.player] = lambda state: state.has(enums.LocTemple.SEALED_CHAMBER_BOUND_SHELL, world.player)
+    
+def canCrossSpikeTunnels(player: int, state: CollectionState) -> bool:
+    return lambda state: (
+        state.has(EnumItem.IM_EMBEDDING_NAIL.value, player)
+        or state.has_all([EnumItem.AM_HANDJUMP.value, EnumItem.AM_AIRDASH.value], player)
+    )
+
+def canClimbWalls(player, state: CollectionState) -> bool:
+    return lambda state: state.has(EnumItem.AM_WALLJUMP.value, player)
+
+def canBurstJump(player, state: CollectionState) -> bool:
+    return lambda state: state.has(EnumItem.AM_BURSTJUMP.value, player)
+
+def canHandJump(player, state: CollectionState) -> bool:
+    return lambda state: state.has(EnumItem.AM_HANDJUMP.value, player)
+
+def canHighJump(player, state: CollectionState) -> bool:
+    return lambda state: state.has_any([EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value], player)
+
+def canGrasp(player, state: CollectionState) -> bool:
+    return lambda state: state.has(EnumItem.AC_GRASP.value, player)
+
+def canGraspHook(player, state: CollectionState) -> bool:
+    return lambda state: state.has_all([EnumItem.AC_GRASP.value, EnumItem.AM_GRASPHOOK.value], player)
+
+def canItemGrasp(player, state: CollectionState) -> bool:
+    if ItemGrasp:
+        return lambda state: state.has_all([EnumItem.AC_GRASP.value, EnumItem.AC_ITEM_GRASP.value], player)
+    else:
+        return lambda state: state.has(EnumItem.MI_THIRD_OF_FLESH.value, player, 3)
+
+def canGraspHookSlide(player, state: CollectionState) -> bool:
+    return lambda state: state.has_all([EnumItem.AC_GRASP.value, EnumItem.AM_GRASPHOOK.value, EnumItem.AM_GRASPSLIDE.value], player)
+
+def canAirDash(player, state: CollectionState) -> bool:
+    return lambda state: state.has(EnumItem.AM_AIRDASH.value, player)
+
+def canItemExplode(player, state: CollectionState) -> bool:
+    return lambda state: state.has_any([EnumItem.IM_VOLATILE_VASE.value, EnumItem.IM_OVERGROWN_BLOB.value], player)
+
+def isBreathcrowned(player, state: CollectionState) -> bool:
+    return lambda state: state.has_any(EnumItem.BC_MANZILS_BREATHCROWN, player)
+    
+
+# def set_dredge_rule(world_location: Location, location: DREDGELocationData, player: int) -> None:
+#     add_rule(world_location, lambda state: state.has("Dredge Crane", player))
+#     match location.requirement:
+#         case "explosives":
+#             add_rule(world_location, lambda state: state.has("Packed Explosives", player))
+#         case "icebreaker":
+#             add_rule(world_location, lambda state: state.has("Icebreaker", player))
+#         case "":
+#             return
+#         case _:
+#             #maybe log here
+#             return
+#     return

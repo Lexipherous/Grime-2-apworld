@@ -1,6 +1,6 @@
-#from worlds.AutoWorld import World
 from collections.abc import Mapping
 from typing import Any
+from worlds.AutoWorld import World
 
 from . import items, locations, regions, rules, options, web_world
 # from .options import GRIME2Options
@@ -10,23 +10,17 @@ class Grime2World(World):
     Hunt. Consume. Eat. Let nothing stop your quest to grow and consume... 
     or break free from your purpose and question why
     """
-    # You must override the "game" field to say the name of the game.
     game = "Grime 2"
-
-    # The WebWorld is a definition class that governs how this world will be displayed on the website.
     web = web_world.Grime2WebWorld()
 
     # This is how we associate the options defined in our options.py with our world.
     options_dataclass = options.Grime2Options
-    options: options.Grime2Options  # Common mistake: This has to be a colon (:), not an equals sign (=).
+    options: options.Grime2Options
 
-    # Our world class must have a static location_name_to_id and item_name_to_id defined.
-    # We define these in regions.py and items.py respectively, so we just set them here.
+    # We must define location_name_to_id and item_name_to_id.
     location_name_to_id = locations.LOCATION_NAME_TO_ID
     item_name_to_id = items.ITEM_NAME_TO_ID
 
-    # There is always one region that the generator starts from & assumes you can always go back to.
-    # This defaults to "Menu", but you can change it by overriding origin_region_name.
     origin_region_name = "Menu"
     
     # Our world class must have certain functions ("steps") that get called during generation.

@@ -1,13 +1,14 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional, List, Callable, NamedTuple
 #from typing import cast, ClassVar, Optional, Dict, List, Set
-from BaseClasses import ItemClassification as IC, Location, Region
+from BaseClasses import ItemClassification as IC, Location, Region, CollectionState
 from dataclasses import dataclass
 from . import items
-from .enums import LocTemple, EnumRegions
+from .enums import EnumLoc, EnumRegions, EnumItem
 
 if TYPE_CHECKING:
     from .world import Grime2World
+location_base_id = 6942013371314159
 
 # Every location must have a unique integer ID associated with it.
 # We will have a lookup from location name to ID here that, in world.py, we will import and bind to the world class.
@@ -43,11 +44,46 @@ def create_regular_locations(world: Grime2World) -> None:
     temple_of_hands_birthplace_lower = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value)
     temple_of_hands_birthplace_upper = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_UPPER.value)
     temple_of_hands_dried_paint = world.get_region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value)
+    
     mudfalls = world.get_region("Mudfalls")
-    faceless_mountains = world.get_region("Faceless Mountains")
-    marahs_orchard = world.get_region("Marah's Orchard")
-    underheads = world.get_region("Underheads")
-    kankan = world.get_region("Kankan")
+    
+    faceless_mountains_mudfalls = world.get_region(EnumRegions.FACELESS_MOUNTAINS_MUDFALLS.value)
+    faceless_mountains_dropot = world.get_region(EnumRegions.FACELESS_MOUNTAINS_DROPOT.value)
+    faceless_mountains_melded = world.get_region(EnumRegions.FACELESS_MOUNTAINS_MELDED.value)
+    faceless_mountains_main = world.get_region(EnumRegions.FACELESS_MOUNTAINS.value)
+    faceless_mountains_wanting_atrium = world.get_region(EnumRegions.FACELESS_MOUNTAINS_WANTING_ATRIUM.value)
+    faceless_mountains_wanting_bloodroots = world.get_region(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value)
+    faceless_mountains_darsh = world.get_region(EnumRegions.FACELESS_MOUNTAINS_DARSH.value)
+    
+    marahs_orchard_entrance = world.get_region("Marah's Orchard Entrance")
+    marahs_orchard_faceblob = world.get_region("Marah's Orchard Faceblob")
+    marahs_orchard_main = world.get_region("Marah's Orchard Main")
+    marahs_orchard_prime_above = world.get_region("Marah's Orchard Above Prime Pitcher")
+    marahs_orchard_prime_dropot = world.get_region("Marah's Orchard Above Prime Pitcher Dropot")
+    marahs_orchard_prime = world.get_region("Marah's Orchard Prime Pitcher")
+    
+    underheads_left_upper = world.get_region(EnumRegions.UNDERHEADS_LEFT_UPPER.value)
+    underheads_left_middle = world.get_region(EnumRegions.UNDERHEADS_LEFT_MIDDLE.value)
+    underheads_left_lower = world.get_region(EnumRegions.UNDERHEADS_LEFT_LOWER.value)
+    underheads_surrogate_left = world.get_region(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value)
+    underheads_lower_hunt = world.get_region(EnumRegions.UNDERHEADS_LOWER_HUNT.value)
+    underheads_before_mountainborn = world.get_region(EnumRegions.UNDERHEADS_BEFORE_MOUNTAINBORN.value)
+    underheads_mountainborn = world.get_region(EnumRegions.UNDERHEADS_MOUNTAINBORN.value)
+    underheads_lahav_knight = world.get_region(EnumRegions.UNDERHEADS_LAHAV_KNIGHT.value)
+    underheads_nailglade_transition = world.get_region(EnumRegions.UNDERHEADS_NAILGLADE_TRANSITION.value)
+    underheads_right = world.get_region(EnumRegions.UNDERHEADS_RIGHT.value)
+    underheads_forged_little = world.get_region(EnumRegions.UNDERHEADS_FORGED_LITTLE.value)
+    underheads_boulder_hands = world.get_region(EnumRegions.UNDERHEADS_BOULDER_HANDS.value)
+    underheads_forged_pick = world.get_region(EnumRegions.UNDERHEADS_FORGED_PICK.value)
+    underheads_scatter_stone = world.get_region(EnumRegions.UNDERHEADS_SCATTER_STONE.value)
+    underheads_alveoli = world.get_region(EnumRegions.UNDERHEADS_ALVEOLI.value)
+    underheads_tree_roots = world.get_region(EnumRegions.UNDERHEADS_TREE_ROOTS.value)
+    underheads_surrogate_smidge = world.get_region(EnumRegions.UNDERHEADS_SURROGATE_SMIDGE.value)
+    underheads_mountainborn_marah = world.get_region(EnumRegions.UNDERHEADS_MOUNTAINBORN_MARAH.value)
+    underheads_overgrown_blob = world.get_region(EnumRegions.UNDERHEADS_MOUNTAINBORN_OVERGROWN_BLOB.value)
+    
+    kankan = world.get_region("Kankan Upper Main")
+    
     jagged_forest = world.get_region("Jagged Forest")
     blade_garden = world.get_region("Blade Garden")
     nailglade = world.get_region("Nailglade")
@@ -68,22 +104,291 @@ def create_regular_locations(world: Grime2World) -> None:
 @dataclass
 class Grime2LocationData:
     region: str
-    name: LocTemple
+    name: EnumLoc
     ap_id: int
+    rule: Optional[Callable[[CollectionState], bool]] = None
     needGrasp: bool = False
     needBurstJump: bool = False
     needHandJump: bool = False
     needAirDash: bool = False
     
 location_data: list[Grime2LocationData] = [
-    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, LocTemple.BIRTHPLACE_LOWER_MAUL_AXE, 1),
-    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, LocTemple.BIRTHPLACE_LOWER_ATRIUM_1, 2),
-    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, LocTemple.BIRTHPLACE_LOWER_ATRIUM_2, 3),
-    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, LocTemple.BIRTHPLACE_LOWER_LEFT, 4),
-    #Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, LocTemple.BIRTHPLACE_LOWER_OVERGROWN_BARRIER, 5),
+    # Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, EnumLoc.SURROGATE_BIRTHPLACE, location_base_id + 1),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, EnumLoc.BIRTHPLACE_LOWER_MAUL_AXE, location_base_id + 2),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, EnumLoc.BIRTHPLACE_LOWER_ATRIUM_1, location_base_id + 3),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, EnumLoc.BIRTHPLACE_LOWER_ATRIUM_2, location_base_id + 4),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, EnumLoc.BIRTHPLACE_LOWER_LEFT, location_base_id + 5),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, EnumLoc.BIRTHPLACE_LOWER_OVERGROWN_BARRIER, location_base_id + 6),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_UPPER.value, EnumLoc.BIRTHPLACE_UPPER_FORMLESS_SKIN, location_base_id + 7),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_UPPER.value, EnumLoc.BIRTHPLACE_UPPER_EMBEDDING_NAIL, location_base_id + 8),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_UPPER.value, EnumLoc.BIRTHPLACE_UPPER_FORCE_CAPACITY, location_base_id + 9),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.SURROGATE_DRIED_PAINT, location_base_id + 10),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.SEAL_DRIED_PAINT, location_base_id + 11),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_HANDCLOTH_CHEST, location_base_id + 12),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_HANDCLOTH_HANDS, location_base_id + 13),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_KNIFEHAND, location_base_id + 14),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_ATRIUM_SPIKE_PIT, location_base_id + 15),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_HANDCLOTH_LEGS, location_base_id + 16),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_FRAGMENTS_BEFORE_SEAL, location_base_id + 17),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_ATRIUM_ABOVE_SEAL, location_base_id + 18),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_FRAGMENTS_CHAINS_ROOM_1, location_base_id + 19),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_FRAGMENTS_CHAINS_ROOM_2, location_base_id + 20),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_CLASPED_MACE, location_base_id + 21),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_ATRIUM_AFTER_CLASPED_MACE, location_base_id + 22),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_ITEM_SPIKE_PIT, location_base_id + 23),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_SPIKE_GAP_FRAGMENTS, location_base_id + 24),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value, EnumLoc.DRIED_PAINT_SPIKE_GAP_ATRIUM, location_base_id + 25),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_SEALED_CHAMBER.value, EnumLoc.SURROGATE_SEALED_CHAMBER, location_base_id + 26),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_SEALED_CHAMBER.value, EnumLoc.SEALED_CHAMBER_FRAGMENTS, location_base_id + 27),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BOUND_SHELL.value, EnumLoc.SEALED_CHAMBER_BOUND_SHELL, location_base_id + 28, rule=lambda state: state.has(EnumItem.AC_GRASP, Grime2World.player)),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.SEALED_CHAMBER_PRISMATIC_PEARL, location_base_id + 29), # placing this in "Hall" because its acquired after BoundShell
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.SURROGATE_HALL, location_base_id + 30),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.SEAL_HALL, location_base_id + 31),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_LEFT_OF_SURROGATE, location_base_id + 32),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_RIGHT_OF_SURROGATE, location_base_id + 33),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_EMBEDDING_NAIL_SURROGATE, location_base_id + 34),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_THROWING_THUMBS, location_base_id + 35),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_ATRIUM_UNDER_YEARNING, location_base_id + 36),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_ATRIUM_ABOVE_SURROGATE, location_base_id + 37),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_ATRIUM_TOPLEFT_SURROGATEL, location_base_id + 38),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_TOPLEFT_OVERGROWN_BLOB, location_base_id + 39),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_TOPLEFT_ATRIUM, location_base_id + 40),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_FRAGMENTS_ABOVE_SURROGATE, location_base_id + 41),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_PEARL, location_base_id + 42),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_TOP_ATRIUM_BREAKABLE, location_base_id + 43),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_FRAGMENTS_AFTER_HUNT_ABOVE, location_base_id + 44),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_FRAGMENTS_AFTER_HUNT_LEDGE, location_base_id + 45),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_HOMING_DROPLET_TOP, location_base_id + 46),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_ATRIUM_RIGHT_OF_KNIFEHAND, location_base_id + 47),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_RUST_FISTS, location_base_id + 48),
+    Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_HALL.value, EnumLoc.HALL_BLOODROOT_SPLINTER_TOP, location_base_id + 49),
     
-    #Grime2LocationData("Temple of Hands", LocTemple.HALL_SPIKE_GAP_FRAGMENTS, 6),
-    #Grime2LocationData("Temple of Hands", LocTemple.SEALED_CHAMBER_BOUND_SHELL, 40),
+    # # # # # # #
+    # Mudfalls
+    # # # # # # #
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_SURROGATE_ALCOVE, location_base_id + 1001),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_ATRIUM, location_base_id + 1002),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_FRAGMENTS, location_base_id + 1003),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_OVERGROWN_BLOB, location_base_id + 1004),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_BLOODROOT, location_base_id + 1005),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_ATRIUM_ALCOVE, location_base_id + 1006),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_MISC, location_base_id + 1007),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_BLOODROOT_ELEVATOR, location_base_id + 1008),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_FRAGMENTS_ELEVATOR, location_base_id + 1009),
+    Grime2LocationData(EnumRegions.MUDFALLS_ELEVATOR.value, EnumLoc.MUDFALLS_LUMP_OF_HANDS, location_base_id + 1010), #  // Needs jump boost and Grasp Hook and Grasp Slide
+    Grime2LocationData(EnumRegions.MUDFALLS_ELEVATOR.value, EnumLoc.MUDFALLS_PEARL, location_base_id + 1011), #   // Needs jump boost and Grasp Hook and Grasp Slide
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_SEAL_LEFT, location_base_id + 1012),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_SURROGATE_MANZIL, location_base_id + 1013),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_MISC_FORCE, location_base_id + 1014),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_PEARL_MANZIL, location_base_id + 1015),
+    Grime2LocationData(EnumRegions.MUDFALLS_ABOVE_MANZIL_RIGHT.value, EnumLoc.MUDFALLS_PEARL_MANZIL_ABOVE, location_base_id + 1016), #  // Burst Jump or Handjump OR Grasp Hook
+    Grime2LocationData(EnumRegions.MUDFALLS_ABOVE_MANZIL_RIGHT_TOP.value, EnumLoc.MUDFALLS_SIGIL_BARRIER, location_base_id + 1017), #  // Burst Jump or Handjump
+    Grime2LocationData(EnumRegions.MUDFALLS_ABOVE_MANZIL_CENTER.value, EnumLoc.MUDFALLS_ATRIUM_MANZIL, location_base_id + 1018), #  // Wall Jump
+    Grime2LocationData(EnumRegions.MUDFALLS_ABOVE_MANZIL_SIDE.value, EnumLoc.MUDFALLS_HOMING_DROPLET, location_base_id + 1019), #  // HandJump AND Air Dash OR Wall Jump
+    Grime2LocationData(EnumRegions.MUDFALLS_ABOVE_MANZIL_TOP.value, EnumLoc.MUDFALLS_REINFORCING_WEAVE, location_base_id + 1020), #  // ((HandJump AND Air Dash) OR Wall Jump) AND Item Grasp
+    Grime2LocationData(EnumRegions.MUDFALLS_ABOVE_MANZIL_LEFT.value, EnumLoc.MUDFALLS_LUMP_OF_HANDS_MANZIL, location_base_id + 1021), #  // Grasp Hook AND Grasp Slide AND (BurstJumpORHandJump) AND Air Dash
+    Grime2LocationData(EnumRegions.MUDFALLS_ABOVE_MANZIL_LEFT_TOP.value, EnumLoc.MUDFALLS_BLOODROOT_MANZIL, location_base_id + 1022), #  // Grasp Hook AND Grasp Slide AND (BurstJumpORHandJump) AND Air Dash AND WallJump
+    Grime2LocationData(EnumRegions.MUDFALLS_STRAND.value, EnumLoc.MUDFALLS_MARAH_STRAND, location_base_id + 1023), #  // Wall Jump AND Grasp Hook
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_HOMING_DROPLET_MANZIL, location_base_id + 1024),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_BLOODROOT_UNDERGROUND, location_base_id + 1025),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_ATRIUM_UNDERGROUND, location_base_id + 1026),
+    Grime2LocationData(EnumRegions.MUDFALLS_SPIKE_PIT.value, EnumLoc.MUDFALLS_HEART_OF_A_DANCER, location_base_id + 1027), #  // Item Grasp
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_ARMOR_FORGED_LITTLE, location_base_id + 1028),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_FRAGMENTS_CAVE, location_base_id + 1029),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_OVERGROWN_BLOB_CAVE, location_base_id + 1030),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_SEAL_RIGHT, location_base_id + 1031),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_PEARL_FACELESS, location_base_id + 1032),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_OVERGROWN_BLOB_MANZIL, location_base_id + 1033),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_ATRIUM_FACELESS, location_base_id + 1034),
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_WEAPON_FORGED_STAKE, location_base_id + 1035), #  // BARRIER/Underheads . Wall Jump (Burst/Hand Jump)
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_WEAPON_THROWING_STARS, location_base_id + 1036), #  // Chisel Key // Needs jump boost and Grasp Hook and Grasp Slide
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_MANZIL_SPHERE, location_base_id + 1037), #  // Chisel Key // Needs jump boost and Grasp Hook and Grasp Slide
+    Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_SIBLING_WEAVE, location_base_id + 1038), #  // Chisel Key // Needs jump boost and Grasp Hook and Grasp Slide
+    # Grime2LocationData(EnumRegions.MUDFALLS.value, EnumLoc.MUDFALLS_MANZIL_BREATHCROWN, location_base_id + 1039), #  // Chisel Key // Needs jump boost and Grasp Hook and Grasp Slide
+
+    # # # # # # #
+    # Faceless Mountains
+    # # # # # # #
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SURROGATE_HALFMADE, location_base_id + 2001), #// (2823.29, 1825.23, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_PEARL, location_base_id + 2002), #// (2812.89, 1847.89, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_SURROGATE, location_base_id + 2003), #// (2772.26, 1856.95, 0.21) (Wall Climb AND Dash Slide) OR Item Grasp AND (Wall Clumb OR Hand Jump OR Burst Jump)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DROPOT.value, EnumLoc.FACELESS_BLOODROOT_DROPOT, location_base_id + 2004), #// (2788.52, 1869.90, 2.86)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SEAL_UPPER, location_base_id + 2005), #// (2926.74, 1888.55, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_PIT, location_base_id + 2006), #// (2893.77, 1872.37, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS, location_base_id + 2007), #// (2918.18, 1870.25, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_WEAPON_ATTUNING_BOW, location_base_id + 2008), #// (2967.00, 1871.25, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SURROGATE_INTERTWINING, location_base_id + 2009), #// (2982.66, 1864.93, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_ATRIUM_LONG_1, location_base_id + 2010), #// (2934.56, 1852.77, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_ATRIUM_LONG_2, location_base_id + 2011), #// (2881.10, 1852.91, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_LONG_ROOM, location_base_id + 2012), #// (2870.44, 1865.35, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_HOMING_DROPLET_LONG, location_base_id + 2013), #// (2947.61, 1857.55, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_HANDS, location_base_id + 2014), #// (2882.61, 1839.75, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BLOODROOT_LONG, location_base_id + 2015), #// (2861.54, 1851.36, 1.65)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_LEGS, location_base_id + 2016), #// (2851.52, 1835.63, 0.00) Grasp
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_CHEST, location_base_id + 2017), #// (2825.33, 1835.62, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MELDED_L, location_base_id + 2018), #// (2761.71, 1818.63, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MELDED_R, location_base_id + 2019), #// (2794.31, 1818.57, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_MELDED.value, EnumLoc.FACELESS_BOSS_MELDED_REWARD, location_base_id + 2020), #// (2779.24, 1801.55, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MUDFALLS, location_base_id + 2021), #// (2718.90, 1813.66, 0.00) - Grasp OR Hand Jump OR Burst Jump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_HANDS, location_base_id + 2022), #// (2921.84, 1816.16, 0.00) - Grasp
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_WEAPON_SPEAR, location_base_id + 2023), #// (2882.89, 1816.46, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SEAL_LOWER, 2024), # // (2825.46, 1804.15, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_CHEST, location_base_id + 2025), #// (2948.63, 1829.73, 1.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_LEGS, location_base_id + 2026), #// (2962.94, 1833.30, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BLOODROOT_DARSH, location_base_id + 2027), #// (2986.82, 1834.81, 2.45)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_OVERGROWN_BLOB, location_base_id + 2028), #// (3040.50, 1849.97, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DARSH.value, EnumLoc.FACELESS_BOSS_DARSH_REWARD, location_base_id + 2029), #// (3072.99, 1863.16, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_ATRIUM.value, EnumLoc.FACELESS_ATRIUM_WANTING_TREE_1, location_base_id + 2030), #// (3044.94, 1878.21, 0.00) WallJump AND Grasphook
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_ATRIUM_WANTING_TREE_2, location_base_id + 2031), #// (3003.69, 1900.64, 0.00) WallJump AND Grasphook AND BurstJump/Handjump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_WANTING_TREE_1, location_base_id + 2032), #// (2999.23, 1907.21, 1.43) WallJump AND Grasphook AND BurstJump/Handjump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_WANTING_TREE_2, location_base_id + 2033), #// (2996.89, 1907.14, 1.31) WallJump AND Grasphook AND BurstJump/Handjump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_SURROGATE, location_base_id + 2034), #// (2993.80, 1882.43, 2.14) (Handjump OR BurstJump) AND Wall BClimb
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DARSH.value, EnumLoc.FACELESS_HOMING_DROPLET_MARAHS, location_base_id + 2035), #// (3083.73, 1793.72, 0.00)
+    # Galloping Dropot only needs Wall CLimb
+
+    # # # # # # #
+    # Underheads
+    # # # # # # #
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_SURROGATE_SUNKEN, location_base_id + 3001), #// (2848.49, 1686.96, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_SEAL_SUNKEN, location_base_id + 3002), #// (2806.35, 1677.81, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_LEFT_MIDDLE.value, EnumLoc.UNDERHEADS_BLOODROOT_MUDFALLS, location_base_id + 3003), #// (2808.81, 1687.65, 3.63)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_SPIKE_BALL_SUNKEN, location_base_id + 3004), #// (2936.80, 1681.07, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_FORGED_PICK.value, EnumLoc.UNDERHEADS_WEAPON_FORGED_PICK, location_base_id + 3005), #// (2868.86, 1674.18, 0.00) //GraspANDGraspHook
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_SCATTER_STONE_PICK, location_base_id + 3006), #// (2897.26, 1664.04, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_FRAGMENTS, location_base_id + 3007), #// (2878.11, 1642.50, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_FORGED_BOULDER_CHEST, location_base_id + 3008), #// (2849.44, 1656.24, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_SPIKE_BALL_SEAL, location_base_id + 3009), #// (2777.20, 1657.60, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_BLOODROOT_SEAL_LEFT, location_base_id + 3010), #// (2810.22, 1652.82, 3.81)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SCATTER_STONE.value, EnumLoc.UNDERHEADS_SCATTER_STONE_SAND, location_base_id + 3011), #// (2739.41, 1646.54, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_LOWER_HUNT.value, EnumLoc.UNDERHEADS_MARAH_STRAND_DROPOT, location_base_id + 3012), #// (2814.13, 1625.98, 5.12)
+    Grime2LocationData(EnumRegions.UNDERHEADS_LOWER_HUNT.value, EnumLoc.UNDERHEADS_ATRIUM_SAND, location_base_id + 3013), #// (2845.20, 1630.88, 0.36)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_SCATTER_STONE_LEGS, location_base_id + 3014), #// (2889.82, 1617.93, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_BOULDER_HANDS.value, EnumLoc.UNDERHEADS_FORGED_BOULDER_HANDS, location_base_id + 3015), #// (2981.51, 1640.19, 0.00) // (GraspANDGraspHook) AND (WallClimb Or AirDash)
+    Grime2LocationData(EnumRegions.UNDERHEADS_BEFORE_MOUNTAINBORN.value, EnumLoc.UNDERHEADS_BLOODROOT_FORGED_HANDS, location_base_id + 3016), #// (2963.75, 1653.54, 5.80)
+    Grime2LocationData(EnumRegions.UNDERHEADS_BEFORE_MOUNTAINBORN.value, EnumLoc.UNDERHEADS_SEAL_RIGHT, location_base_id + 3017), #// (2935.53, 1672.72, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_ATRIUM_SEAL_1, location_base_id + 3018), #// (2896.62, 1645.55, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_ATRIUM_SEAL_2, location_base_id + 3019), #// (2924.09, 1645.55, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_ATRIUM_GAP, location_base_id + 3020), #// (2896.94, 1629.70, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_SURROGATE_LEFT.value, EnumLoc.UNDERHEADS_FORGED_BOULDER_LEGS, location_base_id + 3021), #// (2917.83, 1624.70, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_ALVEOLI.value, EnumLoc.UNDERHEADS_SPIKE_BALL_ABOVE_SUNKEN, location_base_id + 3022), #// (2835.19, 1722.02, 0.34) // GraspANDGraspHook
+    Grime2LocationData(EnumRegions.UNDERHEADS_ALVEOLI.value, EnumLoc.UNDERHEADS_ALVEOLI, location_base_id + 3023), #// (2790.40, 1766.82, 0.00) // GraspAndGraspHook
+    Grime2LocationData(EnumRegions.UNDERHEADS_BEFORE_MOUNTAINBORN.value, EnumLoc.UNDERHEADS_ATRIUM_SERGEANT, location_base_id + 3024), #// (2979.14, 1661.42, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_BEFORE_MOUNTAINBORN.value, EnumLoc.UNDERHEADS_SURROGATE_CURLING, location_base_id + 3025), #// (3028.85, 1670.58, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_RIGHT.value, EnumLoc.UNDERHEADS_SMIDGE_OF_PAINT, location_base_id + 3026), #// (3051.15, 1680.45, 0.00) // Grasphook AND WallJump
+    Grime2LocationData(EnumRegions.UNDERHEADS_MOUNTAINBORN.value, EnumLoc.UNDERHEADS_MOUNTAINBORN, location_base_id + 3027), #// (3070.11, 1661.89, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_RIGHT.value, EnumLoc.UNDERHEADS_BLOODROOT_MOUNTAINBORN, location_base_id + 3028), #// (3119.75, 1676.72, 1.80)
+    Grime2LocationData(EnumRegions.UNDERHEADS_MOUNTAINBORN.value, EnumLoc.UNDERHEADS_MARAH_STRAND_ABOVE_MOUNTAINBORN, location_base_id + 3029), #// (3067.92, 1693.37, 9.23)
+    Grime2LocationData(EnumRegions.UNDERHEADS_RIGHT.value, EnumLoc.UNDERHEADS_OVERGROWN_BLOB, location_base_id + 3030), #// (3056.57, 1703.07, 0.00) //BurstJumpOrHandJumpANDWallJump
+    Grime2LocationData(EnumRegions.UNDERHEADS_TREE_ROOTS.value, EnumLoc.UNDERHEADS_WEAPON_BARBED_SWORD, location_base_id + 3031), #// (3005.15, 1713.21, 0.00)//GraspANDGraspHookANDWallJump
+    Grime2LocationData(EnumRegions.UNDERHEADS_RIGHT.value, EnumLoc.UNDERHEADS_HOMING_DROPLETS, location_base_id + 3032), #// (3089.03, 1674.74, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_RIGHT.value, EnumLoc.UNDERHEADS_MARAH_STRAND_MOUNTAINBORN, location_base_id + 3033), #// (3062.17, 1682.89, 0.00) BurstJumpANDAirDashANDWallJump
+    Grime2LocationData(EnumRegions.UNDERHEADS_LAHAV_KNIGHT.value, EnumLoc.UNDERHEADS_THIRD_LAHAV, location_base_id + 3034), #// (3014.98, 1641.51, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_RIGHT.value, EnumLoc.UNDERHEADS_BLOODROOT_JAGGED, location_base_id + 3035), #// (3149.53, 1634.22, 7.41)
+    Grime2LocationData(EnumRegions.UNDERHEADS_LEFT_UPPER.value, EnumLoc.UNDERHEADS_ATRIUM_MUDFALLS_1, location_base_id + 3036), #// (2783.53, 1754.23, 0.34) //AirDashANDWallJump(GraspHookANDGrasp)
+    Grime2LocationData(EnumRegions.UNDERHEADS_LEFT_UPPER.value, EnumLoc.UNDERHEADS_ATRIUM_MUDFALLS_2, location_base_id + 3037), #// (2787.59, 1754.23, 0.34)
+    Grime2LocationData(EnumRegions.UNDERHEADS_LEFT_UPPER.value, EnumLoc.UNDERHEADS_FORCE, location_base_id + 3038), #// (2791.21, 1754.23, 0.00)
+    Grime2LocationData(EnumRegions.UNDERHEADS_LEFT_LOWER.value, EnumLoc.UNDERHEADS_BLOODROOT_DREGBOURG, location_base_id + 3039), #// (2612.24, 1617.39, 5.64)
+
+    # # # # # # #
+    # Tree Roots
+    # # # # # # #
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SEAL_RIGHT, location_base_id + 4001), #// (2969.99, 1762.60, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SURROGATE, location_base_id + 4002), #// (3032.05, 1758.44, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_BOTTOM, location_base_id + 4003), #// (3082.94, 1727.05, 5.12)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_SURROGATE, location_base_id + 4004), #// (3079.39, 1743.43, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS_VISAGE.value, EnumLoc.TREEROOTS_FORCE, location_base_id + 4005), #// (3050.97, 1760.01, 0.00) // HandJumpORBurstJump
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_VISAGE_1, location_base_id + 4006), #// (2990.84, 1789.52, 5.44)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_VISAGE_2, location_base_id + 4007), #// (3001.36, 1789.84, 4.84)
+    Grime2LocationData(EnumRegions.TREE_ROOTS_VISAGE.value, EnumLoc.TREEROOTS_HAND_VISAGE_REAWRD, location_base_id + 4008), #// (3049.32, 1793.36, 0.00) // HandJumpORBurstJump
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_SURROGATE, location_base_id + 4009), #// (2983.76, 1737.78, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_SURROGATE, location_base_id + 4010), #// (2961.72, 1740.72, 9.70)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_PIT, location_base_id + 4011), #// (2947.87, 1714.46, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_HUNT, location_base_id + 4012), #// (2944.39, 1726.34, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SMIDGE_OF_PAINT_WALL, location_base_id + 4013), #// (2969.75, 1750.09, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_HUNT, location_base_id + 4014), #// (2896.26, 1748.05, 5.22)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SEAL_LEFT, location_base_id + 4015), #// (2850.98, 1758.46, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_SEAL, location_base_id + 4016), #// (2846.88, 1758.91, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SMIDGE_OF_PAINT_SEAL, location_base_id + 4017), #// (2901.39, 1779.82, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_BLOODROOT, location_base_id + 4018), #// (2891.00, 1796.34, 7.68)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_TOP, location_base_id + 4019), #// (2903.18, 1793.02, 0.00)
+
+    # # # # # # #
+    # Marah's Orchard
+    # # # # # # #
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SURROGATE_BRIDGE, location_base_id + 5001), #// (3208.98, 1758.49, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_LEFT_SURROGATE, location_base_id + 5002), #// (3183.10, 1762.29, 0.94)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_DISCARDED_FLESH, location_base_id + 5003), #// (3181.19, 1716.19, 6.00)
+    # Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_SURROGATE, location_base_id + 5004), #// (3183.10, 1762.29, 0.94)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_TOPLEFT, location_base_id + 5005), #// (3267.30, 1816.25, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_BLOODROOT_DROPOT, location_base_id + 5006), #// (3282.95, 1819.07, 3.55)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_DROPOT, location_base_id + 5007), #// (3307.79, 1825.94, 1.24)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_CHEST, location_base_id + 5008), #// (3307.38, 1787.63, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SEAL_DROPOT, location_base_id + 5009), #// (3307.61, 1777.18, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_HANDS, location_base_id + 5010), #// (3337.36, 1796.98, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FRAGMENTS_HANDS, location_base_id + 5011), #// (3348.81, 1790.90, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_LEGS, location_base_id + 5012), #// (3378.96, 1793.58, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_LEGS, location_base_id + 5013), #// (3368.91, 1800.64, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FRAGMENTS_LEGS, location_base_id + 5014), #// (3382.27, 1822.06, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FORCE, location_base_id + 5015), #// (3354.91, 1840.87, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SURROGATE, location_base_id + 5016), #// (3376.91, 1773.03, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SURROGATE_ENTRANCE, location_base_id + 5017), #// (3379.92, 1756.51, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SPIKE_BALL_PITCHER, location_base_id + 5018), #// (3394.16, 1820.75, 0.00) // (HandJumpORBurstJump)ANDGraspHookANDGraspSlideAndWallJump
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SKITTERING_DROPOT_CONT, location_base_id + 5019), #// (3425.15, 1776.95, 0.00) // (HandJumpORBurstJump)ANDGraspHookANDGraspSlideAndWallJumpANDAirDash
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_HOMING_DROPLET, location_base_id + 5020), #// (3421.11, 1742.68, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ALVEOLI, location_base_id + 5021), #// (3382.98, 1716.76, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_BLOODROOT_ALVEOLI, location_base_id + 5022), #// (3290.43, 1724.09, 2.09)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SHORTBLADE, location_base_id + 5023), #// (3286.02, 1699.73, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SMIDGE_OF_PAINT_FACEBLOB, location_base_id + 5024), #// (3241.48, 1697.13, 0.00) HandJump/BurstJump/WallJump
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FACEBLOB_REWARD, location_base_id + 5025), #// (3209.00, 1687.17, 6.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ALVEOLI_FACEBLOB, location_base_id + 5026), #// (3158.17, 1668.80, 6.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_OVERGROWN_BLOB_SEAL, location_base_id + 5027), #// (3279.78, 1726.99, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SMIDGE_OF_PAINT_ALVEOLI, location_base_id + 5028), #// (3301.21, 1739.92, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SEAL, location_base_id + 5029), #// (3285.55, 1749.12, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SEAL_LEFT, location_base_id + 5030), #// (3261.99, 1754.47, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SPIKE_BALL_SEAL, location_base_id + 5031), #// (3242.48, 1729.46, 0.00)
+
+    # # # # # # #
+    # Kankan
+    # # # # # # #
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_HEART_OF_A_TRAVELER, location_base_id + 6001), #// (3634.34, 1777.21, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_VOLATILE_VASE_HEART, location_base_id + 6002), #// (3640.22, 1787.89, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_SKITTERING_DROPOT_CONT, location_base_id + 6003), #// (3594.77, 1795.69, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_SEAL_UPPER, location_base_id + 6004), #// (3715.06, 1735.84, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_BY_ET, location_base_id + 6005), #// (3772.42, 1786.29, 4.49)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_SURROGATE_NAILGLADER, location_base_id + 6006), #// (3848.21, 1768.41, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_VOLATILE_VASE_TOP, location_base_id + 6007), #// (3613.59, 1830.38, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_FORCE_UPPER, location_base_id + 6008), #// (3719.38, 1765.40, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_JAVELIN.value, EnumLoc.KANKAN_CHARGING_JAVELIN_, location_base_id + 6009), #// (3729.12, 1781.08, 0.00) (BurstJump OR HandJump) AND Grasp
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_PALACE.value, EnumLoc.KANKAN_WARDEN_REWARD, location_base_id + 6010), #// (3921.00, 1790.48, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_SURROGATE, location_base_id + 6011), #// (3869.58, 1773.79, 2.98)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_RAKIK_REWARD, location_base_id + 6012), #// (3869.58, 1773.79, 2.98)
+    
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_ELEVATOR, location_base_id + 6101), #// (3836.96, 1709.81, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_ELEVATOR, location_base_id + 6102), #// (3837.30, 1718.57, 3.77)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_FRAGMENTS_SURROGATE, location_base_id + 6103), #// (3729.16, 1690.11, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_VOLATILE_VASE_SAVIOUR, location_base_id + 6104), #// (3717.66, 1667.64, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ATRIUM.value, EnumLoc.KANKAN_ATRIUM_SURROGATE, location_base_id + 6105), #// (3670.45, 1702.19, 0.00) // WallJump
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SURROGATE_SAVIOUR, location_base_id + 6106), #// (3672.07, 1713.94, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_BUILDING, location_base_id + 6107), #// (3653.94, 1669.40, 9.30)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_ALVEOLI, location_base_id + 6108), #// (3733.78, 1643.04, 6.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ALVEOLI, location_base_id + 6109), #// (3758.53, 1638.82, 6.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE.value, EnumLoc.KANKAN_VOLATILE_VASE_ALVEOLI, location_base_id + 6110), #// (3724.94, 1653.75, 6.00) // WallJump
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE_TOP.value, EnumLoc.KANKAN_PITCHER_GUARD_LEGS, location_base_id + 6111), #// (3688.72, 1667.48, 6.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE_TOP.value, EnumLoc.KANKAN_MARAH_STRAND_HANDS, location_base_id + 6112), #// (3631.91, 1675.19, 6.08)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_PITCHER_GUARD_HANDS, location_base_id + 6113), #// (3646.67, 1647.69, 6.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_PITCHER_GUARD_CHEST, location_base_id + 6114), #// (3645.64, 1662.73, 6.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_FORCE_LOWER, location_base_id + 6115), #// (3626.86, 1647.69, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_HOLSTER.value, EnumLoc.KANKAN_FRAGMENTS_HOLSTER, location_base_id + 6116), #// (3554.02, 1640.95, 0.00) // AirDash OR (BurstJump OR HandJump)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_HOLSTER.value, EnumLoc.KANKAN_VOLATILE_VASE_HOLSTER, location_base_id + 6117), #// (3521.81, 1634.53, 6.00) // WallJump
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_CHARGING_JAVELIN_QISSA, location_base_id + 6118), #// (3612.93, 1603.90, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_JAGGED, location_base_id + 6119), #// (3544.16, 1619.56, 3.36)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_SEAL, location_base_id + 6120), #// (3630.69, 1707.64, 7.16)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_PREACHER.value, EnumLoc.KANKAN_PREACHER_REWARD, location_base_id + 6121), #// (3566.19, 1690.41, 6.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_PREACHER.value, EnumLoc.KANKAN_DISCARDED_FLESH, location_base_id + 6122), #// (3548.57, 1687.45, 6.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_VOLATILE_VASE_PREACHER, location_base_id + 6123), #// (3610.22, 1679.38, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_JAIL, location_base_id + 6124), #// (3890.01, 1754.95, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_JAIL, location_base_id + 6125), #// (3876.66, 1763.80, 0.72)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SEAL_LOWER, location_base_id + 6126), #// (3618.57, 1714.31, 0.00)
 ]
 
 LOCATION_NAME_TO_ID = {location.name.value: location.ap_id for location in location_data}
@@ -93,7 +398,15 @@ def create_events(world: Grime2World) -> None:
     """
     Placeholder
     """
-    victory_zone = world.get_region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT)
+    # mountainborn_region = world.get_region(EnumRegions.UNDERHEADS_MOUNTAINBORN.value)
+    # mountainborn_region.add_event(
+    #     EnumLoc.UNDERHEADS_MOUNTAINBORN.value,
+    #     "Mountainborn Cleared",
+    #     location_type=Grime2Location,
+    #     item_type=items.Grime2Item
+    # )
+    
+    victory_zone = world.get_region(EnumRegions.MUDFALLS)
     victory_zone.add_event(
-        LocTemple.BIRTHPLACE_LOWER_OVERGROWN_BARRIER, "Victory", location_type=Grime2Location, item_type=items.Grime2Item
+        EnumLoc.MUDFALLS_MANZIL_BREATHCROWN, "Victory", location_type=Grime2Location, item_type=items.Grime2Item
     )

@@ -34,10 +34,31 @@ class StartWithWeapon(Toggle):
     display_name = "Start with weapon"
     default = 0
 
+class Armorsets(Toggle):
+    """
+    If yes, armor will be sent as a complete set, instead of 1 of the 3 pieces of the set.
+    """
+    display_name = "Armorsets"
+    default = 0
+
+class ItemMolds(Toggle):
+    """
+    If yes, a check will grant enough item molds to get the item mold to Tier 2, then Tier 3. As opposed to receiving each Item Mold seperately.
+    """
+    display_name = "Item Molds"
+    default = 0
+
+class ItemGrasp(Toggle):
+    """
+    If yes, Item Grasp will be its own item, otherwise you will need the three Thirds of Flesh.
+    """
+    display_name = "Item Grasp"
+    default = 0
+
 option_groups = [
     OptionGroup(
         "Gameplay Options",
-        [CompletionGoal, StartWithWeapon],
+        [CompletionGoal, StartWithWeapon, Armorsets, ItemMolds, ItemGrasp],
     ),
 ]
 
@@ -45,5 +66,8 @@ option_groups = [
 class Grime2Options(PerGameCommonOptions):
     completion_goal: CompletionGoal
     start_with_weapon: StartWithWeapon
+    armorsets: Armorsets
+    itemmolds: ItemMolds
+    itemgrasp: ItemGrasp
 
 option_presets = {}
