@@ -428,8 +428,8 @@ def connect_regions(world: Grime2World) -> None:
     underheads_alveoli.connect(faceless_mountains_main, "Underheads to Faceless Mountains")
     underheads_right.connect(marahs_orchard_faceblob, "Underheads to Marah's Orchard")
     underheads_right.connect(underheads_tree_roots, "Underheads to Tree Roots", lambda state: canClimbWalls(world.player, state) and canHighJump(world.player, state))
-    underheads_nailglade_transition.connect(nailglade, "Underheads Lahav Knight to Nailglade Transition", lambda state: isBreathcrowned(world.player, state))
-    underheads_left_lower.connect(dregbourg, "Underheads Left Lower to Dregbourg", lambda state: isBreathcrowned(world.player, state))
+    underheads_nailglade_transition.connect(nailglade, "Underheads Lahav Knight to Nailglade Transition")
+    underheads_left_lower.connect(dregbourg, "Underheads Left Lower to Dregbourg")
     # Interzone
     underheads_lahav_knight.connect(underheads_nailglade_transition, "Underheads to Lahav Knight")
     underheads_left_upper.connect(underheads_alveoli, "Underheads to Underhead Alveoli", lambda state: canGraspHook(world.player, state))
