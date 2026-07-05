@@ -36,7 +36,6 @@ class Grime2ItemData:
     classification: IC
     ap_id: int
     count: int = 1
-    game: str = "Grime 2"
     isStarterWeapon: bool = False
 
 def populate_items():
