@@ -485,6 +485,62 @@ location_data: list[Grime2LocationData] = [
     
 
     # # # # # # #
+    # DregBourg
+    # # # # # # #
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SURROGATE_ENTRANCE, location_base_id + 8001),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_PEARL, location_base_id + 8002), #HandJumpORBurstJump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_THROWING_NAILS, location_base_id + 8003),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_MARAH_STRAND_GUARDS, location_base_id + 8004), #//ForgedLittleORAirDash// WallJump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FRAGMENTS_GUARDS, location_base_id + 8005), #//ForgedLittleORAirDash// WallJump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SMASHING_BLOCK_GUARDS, location_base_id + 8006), #//ForgedLittleORAirDash// (HandJumpORBurstJump)ANDAirDash
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_SEAL_UPPER, location_base_id + 8007), 
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SEAL_UPPER, location_base_id + 8008),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FORGED_PEBBLE_CHEST, location_base_id + 8009),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM, location_base_id + 8010),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SCATTER_STONE_BREATHCROWN, location_base_id + 8011), #GraspHook AND WallJump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_PEBBLE_HANDS, location_base_id + 8012),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FORGED_PEBBLE_HANDS, location_base_id + 8013), #HandJumpOrBurstJump AND WallJump And GraspHook
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_MARAH_STRAND_PEBBLE, location_base_id + 8014),
+    #//Forged Breathcrown not synced yet
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FORGED_PEBBLE_LEGS, location_base_id + 8015), #WallJump/AirDash/BurstJump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SPIKE_PIT, location_base_id + 8016), #AirDashANDGraspHook OR HandJump\
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_SERGEANT, location_base_id + 8017), #walljump + high jump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_SURROGATE, location_base_id + 8018), #high jump + Air Dash + grasp
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_MARAH_STRAND_FISTS, location_base_id + 8019),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FORGED_FISTS, location_base_id + 8020),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SMASHING_BLOCK_TOP, location_base_id + 8021),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_TOP, location_base_id + 8022),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SURROGATE_HAVEN, location_base_id + 8023),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_HAVEN, location_base_id + 8024),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FRAGMENTS_REEF, location_base_id + 8025),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_DISCARDED_FLESH, location_base_id + 8026), #12_PaintReef_Background_Purple_BAKED_BASE_HARD_HIGH_LAYER 1
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_HOMING_DROPLETS, location_base_id + 8027),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_FLESH, location_base_id + 8028), #highjump+walljump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_FLESH, location_base_id + 8029), #//highjump+walljump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FRAGMENTS_DROPOT, location_base_id + 8030),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SMASHING_BLOCK_PIT, location_base_id + 8031), #ItemGrasp highjump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SCATTER_STONE_SEAL, location_base_id + 8032), #highjump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SEAL_LOWER, location_base_id + 8033), #highjump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_MARAH_STRAND_SEAL, location_base_id + 8034), #highjump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_SEAL_LOWER, location_base_id + 8035), #highjump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SMASHING_BLOCK_SEAL, location_base_id + 8036), #highjump+Walljump
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ANVILHEAD_REWARD, location_base_id + 8037),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_SMASHING_BLOCK_ANVILHEAD, location_base_id + 8038),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_ANVILHEAD, location_base_id + 8039),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_SURROGATE, location_base_id + 8040),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FRAGMENTS_ENTRANCE, location_base_id + 8041),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_NAILGLADE_RIGHT, location_base_id + 8042),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_NAILGLADE_LEFT, location_base_id + 8043),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_NAILGLADE_LEFT, location_base_id + 8044),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_BLOODROOT_NAILGLADE_RIGHT, location_base_id + 8045),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_MARAH_STRAND_NAILGLADE, location_base_id + 8046),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_NAILGLADE, location_base_id + 8047),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_EMBEDDING_NAIL, location_base_id + 8048),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FORCE, location_base_id + 8049),
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_ATRIUM_MINIBOSS, location_base_id + 8050), #Airdash
+    Grime2LocationData(EnumRegions.DREGBOURG.value, EnumLoc.DREGBOURG_FORGED_ANVIL, 8051),
+
+    # # # # # # #
     # Jagged Forest
     # # # # # # #
     Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_SURROGATE_LEARNING, location_base_id + 9001),
