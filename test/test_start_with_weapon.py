@@ -1,18 +1,13 @@
-from test.bases import Grime2TestBase
+from .bases import Grime2TestBase
+from ..options import StartingWeapon
+from ..enums import EnumLoc, EnumItem
 
+class TestStartingWeapon(Grime2TestBase):
+    #options = {"start_with_weapon": StartingWeapon.option_maul_axe} # Maul Axe
+    options = {"starting_weapon": 0} # Maul Axe
 
-class TestChestAccess(Grime2TestBase):
-    options = {
-        "start_with_weapon": "true",
-        "completion_goal": "act_3",
-    }
-
-    def test_sword_chests(self) -> None:
+    def test_maul_axe_Start(self) -> None:
         """Test locations that require a sword"""
-        locations = ["ToH-Birthplace: Maul Axe"]
-        items = ["Clasped Mace", "Knifehand", "Maul Axe", "Throwing Thumbs"]
-        # This tests that the provided locations aren't accessible without the provided items, but can be accessed once
-        # the items are obtained.
-        # This will also check that any locations not provided don't have the same dependency requirement.
-        # Optionally, passing only_check_listed=True to the method will only check the locations provided.
-        self.assertAccessDependency(locations, items)
+        maul_axe_location = self.world.get_location(EnumLoc.BIRTHPLACE_LOWER_MAUL_AXE.value)
+        #maul_axe = self.world.create_item(EnumItem.W_MAUL_AXE.value)
+        self.assertEqual(maul_axe_location.item.name, EnumItem.W_MAUL_AXE.value)
