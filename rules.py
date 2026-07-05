@@ -131,37 +131,31 @@ def set_all_location_rules(world: Grime2World) -> None:
 #         )
 #     else:
 #         set_rule(right_room_enemy, lambda state: state.has("Sword", world.player))
-    set_rule(world.get_location(EnumLoc.BIRTHPLACE_UPPER_FORCE_CAPACITY.value),
-             lambda state: canClimbWalls(world.player, state) and canCrossSpikeTunnels(world.player, state))
     
     # Discarded Flesh requires Grasp
     set_rule(world.get_location(EnumLoc.KANKAN_DISCARDED_FLESH.value), lambda state: canGrasp(world.player, state))
     set_rule(world.get_location(EnumLoc.MARAHS_DISCARDED_FLESH.value), lambda state: canGrasp(world.player, state))
 
+    # # # # # # # # # # 
+    # Main Logic Rules
+    # # # # # # # # # # 
     # Entrance to Kankan, requires Mountainborn Kill
     #set_rule(world.get_entrance("Marah's Orchard to Kankan"),lambda state: state.can_reach_location(EnumLoc.UNDERHEADS_MOUNTAINBORN.value, world.player))
     world.set_rule(
         world.get_entrance("Marah's Orchard to Kankan"), 
         CanReachLocation(EnumLoc.UNDERHEADS_MOUNTAINBORN.value))
     
-    # Entrance to Palace, requires Tankawrd Warden kill
-    #manzils_breathcrown = world.get_entrance("Marah's Orchard to Kankan")
-    #manzils_breathcrown.access_rule =)
+    # Entrance to Palace, requires Breathsmith Info
+    world.set_rule(
+        world.get_entrance("Kankan Upper Before Palace to Kankan Upper Palace"), 
+        Has(EnumItem.QI_BREATHSMITH_LOCATION_INFO.value))
     
     # Entrance to Palace Jail, requires Locked Sphere
     world.set_rule(
         world.get_entrance("Kankan Upper Palace to Kankan Upper Jail"), 
         Has("Locked Sphere") & CanReachLocation(EnumLoc.UNDERHEADS_MOUNTAINBORN.value))
 
-    
     # Getting Manzil's Breathcrown, requires Yr'Gog being freed
-    # manzil_breathcrown = world.get_location(EnumLoc.MUDFALLS_MANZIL_BREATHCROWN.value)
-    # manzil_breathcrown_rule_1 = world.has(EnumItem.QI_LOCKED_SPHERE.value)
-    # manzil_breathcrown.set_rule(manzil_breathcrown_rule_1)
-    # set_rule(
-    #     world.get_location(EnumLoc.MUDFALLS_MANZIL_BREATHCROWN.value),
-    #     lambda state: state.can_reach_region(EnumRegions.KANKAN_UPPER_JAIL.value, world.player)
-    # )
     world.set_rule(
         world.get_location(EnumLoc.MUDFALLS_MANZIL_BREATHCROWN.value),
         CanReachRegion(EnumRegions.KANKAN_UPPER_JAIL.value))
