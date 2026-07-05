@@ -110,9 +110,6 @@ class Grime2LocationData:
     ap_id: int
     rule: Optional[Callable[[CollectionState], bool]] = None
     needGrasp: bool = False
-    needBurstJump: bool = False
-    needHandJump: bool = False
-    needAirDash: bool = False
     
 location_data: list[Grime2LocationData] = [
     # Grime2LocationData(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value, EnumLoc.SURROGATE_BIRTHPLACE, location_base_id + 1),
