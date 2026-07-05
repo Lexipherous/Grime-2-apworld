@@ -418,21 +418,40 @@ def create_all_items(world: Grime2World) -> None:
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_traits()}) # Populate Traits
         
     # Consider if we're starting with a weapon
-    if world.options.start_with_weapon:
-        weapon_name = world.random.choice([
-            item for item in ITEM_TABLE.values() if item.isStarterWeapon
-        ])
-        world.push_precollected(world.create_item(weapon_name.name))
-        
+    if world.options.starting_weapon:
+        match 1:
+            case 0:
+                # Maul Axe as Starter
+                starter_weapon = world.random.choice([
+                    item for item in ITEM_TABLE.values() if item.name == EnumItem.W_MAUL_AXE
+                ])
+            case 1:
+                # Any usable starter
+                starter_weapon = world.random.choice([
+                    item for item in ITEM_TABLE.values() if item.isStarterWeapon
+                ])
+            case 2:
+                # Any usable starter except Maul Axe
+                # Any usable starter
+                starter_weapon = world.random.choice([
+                    item for item in ITEM_TABLE.values() if item.isStarterWeapon and item.name != EnumItem.W_MAUL_AXE
+                ])
+            case 3:
+                # Any weapon
+                starter_weapon = world.random.choice([
+                    item for item in ITEM_TABLE.values()
+                ])
+        # Push the starter weapon to the maul axe location
+        maul_axe_location = world.get_location(EnumLoc.BIRTHPLACE_LOWER_MAUL_AXE.value)
+        maul_axe_location.place_locked_item(world.create_item(starter_weapon.name))
         # Remove start weapon from item_pool
         for i, item in enumerate(item_pool):
-            if item.name == weapon_name.name:
+            if item.name == starter_weapon.name:
                 item_pool.pop(i)
                 break
     
     # We have our item pool, now check if we need filler items
     number_of_items = len(item_pool)
-    # print("Pool items")
     number_of_unfilled_locations = len(world.multiworld.get_unfilled_locations(world.player))
     needed_number_of_filler_items = number_of_unfilled_locations - number_of_items
     # Action on any needed filler items
@@ -440,15 +459,5 @@ def create_all_items(world: Grime2World) -> None:
 
     # Submit the pool to the multiworld itempool.
     world.multiworld.itempool += item_pool
-
-    # # Sometimes, you might want the player to start with certain items already in their inventory.
-    # # These items are called "precollected items".
-    # # They will be sent as soon as they connect for the first time (depending on your client's item handling flag).
-    # # Players can add precollected items themselves via the generic "start_inventory" option.
-    # # If you want to add your own precollected items, you can do so via world.push_precollected().
-    # if world.options.start_with_one_confetti_cannon:
-    #     # We're adding a filler item, but you can also add progression items to the player's precollected inventory.
-    #     starting_confetti_cannon = world.create_item("Confetti Cannon")
-    #     world.push_precollected(starting_confetti_cannon)
 
 filler_list: list[str] = []

@@ -27,12 +27,18 @@ class CompletionGoal(Choice):
     option_test_bound_shell = 3
     default = 3
 
-class StartWithWeapon(Toggle):
+class StartingWeapon(Choice):
     """
-    If yes, you will randomly be assigned a weapon
+    Determine the weapon that replaces Maul Axe at the start.
     """
-    display_name = "Start with weapon"
-    default = 0
+    display_name = "Starter weapon"
+    option_maul_axe = 0
+    option_any_usable = 1
+    option_any_usable_except_maul_axe = 2
+    option_any_weapon = 3
+    #option_no_weapon_softlockable = 4
+
+    default = 1
 
 class Armorsets(Toggle):
     """
@@ -58,14 +64,14 @@ class ItemGrasp(Toggle):
 option_groups = [
     OptionGroup(
         "Gameplay Options",
-        [CompletionGoal, StartWithWeapon, Armorsets, ItemMolds, ItemGrasp],
+        [CompletionGoal, StartingWeapon, Armorsets, ItemMolds, ItemGrasp],
     ),
 ]
 
 @dataclass
 class Grime2Options(PerGameCommonOptions):
     completion_goal: CompletionGoal
-    start_with_weapon: StartWithWeapon
+    starting_weapon: StartingWeapon
     armorsets: Armorsets
     itemmolds: ItemMolds
     itemgrasp: ItemGrasp
