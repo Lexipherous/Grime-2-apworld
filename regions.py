@@ -519,8 +519,8 @@ def connect_regions(world: Grime2World) -> None:
     # # # # # # #
     # Entrance/Exits
     nailglade.connect(paint_reef, "Nailglade to Paint Reef")
-    nailglade.connect(blade_garden, "Nailglade to Blade Garden")
-    nailglade.connect(jagged_forest, "Nailglade to Jagged Forest")
+    nailglade.connect(blade_garden_upper, "Nailglade to Blade Garden")
+    nailglade.connect(jagged_forest_main, "Nailglade to Jagged Forest")
     nailglade.connect(underheads_nailglade_transition, "Nailglade to Underheads", lambda state: isBreathcrowned(world.player, state))
     nailglade.connect(dregbourg, "Nailglade to Dregbourg")
     # Interzone

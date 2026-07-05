@@ -427,6 +427,63 @@ location_data: list[Grime2LocationData] = [
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_JAIL, location_base_id + 6124),
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_JAIL, location_base_id + 6125),
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SEAL_LOWER, location_base_id + 6126),
+
+    # # # # # # #
+    # Nailglade
+    # # # # # # #
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_LAHAVIST_NOMAD_LEGS, location_base_id + 7001),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_LAHAVIST_NOMAD_HANDS, location_base_id + 7002),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_LAHAVIST_NOMAD_CHEST, location_base_id + 7003),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_MARAH_STRAND_LAHAV_KNIGHT, location_base_id + 7004),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_SEAL_RIGHT, location_base_id + 7005),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_SCOUT_CHEST, location_base_id + 7006),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_SCOUT_LEGS, location_base_id + 7007),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_HANDBEAST_REWARD, location_base_id + 7008),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_SCOUT_HANDS, location_base_id + 7009), # grasphook/walljump
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_BLOODROOT_SCOUT, location_base_id + 7010), # grasphook/walljump
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_THIRD_OF_FLESH_HANDBEAST, location_base_id + 7011), # Ghook+Airdash+Walljump
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_MARAH_STRAND_BREATHCROWN, location_base_id + 7012), # walljump
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_MARAH_STRAND_TOWN_LOWER, location_base_id + 7013),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_EMBEDDING_NAIL_TOWN_EDGE, location_base_id + 7014),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_MARAH_STRAND_DROPOT, location_base_id + 7015),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_ALVEOLI_TREE, location_base_id + 7016), # airdash
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_HEART_OF_A_BREATHWEAVER, location_base_id + 7117), # walljump+(handjump or bjump+adash)
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_BLOODROOT_TOWN, location_base_id + 7018), #  walljump+(handjump or bjump+adash)
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_BLOODROOT_WORKSHOP, location_base_id + 7019), #  Workshop Key
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_ATRIUM_WORKSHOP_1, location_base_id + 7020), # Workshop Key
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_VOLATILE_VASE_WORKSHOP, location_base_id + 7021), # Workshop Key
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_ATRIUM_WORKSHOP_2, location_base_id + 7022), # Workshop Key
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_VOLATILE_VASE_BURDEN, location_base_id + 7023), # Workshop Key
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_ATRIUM_TOWN, location_base_id + 7024),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_TWINPALM_REWARD, location_base_id + 7025),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_BLOODROOT_KNIGHT, location_base_id + 7026), # AirDash
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_LAHAV_KNIGHT, location_base_id + 7027), # AirDash
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_DISCARDED_FLESH, location_base_id + 7028), # 07_NailGlade_Background_AlwaysOn_BAKED_BASE_HARD_HIGH_LAYER 1
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_FINGERCLUMP_MACE, location_base_id + 7029),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_SURROGATE_OUTSKIRTS, location_base_id + 7030),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_FORCE, location_base_id + 7031), # ADash+WJump
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_HOMING_DROPLET, location_base_id + 7032), # ADash+WJump +Grasp
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_MARAH_STRAND_SURROGATE, location_base_id + 7033), # ADash+WJump +Grasp
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_ATRIUM_SURROGATE, location_base_id + 7034), # ADash+WJump +Grasp
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_FIGHTER_CHEST, location_base_id + 7035), # ADash+WJump +Grasp
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_FIGHTER_LEGS, location_base_id + 7036), # ADash+WJump +Grasp
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_FIGHTER_HANDS, location_base_id + 7037), # ADash+WJump +Grasp
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_BLOODROOT_SURROGATE, location_base_id + 7038), # ADash+WJump +Grasp
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_FRAGMENTS, location_base_id + 7039),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_SEAL_LEFT, location_base_id + 7040),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_SMIDGE_OF_PAINT, location_base_id + 7041),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_OVERGROWN_BLOB, location_base_id + 7042),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_THIRD_OF_FLESH_TOWN, location_base_id + 7043),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_MARAH_STRAND_FLESH, location_base_id + 7044),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_MARAH_STRAND_TOWN_UPPER, location_base_id + 7045),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_THIRD_OF_FLESH_UNDERHEADS, location_base_id + 7046),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_BLOODROOT_JAGGED, location_base_id + 7047),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_ATRIUM_FOREST, location_base_id + 7048),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_EMBEDDING_NAIL_TOWN, location_base_id + 7049),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_CHAIN_JAVELIN, location_base_id + 7050),
+    Grime2LocationData(EnumRegions.NAILGLADE.value, EnumLoc.NAILGLADE_RAKING_SWORD, location_base_id + 7051),
+    
+
     # # # # # # #
     # Jagged Forest
     # # # # # # #
