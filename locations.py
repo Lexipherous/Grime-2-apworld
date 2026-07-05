@@ -349,45 +349,6 @@ location_data: list[Grime2LocationData] = [
     # # # # # # #
     # Kankan
     # # # # # # #
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_HEART_OF_A_TRAVELER, location_base_id + 6001), #// (3634.34, 1777.21, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_VOLATILE_VASE_HEART, location_base_id + 6002), #// (3640.22, 1787.89, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_SKITTERING_DROPOT_CONT, location_base_id + 6003), #// (3594.77, 1795.69, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_SEAL_UPPER, location_base_id + 6004), #// (3715.06, 1735.84, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_BY_ET, location_base_id + 6005), #// (3772.42, 1786.29, 4.49)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_SURROGATE_NAILGLADER, location_base_id + 6006), #// (3848.21, 1768.41, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_VOLATILE_VASE_TOP, location_base_id + 6007), #// (3613.59, 1830.38, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_FORCE_UPPER, location_base_id + 6008), #// (3719.38, 1765.40, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_JAVELIN.value, EnumLoc.KANKAN_CHARGING_JAVELIN_, location_base_id + 6009), #// (3729.12, 1781.08, 0.00) (BurstJump OR HandJump) AND Grasp
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_PALACE.value, EnumLoc.KANKAN_WARDEN_REWARD, location_base_id + 6010), #// (3921.00, 1790.48, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_SURROGATE, location_base_id + 6011), #// (3869.58, 1773.79, 2.98)
-    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_RAKIK_REWARD, location_base_id + 6012), #// (3869.58, 1773.79, 2.98)
-    
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_ELEVATOR, location_base_id + 6101), #// (3836.96, 1709.81, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_ELEVATOR, location_base_id + 6102), #// (3837.30, 1718.57, 3.77)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_FRAGMENTS_SURROGATE, location_base_id + 6103), #// (3729.16, 1690.11, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_VOLATILE_VASE_SAVIOUR, location_base_id + 6104), #// (3717.66, 1667.64, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_ATRIUM.value, EnumLoc.KANKAN_ATRIUM_SURROGATE, location_base_id + 6105), #// (3670.45, 1702.19, 0.00) // WallJump
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SURROGATE_SAVIOUR, location_base_id + 6106), #// (3672.07, 1713.94, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_BUILDING, location_base_id + 6107), #// (3653.94, 1669.40, 9.30)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_ALVEOLI, location_base_id + 6108), #// (3733.78, 1643.04, 6.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ALVEOLI, location_base_id + 6109), #// (3758.53, 1638.82, 6.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE.value, EnumLoc.KANKAN_VOLATILE_VASE_ALVEOLI, location_base_id + 6110), #// (3724.94, 1653.75, 6.00) // WallJump
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE_TOP.value, EnumLoc.KANKAN_PITCHER_GUARD_LEGS, location_base_id + 6111), #// (3688.72, 1667.48, 6.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE_TOP.value, EnumLoc.KANKAN_MARAH_STRAND_HANDS, location_base_id + 6112), #// (3631.91, 1675.19, 6.08)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_PITCHER_GUARD_HANDS, location_base_id + 6113), #// (3646.67, 1647.69, 6.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_PITCHER_GUARD_CHEST, location_base_id + 6114), #// (3645.64, 1662.73, 6.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_FORCE_LOWER, location_base_id + 6115), #// (3626.86, 1647.69, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_HOLSTER.value, EnumLoc.KANKAN_FRAGMENTS_HOLSTER, location_base_id + 6116), #// (3554.02, 1640.95, 0.00) // AirDash OR (BurstJump OR HandJump)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_HOLSTER.value, EnumLoc.KANKAN_VOLATILE_VASE_HOLSTER, location_base_id + 6117), #// (3521.81, 1634.53, 6.00) // WallJump
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_CHARGING_JAVELIN_QISSA, location_base_id + 6118), #// (3612.93, 1603.90, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_JAGGED, location_base_id + 6119), #// (3544.16, 1619.56, 3.36)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_SEAL, location_base_id + 6120), #// (3630.69, 1707.64, 7.16)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_PREACHER.value, EnumLoc.KANKAN_PREACHER_REWARD, location_base_id + 6121), #// (3566.19, 1690.41, 6.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_PREACHER.value, EnumLoc.KANKAN_DISCARDED_FLESH, location_base_id + 6122), #// (3548.57, 1687.45, 6.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_VOLATILE_VASE_PREACHER, location_base_id + 6123), #// (3610.22, 1679.38, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_JAIL, location_base_id + 6124), #// (3890.01, 1754.95, 0.00)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_JAIL, location_base_id + 6125), #// (3876.66, 1763.80, 0.72)
-    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SEAL_LOWER, location_base_id + 6126), #// (3618.57, 1714.31, 0.00)
     Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_HEART_OF_A_TRAVELER, location_base_id + 6001),
     Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_VOLATILE_VASE_HEART, location_base_id + 6002),
     Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_SKITTERING_DROPOT_CONT, location_base_id + 6003),
@@ -651,6 +612,55 @@ location_data: list[Grime2LocationData] = [
     Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_LOWER_PEN_PIERCED_CHEST, location_base_id + 10050),
     Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_LOWER_PEN_PIERCED_HANDS, location_base_id + 10051),
     Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_QUADRANT_BLADE, location_base_id + 10052),
+        
+    # # # # # # #
+    # Paint Reef
+    # # # # # # #
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_REEF_DIVER_HANDS, location_base_id + 11001),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_ATRIUM_SHELL, location_base_id + 11002),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_ATRIUM_ENTRANCE, location_base_id + 11003),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SMASHING_BLOCK_ENTRANCE, location_base_id + 11004), #bjump + ghook + adash + wjump
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_REEF_DIVER_CHEST, location_base_id + 11005),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_REEF_DIVER_LEGS, location_base_id + 11006), #wjump
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SMASHING_BLOCK_DIVER, location_base_id + 11007), #wjump
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_ATRIUM_SEAL_1, location_base_id + 11008),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_MARAH_STRAND_SEAL, location_base_id + 11009),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_ATRIUM_SEAL_2, location_base_id + 11010),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_FRAGMENTS_SEAL, location_base_id + 11011), #HighJump AND (WallJump OR IGrasp)
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_LUMP_OF_HANDS_SEAL, location_base_id + 11012),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SMASHING_BLOCK_SEAL_1, location_base_id + 11013),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BLOODROOT_SEAL, location_base_id + 11014),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SMASHING_BLOCK_SEAL_2, location_base_id + 11015),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SMIDGE_OF_PAINT, location_base_id + 11016),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SURROGATE_STAR_TINT, location_base_id + 11017),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SEAL_UPPER, location_base_id + 11018),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BLOODROOT_START_TINT, location_base_id + 11019),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_FORCE, location_base_id + 11020),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_FLEETING_CARESS_REWARD, location_base_id + 11021),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_REEF_BLOOM_HANDS, location_base_id + 11022),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_REEF_BLOOM_LEGS, location_base_id + 11023),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SURROGATE_BLADE_TINT, location_base_id + 11024),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_MARAH_STRAND_STAR_TINT, location_base_id + 11025),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BLOODROOT_BLADE_TINT_LEFT, location_base_id + 11026),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_REEF_BLOOM_CHEST, location_base_id + 11027),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BLOODROOT_BLADE_TINT_ABOVE, location_base_id + 11028),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_SEAL_LOWER, location_base_id + 11029),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_DISCARDED_FLESH, location_base_id + 11030), #12_PaintReef_05_BAKED_BASE_SOFT_HIGH_LAYER 0
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_MARAH_STRAND_SHELL_BEFORE, location_base_id + 11031),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_MARAH_STRAND_SHELL_1, location_base_id + 11032),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_MARAH_STRAND_SHELL_2, location_base_id + 11033),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_MARAHS_SHELL_REWARD, location_base_id + 11034),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_FRAGMENTS_FIRST, location_base_id + 11035),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_FRAGMENTS_RIGHT, location_base_id + 11036),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_FRAGMENTS_MIDDLE, location_base_id + 11037),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_FRAGMENTS_LEFT, location_base_id + 11038),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_LUMP_OF_HANDS, location_base_id + 11039),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_BLOODROOT_TOP, location_base_id + 11040),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_ATRIUM_TOP, location_base_id + 11041),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_ATRIUM_BOTTOM, location_base_id + 11042),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_BIRTHPLACE_BLOODROOT_LOWER, location_base_id + 11043),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_LUMP_OF_HANDS_BARRIER, location_base_id + 11044),
+    Grime2LocationData(EnumRegions.PAINT_REEF.value, EnumLoc.REEF_FRAIL_HORN, location_base_id + 11045),
 ]
 
 LOCATION_NAME_TO_ID = {location.name.value: location.ap_id for location in location_data}
