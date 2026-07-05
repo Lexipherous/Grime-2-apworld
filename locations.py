@@ -85,7 +85,9 @@ def create_regular_locations(world: Grime2World) -> None:
     kankan = world.get_region("Kankan Upper Main")
     
     jagged_forest = world.get_region("Jagged Forest")
-    blade_garden = world.get_region("Blade Garden")
+    # blade_garden_upper = world.get_region("Blade Garden Upper")
+    # blade_garden_middle = world.get_region("Blade Garden Middle")
+    # blade_garden_lower = world.get_region("Blade Garden Lower")
     nailglade = world.get_region("Nailglade")
     tree_roots = world.get_region("Tree Roots")
     dregbourg = world.get_region("Dregbourg")
@@ -428,6 +430,62 @@ location_data: list[Grime2LocationData] = [
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_JAIL, location_base_id + 6124),
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_JAIL, location_base_id + 6125),
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SEAL_LOWER, location_base_id + 6126),
+    # # # # # # #
+    # Blade Garden
+    # # # # # # #
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_SEAL_RIGHT, location_base_id + 10001),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_ATRIUM_DROPOT, location_base_id + 10002), #Grasp
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_DUNAL_RIGHT, location_base_id + 10003),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_DUNAL_LEFT, location_base_id + 10004),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_SURROGATE_GARDEN, location_base_id + 10005),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_WORKSHOP, location_base_id + 10006),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_MARAH_STRAND_WORKSHOP, location_base_id + 10007),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_FORCE, location_base_id + 10008),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_CHAR_JAV_WORKSHOP, location_base_id + 10009),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_CHAR_JAV_SEAL, location_base_id + 10010),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_SEAL_LEFT, location_base_id + 10011),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_CHAR_JAV_SEAL_RIGHT, location_base_id + 10012),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_CHAR_JAV_SEAL_LEFT_L, location_base_id + 10013),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_MARAH_STRAND_AXE, location_base_id + 10014),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_SURROGATE_AXE, location_base_id + 10015),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_LAHAVISTS, location_base_id + 10016),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_FRAGMENTS_VER, location_base_id + 10017),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_VER, location_base_id + 10018),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_FALLEN_GREATBLADE_HANDS, location_base_id + 10019),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_GREATBLADE_HANDS, location_base_id + 10020),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_FALLEN_GREATBLADE_CHEST, location_base_id + 10021),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_FALLEN_GREATBLADE_LEGS, location_base_id + 10022),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_ATRIUM_GREATBLADE_LEGS, location_base_id + 10023),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_TOP_LEFT, location_base_id + 10024),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_TOP_RIGHT, location_base_id + 10025),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_ATRIUM_ALVEOLI_TREE, location_base_id + 10026),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_ALVEOLI_TREE, location_base_id + 10027),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_CHAR_JAV_SEAL_LEFT_R, location_base_id + 10028),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_MARAH_STRAND_SEAL, location_base_id + 10029),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_ATRIUM_SEAL_RIGHT, location_base_id + 10030),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_BLOODROOT_SEAL_LEFT, location_base_id + 10031),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_MAMMOTH_AXE, location_base_id + 10032),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_MARAH_STRAND_SEAL_BELOW, location_base_id + 10033),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_BLOODROOT_AXE_LEFT, location_base_id + 10034),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_BLOODROOT_AXE_RIGHT, location_base_id + 10035),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_AXE_SURROGATE, location_base_id + 10036),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_BLOODROOT_AXE_BOTTOM, location_base_id + 10037),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_MARAH_STRAND_AXE_BELOW, location_base_id + 10038),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_BLOODROOT_QUADBLADE_LEFT, location_base_id + 10039),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_BLOODROOT_QUADBLADE_BELOW, location_base_id + 10040),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_SURROGATE_QUADBLADE, location_base_id + 10041),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_PENSPEAR_1, location_base_id + 10042),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_PENSPEAR_2, location_base_id + 10043),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_QUADBLADE_REWARD, location_base_id + 10044),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_CHAR_JAV_QUAD_1, location_base_id + 10045),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_MIDDLE.value, EnumLoc.GARDEN_CHAR_JAV_QUAD_2, location_base_id + 10046),
+    # //["08_BladeGarden_04:-3065176"] = new LocationEnum(0, "BladeGarden:Marah Strand top of Quadblade arena"), // (3082.73, 1242.58, 3.76) Inaccessible
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_LOWER_FRAGMENTS, location_base_id + 10047),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_LOWER_BLOODROOT, location_base_id + 10048),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_LOWER_PEN_PIERCED_LEGS, location_base_id + 10049),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_LOWER_PEN_PIERCED_CHEST, location_base_id + 10050),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_LOWER_PEN_PIERCED_HANDS, location_base_id + 10051),
+    Grime2LocationData(EnumRegions.BLADE_GARDEN_LOWER.value, EnumLoc.GARDEN_QUADRANT_BLADE, location_base_id + 10052),
 ]
 
 LOCATION_NAME_TO_ID = {location.name.value: location.ap_id for location in location_data}

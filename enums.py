@@ -80,7 +80,10 @@ class EnumRegions(StrEnum):
     KANKAN_LOWER_PREACHER = "Kankan Lower Preacher"
     
     JAGGED_FOREST = "Jagged Forest"
-    BLADE_GARDEN = "Blade Garden"
+    BLADE_GARDEN = "Blade Garden" # For location names
+    BLADE_GARDEN_UPPER = "Blade Garden Upper"
+    BLADE_GARDEN_MIDDLE = "Blade Garden Middle"
+    BLADE_GARDEN_LOWER = "Blade Garden Lower"
     NAILGLADE = "Nailglade"
     
     TREE_ROOTS = "Tree Roots"

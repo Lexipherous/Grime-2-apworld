@@ -102,7 +102,9 @@ def create_all_regions(world: Grime2World) -> None:
     
     jagged_forest = Region("Jagged Forest", world.player, world.multiworld)
     
-    blade_garden = Region("Blade Garden", world.player, world.multiworld)
+    blade_garden_upper = Region("Blade Garden Upper", world.player, world.multiworld)
+    blade_garden_middle = Region("Blade Garden Middle", world.player, world.multiworld)
+    blade_garden_lower = Region("Blade Garden Lower", world.player, world.multiworld)
     
     nailglade = Region("Nailglade", world.player, world.multiworld)
     
@@ -203,7 +205,9 @@ def create_all_regions(world: Grime2World) -> None:
         kankan_lower_preacher,
         
         jagged_forest,
-        blade_garden,
+        blade_garden_upper,
+        blade_garden_middle,
+        blade_garden_lower,
         nailglade,
         
         tree_roots,
@@ -311,6 +315,11 @@ def connect_regions(world: Grime2World) -> None:
     
     jagged_forest = world.get_region(EnumRegions.JAGGED_FOREST.value)
     blade_garden = world.get_region(EnumRegions.BLADE_GARDEN.value)
+    
+    blade_garden_upper = world.get_region(EnumRegions.BLADE_GARDEN_UPPER.value)
+    blade_garden_middle = world.get_region(EnumRegions.BLADE_GARDEN_MIDDLE.value)
+    blade_garden_lower = world.get_region(EnumRegions.BLADE_GARDEN_LOWER.value)
+    
     nailglade = world.get_region(EnumRegions.NAILGLADE.value)
     
     tree_roots = world.get_region(EnumRegions.TREE_ROOTS.value)
@@ -479,9 +488,16 @@ def connect_regions(world: Grime2World) -> None:
     # Blade Garden
     # # # # # # #
     # Entrance/Exits
-    blade_garden.connect(jagged_forest, "Blade Garden to Jagged Forest")
-    blade_garden.connect(nailglade, "Blade Garden to Nailglade")
+    blade_garden_upper.connect(jagged_forest_garden_trans, "BG_Upper to Jagged Forest")
+    blade_garden_upper.connect(nailglade, "BG_Upper to Nailglade")
+    #blade_garden_upper.connect(nailglade, "Blade Garden to Nailglade") #workshop
     # Interzone
+    blade_garden_upper.connect(blade_garden_middle, "BG_Upper to BG_Middle")
+    blade_garden_middle.connect(blade_garden_upper, "BG_Middle to BG_Upper")
+    blade_garden_middle.connect(blade_garden_lower, "BG_Middle to BG_Lower")
+    
+    
+    
     
     # # # # # # #
     # Nailglade
