@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, Self
 from BaseClasses import CollectionState, Location
-from rule_builder.rules import CanReachLocation, Has, CanReachRegion
+from rule_builder.rules import CanReachLocation, Has, CanReachRegion, HasAll, HasAny
 from worlds.generic.Rules import add_rule, set_rule
 
 from .options import ItemGrasp
@@ -159,6 +159,82 @@ def set_all_location_rules(world: Grime2World) -> None:
     world.set_rule(
         world.get_location(EnumLoc.MUDFALLS_MANZIL_BREATHCROWN.value),
         CanReachRegion(EnumRegions.KANKAN_UPPER_JAIL.value))
+    
+    # === Act 2 ===
+    # Completing act 2 requires the 3 weapon parts
+    world.set_rule(
+        world.get_entrance("Mudfalls to Palladium"),
+        HasAll(EnumItem.QI_FORGED_ANVIL, EnumItem.QI_QUADRANT_BLADE, EnumItem.QI_FRAIL_HORN))
+    
+    
+    # # # # # # # # # # # # # # # # # # # # 
+    # Region specific rules
+    # # # # # # # # # # # # # # # # # # # # 
+    # Temple of Hands
+    # # # # # # # # # # 
+    world.set_rule(
+        world.get_location(EnumLoc.BIRTHPLACE_UPPER_FORCE_CAPACITY.value), 
+        lambda state: canClimbWalls(world.player, state) and canCrossSpikeTunnels(world.player, state))
+    
+
+    # # # # # # # # # # 
+    # Underheads
+    # # # # # # # # # # 
+    world.set_rule(
+        world.get_entrance("Underheads Lahav Knight to Nailglade Transition"),
+        lambda state: isBreathcrowned(world.player, state))
+    world.set_rule(
+        world.get_entrance("Underheads Left Lower to Dregbourg"),
+        lambda state: isBreathcrowned(world.player, state))
+    
+
+    # # # # # # # # # # 
+    # Kankan
+    # # # # # # # # # # 
+    world.set_rule(
+        world.get_entrance("Kankan Lower to Jagged Forest"),
+        lambda state: isBreathcrowned(world.player, state))
+    
+
+    # # # # # # # # # # 
+    # Jagged Forest
+    # # # # # # # # # # 
+    world.set_rule(
+        world.get_location(EnumLoc.JAGGED_FORCE.value),
+        lambda state: canClimbWalls(world.player, state) and (canDashSlide(world.player, state) or canItemGrasp(world.player, state)))
+    world.set_rule(
+        world.get_location(EnumLoc.JAGGED_CHAIN_JAVELIN_PIT.value),
+        lambda state: canItemGrasp(world.player, state))
+    world.set_rule(
+        world.get_location(EnumLoc.JAGGED_BLOODROOT_LEARNING.value),
+        HasAll(EnumItem.AC_GRASP.value, EnumItem.AM_WALLJUMP.value) & HasAny(EnumItem.AM_BURSTJUMP, EnumItem.AM_HANDJUMP))
+    world.set_rule(
+        world.get_location(EnumLoc.JAGGED_MARAH_STRAND_LAHAV.value),
+        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value))
+
+    # # # # # # # # # # 
+    # Blade Garden
+    # # # # # # # # # # 
+    # Location Rules
+    world.set_rule(
+        world.get_location(EnumLoc.GARDEN_MARAH_STRAND_SEAL_BELOW.value),
+        Has(EnumItem.AM_AIRDASH.value))
+    world.set_rule(
+        world.get_location(EnumLoc.GARDEN_ATRIUM_GREATBLADE_LEGS.value),
+        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value) | HasAny(EnumItem.AC_ITEM_GRASP.value, EnumItem.AM_AIRDASH.value))
+    world.set_rule(
+        world.get_location(EnumLoc.GARDEN_MARAH_STRAND_AXE.value),
+        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value))
+    world.set_rule(
+        world.get_location(EnumLoc.GARDEN_ALVEOLI_TREE.value),
+        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value))
+    # Connection rules
+    world.set_rule(
+        world.get_entrance("BG_Upper to BG_Middle"), 
+        Has(EnumItem.AM_AIRDASH.value))
+    world.set_rule(
+        world.get_entrance("BG_Middle to BG_Lower"), 
+        lambda state: canGraspHookSlide(world.player, state))
     
     
     
