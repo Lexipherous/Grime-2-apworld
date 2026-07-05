@@ -3,7 +3,7 @@ from typing import Any
 from worlds.AutoWorld import World
 
 from . import items, locations, regions, rules, options, web_world
-# from .options import GRIME2Options
+from .options import Grime2Options
 
 class Grime2World(World):
     """
@@ -12,14 +12,13 @@ class Grime2World(World):
     """
     game = "Grime 2"
     web = web_world.Grime2WebWorld()
+    options_dataclass = Grime2Options
+    options: Grime2Options
 
-    # This is how we associate the options defined in our options.py with our world.
-    options_dataclass = options.Grime2Options
-    options: options.Grime2Options
-
-    # We must define location_name_to_id and item_name_to_id.
     location_name_to_id = locations.LOCATION_NAME_TO_ID
+    #location_name_groups = locations.LOCATION_NAME_GROUPS
     item_name_to_id = items.ITEM_NAME_TO_ID
+    #item_name_groups = locations.ITEM_NAME_GROUPS
 
     origin_region_name = "Menu"
     
