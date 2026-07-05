@@ -291,25 +291,25 @@ location_data: list[Grime2LocationData] = [
     # # # # # # #
     # Tree Roots
     # # # # # # #
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SEAL_RIGHT, location_base_id + 4001), #// (2969.99, 1762.60, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SURROGATE, location_base_id + 4002), #// (3032.05, 1758.44, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_BOTTOM, location_base_id + 4003), #// (3082.94, 1727.05, 5.12)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_SURROGATE, location_base_id + 4004), #// (3079.39, 1743.43, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS_VISAGE.value, EnumLoc.TREEROOTS_FORCE, location_base_id + 4005), #// (3050.97, 1760.01, 0.00) // HandJumpORBurstJump
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_VISAGE_1, location_base_id + 4006), #// (2990.84, 1789.52, 5.44)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_VISAGE_2, location_base_id + 4007), #// (3001.36, 1789.84, 4.84)
-    Grime2LocationData(EnumRegions.TREE_ROOTS_VISAGE.value, EnumLoc.TREEROOTS_HAND_VISAGE_REAWRD, location_base_id + 4008), #// (3049.32, 1793.36, 0.00) // HandJumpORBurstJump
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_SURROGATE, location_base_id + 4009), #// (2983.76, 1737.78, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_SURROGATE, location_base_id + 4010), #// (2961.72, 1740.72, 9.70)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_PIT, location_base_id + 4011), #// (2947.87, 1714.46, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_HUNT, location_base_id + 4012), #// (2944.39, 1726.34, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SMIDGE_OF_PAINT_WALL, location_base_id + 4013), #// (2969.75, 1750.09, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_HUNT, location_base_id + 4014), #// (2896.26, 1748.05, 5.22)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SEAL_LEFT, location_base_id + 4015), #// (2850.98, 1758.46, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_SEAL, location_base_id + 4016), #// (2846.88, 1758.91, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SMIDGE_OF_PAINT_SEAL, location_base_id + 4017), #// (2901.39, 1779.82, 0.00)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_BLOODROOT, location_base_id + 4018), #// (2891.00, 1796.34, 7.68)
-    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_TOP, location_base_id + 4019), #// (2903.18, 1793.02, 0.00)
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SEAL_RIGHT, location_base_id + 4001),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SURROGATE, location_base_id + 4002),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_BOTTOM, location_base_id + 4003),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_SURROGATE, location_base_id + 4004),
+    Grime2LocationData(EnumRegions.TREE_ROOTS_VISAGE.value, EnumLoc.TREEROOTS_FORCE, location_base_id + 4005), #HandJumpORBurstJump
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_VISAGE_1, location_base_id + 4006),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_VISAGE_2, location_base_id + 4007),
+    Grime2LocationData(EnumRegions.TREE_ROOTS_VISAGE.value, EnumLoc.TREEROOTS_HAND_VISAGE_REAWRD, location_base_id + 4008), #HandJumpORBurstJump
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_SURROGATE, location_base_id + 4009),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_SURROGATE, location_base_id + 4010),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_PIT, location_base_id + 4011),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_HUNT, location_base_id + 4012),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SMIDGE_OF_PAINT_WALL, location_base_id + 4013),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_MARAH_STRAND_HUNT, location_base_id + 4014),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SEAL_LEFT, location_base_id + 4015),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SCATTER_STONE_SEAL, location_base_id + 4016),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_SMIDGE_OF_PAINT_SEAL, location_base_id + 4017),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_BLOODROOT, location_base_id + 4018),
+    Grime2LocationData(EnumRegions.TREE_ROOTS.value, EnumLoc.TREEROOTS_ATRIUM_TOP, location_base_id + 4019),
 
     # # # # # # #
     # Marah's Orchard
