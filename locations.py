@@ -208,41 +208,41 @@ location_data: list[Grime2LocationData] = [
     # # # # # # #
     # Faceless Mountains
     # # # # # # #
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SURROGATE_HALFMADE, location_base_id + 2001), #// (2823.29, 1825.23, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_PEARL, location_base_id + 2002), #// (2812.89, 1847.89, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_SURROGATE, location_base_id + 2003), #// (2772.26, 1856.95, 0.21) (Wall Climb AND Dash Slide) OR Item Grasp AND (Wall Clumb OR Hand Jump OR Burst Jump)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DROPOT.value, EnumLoc.FACELESS_BLOODROOT_DROPOT, location_base_id + 2004), #// (2788.52, 1869.90, 2.86)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SEAL_UPPER, location_base_id + 2005), #// (2926.74, 1888.55, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_PIT, location_base_id + 2006), #// (2893.77, 1872.37, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS, location_base_id + 2007), #// (2918.18, 1870.25, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_WEAPON_ATTUNING_BOW, location_base_id + 2008), #// (2967.00, 1871.25, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SURROGATE_INTERTWINING, location_base_id + 2009), #// (2982.66, 1864.93, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_ATRIUM_LONG_1, location_base_id + 2010), #// (2934.56, 1852.77, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_ATRIUM_LONG_2, location_base_id + 2011), #// (2881.10, 1852.91, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_LONG_ROOM, location_base_id + 2012), #// (2870.44, 1865.35, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_HOMING_DROPLET_LONG, location_base_id + 2013), #// (2947.61, 1857.55, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_HANDS, location_base_id + 2014), #// (2882.61, 1839.75, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BLOODROOT_LONG, location_base_id + 2015), #// (2861.54, 1851.36, 1.65)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_LEGS, location_base_id + 2016), #// (2851.52, 1835.63, 0.00) Grasp
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_CHEST, location_base_id + 2017), #// (2825.33, 1835.62, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MELDED_L, location_base_id + 2018), #// (2761.71, 1818.63, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MELDED_R, location_base_id + 2019), #// (2794.31, 1818.57, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_MELDED.value, EnumLoc.FACELESS_BOSS_MELDED_REWARD, location_base_id + 2020), #// (2779.24, 1801.55, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MUDFALLS, location_base_id + 2021), #// (2718.90, 1813.66, 0.00) - Grasp OR Hand Jump OR Burst Jump
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_HANDS, location_base_id + 2022), #// (2921.84, 1816.16, 0.00) - Grasp
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_WEAPON_SPEAR, location_base_id + 2023), #// (2882.89, 1816.46, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SEAL_LOWER, 2024), # // (2825.46, 1804.15, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_CHEST, location_base_id + 2025), #// (2948.63, 1829.73, 1.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_LEGS, location_base_id + 2026), #// (2962.94, 1833.30, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BLOODROOT_DARSH, location_base_id + 2027), #// (2986.82, 1834.81, 2.45)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_OVERGROWN_BLOB, location_base_id + 2028), #// (3040.50, 1849.97, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DARSH.value, EnumLoc.FACELESS_BOSS_DARSH_REWARD, location_base_id + 2029), #// (3072.99, 1863.16, 0.00)
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_ATRIUM.value, EnumLoc.FACELESS_ATRIUM_WANTING_TREE_1, location_base_id + 2030), #// (3044.94, 1878.21, 0.00) WallJump AND Grasphook
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_ATRIUM_WANTING_TREE_2, location_base_id + 2031), #// (3003.69, 1900.64, 0.00) WallJump AND Grasphook AND BurstJump/Handjump
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_WANTING_TREE_1, location_base_id + 2032), #// (2999.23, 1907.21, 1.43) WallJump AND Grasphook AND BurstJump/Handjump
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_WANTING_TREE_2, location_base_id + 2033), #// (2996.89, 1907.14, 1.31) WallJump AND Grasphook AND BurstJump/Handjump
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_SURROGATE, location_base_id + 2034), #// (2993.80, 1882.43, 2.14) (Handjump OR BurstJump) AND Wall BClimb
-    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DARSH.value, EnumLoc.FACELESS_HOMING_DROPLET_MARAHS, location_base_id + 2035), #// (3083.73, 1793.72, 0.00)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SURROGATE_HALFMADE, location_base_id + 2001),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_PEARL, location_base_id + 2002),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_SURROGATE, location_base_id + 2003), # (Wall Climb AND Dash Slide) OR Item Grasp AND (Wall Clumb OR Hand Jump OR Burst Jump)
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DROPOT.value, EnumLoc.FACELESS_BLOODROOT_DROPOT, location_base_id + 2004),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SEAL_UPPER, location_base_id + 2005),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_PIT, location_base_id + 2006),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS, location_base_id + 2007),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_WEAPON_ATTUNING_BOW, location_base_id + 2008),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SURROGATE_INTERTWINING, location_base_id + 2009),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_ATRIUM_LONG_1, location_base_id + 2010),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_ATRIUM_LONG_2, location_base_id + 2011),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SPIKE_BALL_LONG_ROOM, location_base_id + 2012),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_HOMING_DROPLET_LONG, location_base_id + 2013),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_HANDS, location_base_id + 2014),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BLOODROOT_LONG, location_base_id + 2015),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_LEGS, location_base_id + 2016), # Grasp
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_GRUNT_GARBS_CHEST, location_base_id + 2017),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MELDED_L, location_base_id + 2018),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MELDED_R, location_base_id + 2019),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_MELDED.value, EnumLoc.FACELESS_BOSS_MELDED_REWARD, location_base_id + 2020),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_FRAGMENTS_MUDFALLS, location_base_id + 2021), # Grasp OR Hand Jump OR Burst Jump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_HANDS, location_base_id + 2022), # Grasp
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_WEAPON_SPEAR, location_base_id + 2023),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_SEAL_LOWER, 2024),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_CHEST, location_base_id + 2025),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BRUTE_GARBS_LEGS, location_base_id + 2026),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_BLOODROOT_DARSH, location_base_id + 2027),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS.value, EnumLoc.FACELESS_OVERGROWN_BLOB, location_base_id + 2028),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DARSH.value, EnumLoc.FACELESS_BOSS_DARSH_REWARD, location_base_id + 2029),
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_ATRIUM.value, EnumLoc.FACELESS_ATRIUM_WANTING_TREE_1, location_base_id + 2030), # WallJump AND Grasphook
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_ATRIUM_WANTING_TREE_2, location_base_id + 2031), # WallJump AND Grasphook AND BurstJump/Handjump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_WANTING_TREE_1, location_base_id + 2032), # WallJump AND Grasphook AND BurstJump/Handjump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_WANTING_TREE_2, location_base_id + 2033), # WallJump AND Grasphook AND BurstJump/Handjump
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_WANTING_BLOODROOTS.value, EnumLoc.FACELESS_BLOODROOT_SURROGATE, location_base_id + 2034), # (Handjump OR BurstJump) AND Wall BClimb
+    Grime2LocationData(EnumRegions.FACELESS_MOUNTAINS_DARSH.value, EnumLoc.FACELESS_HOMING_DROPLET_MARAHS, location_base_id + 2035),
     # Galloping Dropot only needs Wall CLimb
 
     # # # # # # #
