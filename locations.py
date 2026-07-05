@@ -428,6 +428,61 @@ location_data: list[Grime2LocationData] = [
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_JAIL, location_base_id + 6125),
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SEAL_LOWER, location_base_id + 6126),
     # # # # # # #
+    # Jagged Forest
+    # # # # # # #
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_SURROGATE_LEARNING, location_base_id + 9001),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_FORCE, location_base_id + 9002),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_CHAIN_JAVELIN_PIT, location_base_id + 9003),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_LEARNING, location_base_id + 9004),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLADE_MAMMOTH_REWARD, location_base_id + 9005),
+    #// Kankan-side
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_SURROGATE_LAHAV, location_base_id + 9006),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_ATRIUM_SEAL, location_base_id + 9007),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_SEAL_ABOVE, location_base_id + 9008),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_FIRSTSMITH_DELIVERY, location_base_id + 9009),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_FRAGMENTS_SEAL_ABOVE, location_base_id + 9010),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_SEAL_UPPER, location_base_id + 9011),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_FRAGMENTS_SEAL_UNDER, location_base_id + 9012),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_SEAL_LEFT, location_base_id + 9013),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_GOZ_SICKLE, location_base_id + 9014),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_CHAIN_JAVELIN, location_base_id + 9015),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_VANGUARD_RIGHT, location_base_id + 9016),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_VANGUARD_LEFT, location_base_id + 9017),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_ATRIUM_VANGUARD, location_base_id + 9018),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_PITCHER_LEGS, location_base_id + 9019),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_DROPOT_CONTAINER, location_base_id + 9020),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_MARAH_STRAND_DROPOT, location_base_id + 9021),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_SEAL_LOWER, location_base_id + 9022),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_BOTTOM, location_base_id + 9023),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_CHAIN_JAVELIN_BOTTOM, location_base_id + 9024),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_DROPOT_1, location_base_id + 9025),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_DROPOT_2, location_base_id + 9026),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_ATRIUM_DROPOT, location_base_id + 9027),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_FRAGMENTS_DROPOT_RIGHT, location_base_id + 9028),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_FRAGMENTS_DROPOT_LEFT, location_base_id + 9029),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_CHARGING_JAVELIN, location_base_id + 9030),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_MARAH_STRAND_SURROGATE, location_base_id + 9031),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BEASTPLATE_CHEST, location_base_id + 9032),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BEASTPLATE_LEGS, location_base_id + 9033),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BEASTPLATE_HANDS, location_base_id + 9034),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_BEASTPLATE, location_base_id + 9035),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_SURROGATE_CAVE, location_base_id + 9036), 
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_LAHAV_KNIGHT_REWARD, location_base_id + 9037),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_LAHAVIST_WANDERER_LEGS, location_base_id + 9038),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_LAHAVIST_WANDERER_HANDS, location_base_id + 9039),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_LAHAVIST_WANDERER_CHEST, location_base_id + 9040),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_MARAH_STRAND_LAHAV, location_base_id + 9041),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_ALVEOLI_NEAR, location_base_id + 9042),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_BLOODROOT_ALVEOLI_BEHIND, location_base_id + 9043),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_ALVEOLI_TREE, location_base_id + 9044),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_HEART_OF_A_WARRIOR, location_base_id + 9045),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_LAHAVIST_BREATHCROWN, location_base_id + 9046),
+    Grime2LocationData(EnumRegions.JAGGED_FOREST.value, EnumLoc.JAGGED_CLAWING_SCYTHE, location_base_id + 9047),
+        
+        #// [14:08:58.309] [Grime2_AP_Client] 07_NailGlade_Background_AlwaysOn_BAKED_BASE_HARD_HIGH_LAYER 1
+        #// [14:08:58.311] [Grime2_AP_Client] Pitcher Spear received.
+        
+    # # # # # # #
     # Blade Garden
     # # # # # # #
     Grime2LocationData(EnumRegions.BLADE_GARDEN_UPPER.value, EnumLoc.GARDEN_SEAL_RIGHT, location_base_id + 10001),

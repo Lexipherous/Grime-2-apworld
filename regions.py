@@ -313,8 +313,14 @@ def connect_regions(world: Grime2World) -> None:
     kankan_lower_atrium = world.get_region(EnumRegions.KANKAN_LOWER_ATRIUM.value)
     kankan_lower_preacher = world.get_region(EnumRegions.KANKAN_LOWER_PREACHER.value)
     
-    jagged_forest = world.get_region(EnumRegions.JAGGED_FOREST.value)
-    blade_garden = world.get_region(EnumRegions.BLADE_GARDEN.value)
+    jagged_forest_kankan = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    jagged_forest_main = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    jagged_forest_legs = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    jagged_forest_learning = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    jagged_forest_cave = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    jagged_forest_lahav_knight = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    jagged_forest_mammoth = world.get_region(EnumRegions.JAGGED_FOREST.value)
+    jagged_forest_garden_trans = world.get_region(EnumRegions.JAGGED_FOREST.value)
     
     blade_garden_upper = world.get_region(EnumRegions.BLADE_GARDEN_UPPER.value)
     blade_garden_middle = world.get_region(EnumRegions.BLADE_GARDEN_MIDDLE.value)
@@ -479,10 +485,19 @@ def connect_regions(world: Grime2World) -> None:
     # Jagged Forest
     # # # # # # #
     # Entrance/Exits
-    jagged_forest.connect(kankan_lower_main, "Jagged Forest to Kankan")
-    jagged_forest.connect(nailglade, "Jagged Forest to Nailglade")
-    jagged_forest.connect(blade_garden, "Jagged Forest to Blade Garden")
+    jagged_forest_kankan.connect(kankan_lower_main, "JF Main to Kankan")
+    jagged_forest_main.connect(nailglade, "JF Main to Nailglade")
+    jagged_forest_garden_trans.connect(blade_garden_upper, "JF Main to Blade Garden")
     # Interzone
+    jagged_forest_kankan.connect(jagged_forest_main, "JF Kankan to JF Main", lambda state: canGraspHook(world.player, state) or canClimbWalls(world.player, state))
+    jagged_forest_main.connect(jagged_forest_legs, "JF Main to JF Legs", lambda state: canAirDash(world.player, state))
+    jagged_forest_main.connect(jagged_forest_cave, "JF Main to JF Cave", lambda state: canDashSlide(world.player, state) or canAirDash(world.player, state))# ghook&wjump&(airdashORDashslide)
+    jagged_forest_cave.connect(jagged_forest_main, "JF Cave to JF Main")
+    jagged_forest_cave.connect(jagged_forest_lahav_knight, "JF Cave to JF Lahav Knight")
+    jagged_forest_main.connect(jagged_forest_learning, "JF Main to JF Learning")
+    jagged_forest_learning.connect(jagged_forest_mammoth, "JF Learning to JF Mammoth")
+    jagged_forest_mammoth.connect(jagged_forest_garden_trans, "JF Mammoth to BG Transition")
+
     
     # # # # # # #
     # Blade Garden
