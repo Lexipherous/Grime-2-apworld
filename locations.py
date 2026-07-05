@@ -314,37 +314,37 @@ location_data: list[Grime2LocationData] = [
     # # # # # # #
     # Marah's Orchard
     # # # # # # #
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SURROGATE_BRIDGE, location_base_id + 5001), #// (3208.98, 1758.49, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_LEFT_SURROGATE, location_base_id + 5002), #// (3183.10, 1762.29, 0.94)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_DISCARDED_FLESH, location_base_id + 5003), #// (3181.19, 1716.19, 6.00)
-    # Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_SURROGATE, location_base_id + 5004), #// (3183.10, 1762.29, 0.94)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_TOPLEFT, location_base_id + 5005), #// (3267.30, 1816.25, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_BLOODROOT_DROPOT, location_base_id + 5006), #// (3282.95, 1819.07, 3.55)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_DROPOT, location_base_id + 5007), #// (3307.79, 1825.94, 1.24)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_CHEST, location_base_id + 5008), #// (3307.38, 1787.63, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SEAL_DROPOT, location_base_id + 5009), #// (3307.61, 1777.18, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_HANDS, location_base_id + 5010), #// (3337.36, 1796.98, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FRAGMENTS_HANDS, location_base_id + 5011), #// (3348.81, 1790.90, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_LEGS, location_base_id + 5012), #// (3378.96, 1793.58, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_LEGS, location_base_id + 5013), #// (3368.91, 1800.64, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FRAGMENTS_LEGS, location_base_id + 5014), #// (3382.27, 1822.06, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FORCE, location_base_id + 5015), #// (3354.91, 1840.87, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SURROGATE, location_base_id + 5016), #// (3376.91, 1773.03, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SURROGATE_ENTRANCE, location_base_id + 5017), #// (3379.92, 1756.51, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SPIKE_BALL_PITCHER, location_base_id + 5018), #// (3394.16, 1820.75, 0.00) // (HandJumpORBurstJump)ANDGraspHookANDGraspSlideAndWallJump
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SKITTERING_DROPOT_CONT, location_base_id + 5019), #// (3425.15, 1776.95, 0.00) // (HandJumpORBurstJump)ANDGraspHookANDGraspSlideAndWallJumpANDAirDash
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_HOMING_DROPLET, location_base_id + 5020), #// (3421.11, 1742.68, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ALVEOLI, location_base_id + 5021), #// (3382.98, 1716.76, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_BLOODROOT_ALVEOLI, location_base_id + 5022), #// (3290.43, 1724.09, 2.09)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SHORTBLADE, location_base_id + 5023), #// (3286.02, 1699.73, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SMIDGE_OF_PAINT_FACEBLOB, location_base_id + 5024), #// (3241.48, 1697.13, 0.00) HandJump/BurstJump/WallJump
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FACEBLOB_REWARD, location_base_id + 5025), #// (3209.00, 1687.17, 6.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ALVEOLI_FACEBLOB, location_base_id + 5026), #// (3158.17, 1668.80, 6.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_OVERGROWN_BLOB_SEAL, location_base_id + 5027), #// (3279.78, 1726.99, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SMIDGE_OF_PAINT_ALVEOLI, location_base_id + 5028), #// (3301.21, 1739.92, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SEAL, location_base_id + 5029), #// (3285.55, 1749.12, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SEAL_LEFT, location_base_id + 5030), #// (3261.99, 1754.47, 0.00)
-    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SPIKE_BALL_SEAL, location_base_id + 5031), #// (3242.48, 1729.46, 0.00)
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SURROGATE_BRIDGE, location_base_id + 5001),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_LEFT_SURROGATE, location_base_id + 5002),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_DISCARDED_FLESH, location_base_id + 5003),
+    # Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_SURROGATE, location_base_id + 5004),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_TOPLEFT, location_base_id + 5005),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_BLOODROOT_DROPOT, location_base_id + 5006),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_MARAH_STRAND_DROPOT, location_base_id + 5007),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_CHEST, location_base_id + 5008),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SEAL_DROPOT, location_base_id + 5009),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_HANDS, location_base_id + 5010),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FRAGMENTS_HANDS, location_base_id + 5011),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_LEGS, location_base_id + 5012),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_POACHER_LEGS, location_base_id + 5013),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FRAGMENTS_LEGS, location_base_id + 5014),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FORCE, location_base_id + 5015),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SURROGATE, location_base_id + 5016),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SURROGATE_ENTRANCE, location_base_id + 5017),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SPIKE_BALL_PITCHER, location_base_id + 5018), #(HandJumpORBurstJump)ANDGraspHookANDGraspSlideAndWallJump
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SKITTERING_DROPOT_CONT, location_base_id + 5019), #(HandJumpORBurstJump)ANDGraspHookANDGraspSlideAndWallJumpANDAirDash
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_HOMING_DROPLET, location_base_id + 5020),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ALVEOLI, location_base_id + 5021),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_BLOODROOT_ALVEOLI, location_base_id + 5022),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SHORTBLADE, location_base_id + 5023),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SMIDGE_OF_PAINT_FACEBLOB, location_base_id + 5024), #HandJump/BurstJump/WallJump
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_FACEBLOB_REWARD, location_base_id + 5025),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ALVEOLI_FACEBLOB, location_base_id + 5026),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_OVERGROWN_BLOB_SEAL, location_base_id + 5027),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SMIDGE_OF_PAINT_ALVEOLI, location_base_id + 5028),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_ATRIUM_SEAL, location_base_id + 5029),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SEAL_LEFT, location_base_id + 5030),
+    Grime2LocationData(EnumRegions.MARAHS_ORCHARD_MAIN.value, EnumLoc.MARAHS_SPIKE_BALL_SEAL, location_base_id + 5031),
 
     # # # # # # #
     # Kankan
