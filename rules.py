@@ -228,6 +228,9 @@ def canGraspHookSlide(player, state: CollectionState) -> bool:
 def canAirDash(player, state: CollectionState) -> bool:
     return lambda state: state.has(EnumItem.AM_AIRDASH.value, player)
 
+def canDashSlide(player, state: CollectionState) -> bool:
+    return lambda state: state.has_all([EnumItem.AM_WALLJUMP.value, EnumItem.AM_DASHSLIDE], player)
+
 def canItemExplode(player, state: CollectionState) -> bool:
     return lambda state: state.has_any([EnumItem.IM_VOLATILE_VASE.value, EnumItem.IM_OVERGROWN_BLOB.value], player)
 
