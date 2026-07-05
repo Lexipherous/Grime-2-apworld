@@ -1,16 +1,18 @@
 from collections.abc import Mapping
 from typing import Any
+
 from worlds.AutoWorld import World
 
 from . import items, locations, regions, rules, options, web_world
 from .options import Grime2Options
+from .enums import GRIME_GAME_NAME
 
 class Grime2World(World):
     """
     Hunt. Consume. Eat. Let nothing stop your quest to grow and consume... 
     or break free from your purpose and question why
     """
-    game = "Grime 2"
+    game = GRIME_GAME_NAME
     web = web_world.Grime2WebWorld()
     options_dataclass = Grime2Options
     options: Grime2Options

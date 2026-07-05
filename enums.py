@@ -1,5 +1,7 @@
 from enum import StrEnum
 
+GRIME_GAME_NAME = "grime2"
+
 class EnumRegions(StrEnum):
     """List of all Temple of Hands enums"""
     TEMPLE_OF_HANDS_BIRTHPLACE_LOWER = "Temple-Birthplace Lower"

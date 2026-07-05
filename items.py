@@ -2,7 +2,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 from BaseClasses import Item, ItemClassification as IC
 from dataclasses import dataclass
-from .enums import EnumItem
+
+from .enums import EnumLoc, EnumItem, GRIME_GAME_NAME
 if TYPE_CHECKING:
     from .world import Grime2World
 
@@ -26,7 +27,7 @@ def get_random_filler_item_name(world: Grime2World) -> str:
     return filler_item
 
 class Grime2Item(Item):
-    game = "Grime 2"
+    game = GRIME_GAME_NAME
 
 
 @dataclass

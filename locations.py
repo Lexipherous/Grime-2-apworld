@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Optional, List, Callable, NamedTuple
 from BaseClasses import ItemClassification as IC, Location, Region, CollectionState
 from dataclasses import dataclass
 from . import items
-from .enums import EnumLoc, EnumRegions, EnumItem
+from .enums import EnumLoc, EnumRegions, EnumItem, GRIME_GAME_NAME
 
 if TYPE_CHECKING:
     from .world import Grime2World
@@ -19,7 +19,7 @@ location_base_id = 6942013371314159
 # Each Location instance must correctly report the "game" it belongs to.
 # To make this simple, it is common practice to subclass the basic Location class and override the "game" field.
 class Grime2Location(Location):
-    game = "Grime 2"
+    game = GRIME_GAME_NAME
 
 
 # Let's make one more helper method before we begin actually creating locations.
