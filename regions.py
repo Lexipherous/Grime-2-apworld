@@ -33,6 +33,10 @@ def create_all_regions(world: Grime2World) -> None:
     temple_of_hands_sealed_chamber = Region(EnumRegions.TEMPLE_OF_HANDS_SEALED_CHAMBER.value, world.player, world.multiworld)
     temple_of_hands_bound_shell = Region(EnumRegions.TEMPLE_OF_HANDS_BOUND_SHELL.value, world.player, world.multiworld)
     temple_of_hands_hall = Region(EnumRegions.TEMPLE_OF_HANDS_HALL.value, world.player, world.multiworld)
+    temple_of_hands_birthplace_high_upper = Region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_HIGH_UPPER, world.player, world.multiworld)
+    temple_of_hands_dried_paint_birthplace_upper = Region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT_BIRTHPLACE_UPPER, world.player, world.multiworld)
+    temple_of_hands_birthplace_reef_upper = Region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_REEF_UPPER, world.player, world.multiworld)
+    temple_of_hands_dried_paint_reef_upper = Region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT_REEF, world.player, world.multiworld)
     
     mudfalls = Region(EnumRegions.MUDFALLS.value, world.player, world.multiworld)
     mudfalls_elevator = Region(EnumRegions.MUDFALLS_ELEVATOR.value, world.player, world.multiworld)
@@ -130,6 +134,10 @@ def create_all_regions(world: Grime2World) -> None:
         temple_of_hands_sealed_chamber,
         temple_of_hands_bound_shell,
         temple_of_hands_hall,
+        temple_of_hands_birthplace_high_upper,
+        temple_of_hands_dried_paint_birthplace_upper,
+        temple_of_hands_birthplace_reef_upper,
+        temple_of_hands_dried_paint_reef_upper,
         
         mudfalls,
         mudfalls_elevator,
@@ -228,10 +236,14 @@ def connect_regions(world: Grime2World) -> None:
     temple_of_hands_birthplace_lower = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_LOWER.value)
     temple_of_hands_overgrown_barrier = world.get_region(EnumRegions.TEMPLE_OF_HANDS_OVERGROWN_BARRIER.value)
     temple_of_hands_birthplace_upper = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_UPPER.value)
+    temple_of_hands_birthplace_high_upper = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_HIGH_UPPER.value)
+    temple_of_hands_dried_paint_birthplace_upper = world.get_region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT_BIRTHPLACE_UPPER.value)
     temple_of_hands_dried_paint = world.get_region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT.value)
     temple_of_hands_bound_shell = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BOUND_SHELL.value)
     temple_of_hands_sealed_chamber = world.get_region(EnumRegions.TEMPLE_OF_HANDS_SEALED_CHAMBER.value)
     temple_of_hands_hall = world.get_region(EnumRegions.TEMPLE_OF_HANDS_HALL.value)
+    temple_of_hands_birthplace_reef_upper = world.get_region(EnumRegions.TEMPLE_OF_HANDS_BIRTHPLACE_REEF_UPPER.value)
+    temple_of_hands_dried_paint_reef_upper = world.get_region(EnumRegions.TEMPLE_OF_HANDS_DRIED_PAINT_REEF.value)
     
     mudfalls = world.get_region(EnumRegions.MUDFALLS.value)
     mudfalls_elevator = world.get_region(EnumRegions.MUDFALLS_ELEVATOR.value)
@@ -316,18 +328,29 @@ def connect_regions(world: Grime2World) -> None:
     # Mudfalls
     # # # # # # #
     # Entrance/Exits
-    temple_of_hands_birthplace_lower.connect(temple_of_hands_bound_shell, "ToH Birthplace Lower to Overgrown Barrier", lambda state: state.has(EnumItem.AC_GRASP, world.player))
-    temple_of_hands_bound_shell.connect(temple_of_hands_birthplace_lower, "Overgrown Barrier to ToH Birthplace Lowert")
-    temple_of_hands_bound_shell.connect(temple_of_hands_dried_paint, "Overgrown Barrier to ToH Dried Paint")
-    temple_of_hands_birthplace_upper.connect(temple_of_hands_dried_paint, "ToH Birthplace Upper to ToH Dried Paint")
-    temple_of_hands_dried_paint.connect(temple_of_hands_birthplace_lower, "ToH Dried Paint to ToH Birthplace Lower")
-    temple_of_hands_dried_paint.connect(temple_of_hands_birthplace_upper, "ToH Dried Paint to ToH Birthplace Upper")
+    temple_of_hands_birthplace_lower.connect(temple_of_hands_overgrown_barrier, "ToH Birthplace Lower to Overgrown Barrier")
+    temple_of_hands_overgrown_barrier.connect(temple_of_hands_birthplace_lower, "Overgrown Barrier to ToH Birthplace Lower")
+    temple_of_hands_overgrown_barrier.connect(temple_of_hands_dried_paint, "Overgrown Barrier to ToH Dried Paint", lambda state: state.has(EnumItem.AC_GRASP, world.player))
+    temple_of_hands_dried_paint.connect(temple_of_hands_overgrown_barrier, "ToH Dried Paint to Overgrown Barrier") # Needs overgrown barrier defeated and grasp
+    temple_of_hands_dried_paint.connect(temple_of_hands_dried_paint_birthplace_upper, "ToH Dried Paint to ToH Dried Paint before Birthplace Upper") # needs embedding nail and grasp, or handjump
+    temple_of_hands_dried_paint_birthplace_upper.connect(temple_of_hands_dried_paint, "ToH Dried Paint before Birthplace Upper to ToH Dried Paint")
+    temple_of_hands_dried_paint_birthplace_upper.connect(temple_of_hands_birthplace_upper, "ToH Dried Paint before Birthplace Upper to ToH Birthplace Upper") # needs embedding nail and grasp, or handjump
+    temple_of_hands_birthplace_upper.connect(temple_of_hands_dried_paint_birthplace_upper, "ToH Birthplace Upper to ToH Dried Paint before Birthplace Upper")
+    temple_of_hands_birthplace_upper.connect(temple_of_hands_birthplace_high_upper, "ToH Birthplace Upper to ToH Birthplace High Upper") # needs highjump and walljump
+    temple_of_hands_birthplace_high_upper.connect(temple_of_hands_birthplace_upper, "ToH Birthplace High Upper to ToH Birthplace Upper") # needs highjump and walljump
+    temple_of_hands_birthplace_high_upper.connect(temple_of_hands_birthplace_reef_upper, "ToH Birthplace High Upper to ToH Birthplace Reef Upper")
+    temple_of_hands_birthplace_reef_upper.connect(temple_of_hands_birthplace_lower, "ToH Birthplace High Upper to ToH Birthplace Lower")
+    temple_of_hands_birthplace_lower.connect(temple_of_hands_birthplace_reef_upper, "ToH Birthplace Lower to ToH Birthplace High Upper") # needs high jump and wall jump
     temple_of_hands_dried_paint.connect(temple_of_hands_sealed_chamber, "ToH Dried Paint to ToH Sealed Chamber")
     temple_of_hands_sealed_chamber.connect(temple_of_hands_dried_paint, "ToH Sealed Chamber to ToH Dried Paint")
-    temple_of_hands_sealed_chamber.connect(temple_of_hands_bound_shell, "ToH Sealed Chamber to Bound Shell", lambda state: state.has(EnumItem.AC_GRASP, world.player))
+    temple_of_hands_sealed_chamber.connect(temple_of_hands_bound_shell, "ToH Sealed Chamber to Bound Shell")
     temple_of_hands_bound_shell.connect(temple_of_hands_sealed_chamber, "Bound Shell to ToH Sealed Chamber")
-    temple_of_hands_bound_shell.connect(temple_of_hands_hall, "Bound Shell to ToH Hall")
-    temple_of_hands_hall.connect(temple_of_hands_sealed_chamber, "ToH Hall to ToH Sealed Chamber")
+    temple_of_hands_bound_shell.connect(temple_of_hands_hall, "Bound Shell to ToH Hall", lambda state: state.has(EnumItem.AC_GRASP, world.player))
+    temple_of_hands_hall.connect(temple_of_hands_bound_shell, "ToH Hall to Bound Shell")
+    temple_of_hands_bound_shell.connect(temple_of_hands_dried_paint_reef_upper, "Bound Shell to Reef", lambda state: state.has(EnumItem.AC_GRASP, world.player))
+    temple_of_hands_dried_paint.connect(temple_of_hands_hall, "ToH Dried Paint to ToH Hall")
+    temple_of_hands_hall.connect(temple_of_hands_dried_paint, "ToH Hall to ToH Dried Paint")
+    temple_of_hands_hall.connect(temple_of_hands_sealed_chamber, "ToH Hall to ToH Ceiling Items") # needs burst jump or plunging finger
     temple_of_hands_hall.connect(mudfalls, "ToH Hall to Mudfalls")
     
     # # # # # # #
