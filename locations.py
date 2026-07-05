@@ -389,6 +389,45 @@ location_data: list[Grime2LocationData] = [
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_JAIL, location_base_id + 6124), #// (3890.01, 1754.95, 0.00)
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_JAIL, location_base_id + 6125), #// (3876.66, 1763.80, 0.72)
     Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SEAL_LOWER, location_base_id + 6126), #// (3618.57, 1714.31, 0.00)
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_HEART_OF_A_TRAVELER, location_base_id + 6001),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_HEART.value, EnumLoc.KANKAN_VOLATILE_VASE_HEART, location_base_id + 6002),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_SKITTERING_DROPOT_CONT, location_base_id + 6003),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_SEAL_UPPER, location_base_id + 6004),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_BY_ET, location_base_id + 6005),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_SURROGATE_NAILGLADER, location_base_id + 6006),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_VOLATILE_VASE_TOP, location_base_id + 6007),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_DROPOT.value, EnumLoc.KANKAN_FORCE_UPPER, location_base_id + 6008),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_JAVELIN.value, EnumLoc.KANKAN_CHARGING_JAVELIN_, location_base_id + 6009), #(BurstJump OR HandJump) AND Grasp
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_PALACE.value, EnumLoc.KANKAN_WARDEN_REWARD, location_base_id + 6010),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_SURROGATE, location_base_id + 6011),
+    Grime2LocationData(EnumRegions.KANKAN_UPPER_MAIN.value, EnumLoc.KANKAN_RAKIK_REWARD, location_base_id + 6012),
+    
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_ELEVATOR, location_base_id + 6101),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_ELEVATOR, location_base_id + 6102),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_FRAGMENTS_SURROGATE, location_base_id + 6103),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_VOLATILE_VASE_SAVIOUR, location_base_id + 6104),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ATRIUM.value, EnumLoc.KANKAN_ATRIUM_SURROGATE, location_base_id + 6105), #WallJump
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SURROGATE_SAVIOUR, location_base_id + 6106),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_BUILDING, location_base_id + 6107),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_ALVEOLI, location_base_id + 6108),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ALVEOLI, location_base_id + 6109),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE.value, EnumLoc.KANKAN_VOLATILE_VASE_ALVEOLI, location_base_id + 6110), #WallJump
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE_TOP.value, EnumLoc.KANKAN_PITCHER_GUARD_LEGS, location_base_id + 6111),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_ALV_HOUSE_TOP.value, EnumLoc.KANKAN_MARAH_STRAND_HANDS, location_base_id + 6112),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_PITCHER_GUARD_HANDS, location_base_id + 6113),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_PITCHER_GUARD_CHEST, location_base_id + 6114),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_FORCE_LOWER, location_base_id + 6115),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_HOLSTER.value, EnumLoc.KANKAN_FRAGMENTS_HOLSTER, location_base_id + 6116), #AirDash OR (BurstJump OR HandJump)
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_HOLSTER.value, EnumLoc.KANKAN_VOLATILE_VASE_HOLSTER, location_base_id + 6117), #WallJump
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_CHARGING_JAVELIN_QISSA, location_base_id + 6118),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_BLOODROOT_JAGGED, location_base_id + 6119),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_SEAL, location_base_id + 6120),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_PREACHER.value, EnumLoc.KANKAN_PREACHER_REWARD, location_base_id + 6121),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_PREACHER.value, EnumLoc.KANKAN_DISCARDED_FLESH, location_base_id + 6122),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_VOLATILE_VASE_PREACHER, location_base_id + 6123),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_ATRIUM_JAIL, location_base_id + 6124),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_MARAH_STRAND_JAIL, location_base_id + 6125),
+    Grime2LocationData(EnumRegions.KANKAN_LOWER_MAIN.value, EnumLoc.KANKAN_SEAL_LOWER, location_base_id + 6126),
 ]
 
 LOCATION_NAME_TO_ID = {location.name.value: location.ap_id for location in location_data}

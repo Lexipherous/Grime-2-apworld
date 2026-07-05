@@ -90,6 +90,7 @@ def create_all_regions(world: Grime2World) -> None:
     kankan_upper_dropot = Region("Kankan Upper Dropot", world.player, world.multiworld)
     kankan_upper_heod = Region("Kankan Upper Heod", world.player, world.multiworld)
     kankan_upper_palace = Region("Kankan Palace Top", world.player, world.multiworld)
+    kankan_upper_before_palace = Region("Kankan Before Palace", world.player, world.multiworld)
     kankan_upper_jail = Region("Kankan Palace Jail", world.player, world.multiworld)
     kankan_upper_javelin = Region("Kankan Upper Javelin", world.player, world.multiworld)
     kankan_lower_main = Region("Kankan Lower", world.player, world.multiworld)
@@ -190,6 +191,7 @@ def create_all_regions(world: Grime2World) -> None:
         kankan_upper_heart,
         kankan_upper_dropot,
         kankan_upper_heod,
+        kankan_upper_before_palace,
         kankan_upper_palace,
         kankan_upper_jail,
         kankan_upper_javelin,
@@ -296,6 +298,7 @@ def connect_regions(world: Grime2World) -> None:
     kankan_upper_heart = world.get_region(EnumRegions.KANKAN_UPPER_HEART.value)
     kankan_upper_dropot = world.get_region(EnumRegions.KANKAN_UPPER_DROPOT.value)
     kankan_upper_heod = world.get_region(EnumRegions.KANKAN_UPPER_HEOD.value)
+    kankan_upper_before_palace = world.get_region(EnumRegions.KANKAN_UPPER_BEFORE_PALACE.value)
     kankan_upper_palace = world.get_region(EnumRegions.KANKAN_UPPER_PALACE.value)
     kankan_upper_jail = world.get_region(EnumRegions.KANKAN_UPPER_JAIL.value)
     kankan_upper_javelin = world.get_region(EnumRegions.KANKAN_UPPER_JAVELIN.value)
@@ -446,13 +449,14 @@ def connect_regions(world: Grime2World) -> None:
     # # # # # # #
     # Entrance/Exits
     kankan_upper_main.connect(marahs_orchard_prime, "Kankan Upper to Marah's Orchard")
-    kankan_lower_main.connect(jagged_forest, "Kankan Lower to Jagged Forest")
+    kankan_lower_main.connect(jagged_forest_kankan, "Kankan Lower to Jagged Forest")
     # Interzone
     kankan_upper_main.connect(kankan_upper_heart, "Kankan Upper to Kankan Upper Heart", lambda state: canGraspHookSlide(world.player, state))
     kankan_upper_heart.connect(kankan_upper_dropot, "Kankan Upper to Kankan Upper Dropot", lambda state: canHighJump(world.player, state))
     kankan_upper_dropot.connect(kankan_upper_heod, "Kankan Upper Dropot to Kankan Upper Heod", lambda state: canItemExplode(world.player, state))
-    kankan_upper_main.connect(kankan_upper_palace, "Kankan Upper to Kankan Upper Palace")
-    kankan_upper_palace.connect(kankan_upper_jail, "Kankan Upper Palace to Kankan Upper Jail", lambda state: state.has("Locked Sphere", world.player))
+    kankan_upper_main.connect(kankan_upper_before_palace, "Kankan Upper to Kankan Upper Before Palace")
+    kankan_upper_before_palace.connect(kankan_upper_palace, "Kankan Upper Before Palace to Kankan Upper Palace", lambda state: state.has(EnumItem.QI_BREATHSMITH_LOCATION_INFO.value, world.player))
+    kankan_upper_palace.connect(kankan_upper_jail, "Kankan Upper Palace to Kankan Upper Jail", lambda state: state.has(EnumItem.QI_LOCKED_SPHERE.value, world.player))
     kankan_upper_main.connect(kankan_lower_main, "Kankan Upper to Kankan Lower")
     kankan_upper_main.connect(kankan_upper_javelin, "Kankan Upper to Kankan Upper Javelin", lambda state: canHighJump(world.player, state))
     kankan_lower_main.connect(kankan_upper_main, "Kankan Lower to Kankan Upper")

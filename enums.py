@@ -68,6 +68,7 @@ class EnumRegions(StrEnum):
     KANKAN_UPPER_HEART = "Kankan Upper Heart"
     KANKAN_UPPER_DROPOT = "Kankan Upper Dropot"
     KANKAN_UPPER_HEOD = "Kankan Upper Heod"
+    KANKAN_UPPER_BEFORE_PALACE = "Kankan Before Palace"
     KANKAN_UPPER_PALACE = "Kankan Palace Top"
     KANKAN_UPPER_JAIL = "Kankan Palace Jail"
     KANKAN_UPPER_JAVELIN = "Kankan Upper Javelin"
