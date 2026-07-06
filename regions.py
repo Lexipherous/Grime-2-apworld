@@ -341,14 +341,19 @@ def connect_regions(world: Grime2World) -> None:
     wanting_tree = world.get_region(EnumRegions.WANTING_TREE.value)
 
 
+    # # # # # # #
+    # Temple of Hands
+    # # # # # # #
     menu.connect(temple_of_hands_birthplace_lower, "Menu to Temple of Hands")
+    
+    
     # # # # # # #
     # Mudfalls
     # # # # # # #
     # Entrance/Exits
     temple_of_hands_birthplace_lower.connect(temple_of_hands_overgrown_barrier, "ToH Birthplace Lower to Overgrown Barrier")
     temple_of_hands_overgrown_barrier.connect(temple_of_hands_birthplace_lower, "Overgrown Barrier to ToH Birthplace Lower")
-    temple_of_hands_overgrown_barrier.connect(temple_of_hands_dried_paint, "Overgrown Barrier to ToH Dried Paint", lambda state: state.has(EnumItem.AC_GRASP, world.player))
+    temple_of_hands_overgrown_barrier.connect(temple_of_hands_dried_paint, "Overgrown Barrier to ToH Dried Paint", can_grasp())
     temple_of_hands_dried_paint.connect(temple_of_hands_overgrown_barrier, "ToH Dried Paint to Overgrown Barrier") # Needs overgrown barrier defeated and grasp
     temple_of_hands_dried_paint.connect(temple_of_hands_dried_paint_birthplace_upper, "ToH Dried Paint to ToH Dried Paint before Birthplace Upper") # needs embedding nail and grasp, or handjump
     temple_of_hands_dried_paint_birthplace_upper.connect(temple_of_hands_dried_paint, "ToH Dried Paint before Birthplace Upper to ToH Dried Paint")
@@ -363,9 +368,9 @@ def connect_regions(world: Grime2World) -> None:
     temple_of_hands_sealed_chamber.connect(temple_of_hands_dried_paint, "ToH Sealed Chamber to ToH Dried Paint")
     temple_of_hands_sealed_chamber.connect(temple_of_hands_bound_shell, "ToH Sealed Chamber to Bound Shell")
     temple_of_hands_bound_shell.connect(temple_of_hands_sealed_chamber, "Bound Shell to ToH Sealed Chamber")
-    temple_of_hands_bound_shell.connect(temple_of_hands_hall, "Bound Shell to ToH Hall", lambda state: state.has(EnumItem.AC_GRASP, world.player))
+    temple_of_hands_bound_shell.connect(temple_of_hands_hall, "Bound Shell to ToH Hall", can_grasp())
     temple_of_hands_hall.connect(temple_of_hands_bound_shell, "ToH Hall to Bound Shell")
-    temple_of_hands_bound_shell.connect(temple_of_hands_dried_paint_reef_upper, "Bound Shell to Reef", lambda state: state.has(EnumItem.AC_GRASP, world.player))
+    temple_of_hands_bound_shell.connect(temple_of_hands_dried_paint_reef_upper, "Bound Shell to Reef", can_grasp())
     temple_of_hands_dried_paint.connect(temple_of_hands_hall, "ToH Dried Paint to ToH Hall")
     temple_of_hands_hall.connect(temple_of_hands_dried_paint, "ToH Hall to ToH Dried Paint")
     temple_of_hands_hall.connect(temple_of_hands_sealed_chamber, "ToH Hall to ToH Ceiling Items") # needs burst jump or plunging finger
@@ -378,23 +383,23 @@ def connect_regions(world: Grime2World) -> None:
     mudfalls.connect(temple_of_hands_dried_paint, "Mudfalls to Temple of Hands")
     mudfalls.connect(faceless_mountains_mudfalls, "Mudfalls to Faceless Mountains")
     mudfalls.connect(underheads_left_middle, "Mudfalls to Underheads Middle")
-    mudfalls.connect(underheads_left_upper, "Mudfalls to Underheads Upper", lambda state: canClimbWalls(world.player, state) and canGraspHook(world.player, state) and canAirDash(world.player, state))
+    mudfalls.connect(underheads_left_upper, "Mudfalls to Underheads Upper", can_climb_walls() & can_grasp_hook() & can_air_dash())
     mudfalls.connect(dregbourg, "Mudfalls to Dregbourg")
     mudfalls.connect(mudpits, "Mudfalls to Mudpits")
     mudfalls.connect(palladium, "Mudfalls to Palladium")
     # Interzone
-    mudfalls.connect(mudfalls_elevator, "Mudfalls to Mudfalls-Elevator", lambda state: canGraspHookSlide(world.player, state))
-    mudfalls.connect(mudfalls_above_manzil_right, "Mudfalls to Mudfalls-AboveManzil-Right", lambda state: canGraspHookSlide(world.player, state))
-    mudfalls_above_manzil_right.connect(mudfalls_above_manzil_right_top, "Mudfalls-AboveManzil-Right to Mudfalls-AboveManzil-Right-Top", lambda state: canGraspHookSlide(world.player, state))
+    mudfalls.connect(mudfalls_elevator, "Mudfalls to Mudfalls-Elevator", can_grasp_hook_slide())
+    mudfalls.connect(mudfalls_above_manzil_right, "Mudfalls to Mudfalls-AboveManzil-Right", can_grasp_hook_slide())
+    mudfalls_above_manzil_right.connect(mudfalls_above_manzil_right_top, "Mudfalls-AboveManzil-Right to Mudfalls-AboveManzil-Right-Top", can_grasp_hook_slide())
     mudfalls_above_manzil_right_top.connect(mudfalls_above_manzil_right, "Mudfalls-AboveManzil-Right-Top to Mudfalls-AboveManzil-Right")
     mudfalls_above_manzil_right.connect(mudfalls, "Mudfalls-AboveManzil-Right to Mudfalls")
-    mudfalls.connect(mudfalls_above_manzil_center, "Mudfalls to Mudfalls-AboveManzil-Center", lambda state: canClimbWalls(world.player, state))
-    mudfalls.connect(mudfalls_above_manzil_side, "Mudfalls to Mudfalls-AboveManzil-Side", lambda state: (canAirDash(world.player, state) and canHandJump(world.player, state)) or canClimbWalls(world.player, state))
-    mudfalls_above_manzil_center.connect(mudfalls_above_manzil_top, "Mudfalls-AboveManzil-Center to Mudfalls-AboveManzil-Top", lambda state: ((canAirDash(world.player, state) and canHandJump(world.player, state)) or canClimbWalls(world.player, state)) and canItemGrasp(world.player, state))
-    mudfalls_above_manzil_center.connect(mudfalls_above_manzil_left, "Mudfalls-AboveManzil-Center to Mudfalls-AboveManzil-Left", lambda state: canGraspHookSlide(world.player, state) and canAirDash(world.player, state) and canHighJump(world.player, state))
-    mudfalls_above_manzil_left.connect(mudfalls_above_manzil_left_top, "Mudfalls-AboveManzil-Left to Mudfalls-AboveManzil-Left-Top", lambda state: canClimbWalls(world.player, state))
-    mudfalls.connect(mudfalls_strand, "Mudfalls to Mudfalls Strand", lambda state: canClimbWalls(world.player, state))
-    mudfalls.connect(mudfalls_spike_pit, "Mudfalls to Mudfalls Spike Pit", lambda state: canItemGrasp(world.player, state))
+    mudfalls.connect(mudfalls_above_manzil_center, "Mudfalls to Mudfalls-AboveManzil-Center", can_climb_walls())
+    mudfalls.connect(mudfalls_above_manzil_side, "Mudfalls to Mudfalls-AboveManzil-Side", (can_air_dash() & can_hand_jump()) | can_climb_walls())
+    mudfalls_above_manzil_center.connect(mudfalls_above_manzil_top, "Mudfalls-AboveManzil-Center to Mudfalls-AboveManzil-Top", (can_air_dash() & can_hand_jump()) | (can_climb_walls() & can_item_grasp()) )
+    mudfalls_above_manzil_center.connect(mudfalls_above_manzil_left, "Mudfalls-AboveManzil-Center to Mudfalls-AboveManzil-Left", can_grasp_hook_slide() & can_air_dash() & can_high_jump())
+    mudfalls_above_manzil_left.connect(mudfalls_above_manzil_left_top, "Mudfalls-AboveManzil-Left to Mudfalls-AboveManzil-Left-Top", can_climb_walls())
+    mudfalls.connect(mudfalls_strand, "Mudfalls to Mudfalls Strand", can_climb_walls())
+    mudfalls.connect(mudfalls_spike_pit, "Mudfalls to Mudfalls Spike Pit")
     
     # # # # # # #
     # Faceless Mountains
@@ -409,14 +414,14 @@ def connect_regions(world: Grime2World) -> None:
     faceless_mountains_main.connect(faceless_mountains_dropot, "Faceless Mountains to Dropot Area")
     faceless_mountains_main.connect(faceless_mountains_melded, "Faceless Mountains to FM Melded Giant")
     faceless_mountains_main.connect(faceless_mountains_darsh, "Faceless Mountains to FM Darsh")
-    faceless_mountains_main.connect(faceless_mountains_wanting_atrium, "Faceless Mountains to FM Wanting Atrium", lambda state: canClimbWalls(world.player, state) and canGraspHook(world.player, state) and canHighJump(world.player, state))
-    faceless_mountains_wanting_atrium.connect(faceless_mountains_wanting_bloodroots, "FM Wanting Atrium to FM Wanting Bloodroots", lambda state: canClimbWalls(world.player, state) and canGraspHook(world.player, state) and canHighJump(world.player, state))
+    faceless_mountains_main.connect(faceless_mountains_wanting_atrium, "Faceless Mountains to FM Wanting Atrium", can_climb_walls() & can_grasp_hook() & can_high_jump())
+    faceless_mountains_wanting_atrium.connect(faceless_mountains_wanting_bloodroots, "FM Wanting Atrium to FM Wanting Bloodroots", can_climb_walls() & can_grasp_hook() & can_high_jump())
     
     # # # # # # #
     # Marah's Orchard
     # # # # # # #
     # Entrance/Exits
-    marahs_orchard_prime.connect(kankan_upper_main, "Marah's Orchard to Kankan", lambda state: state.has("Mountainborn Cleared", world.player) and state.has("Locked Sphere", world.player))
+    marahs_orchard_prime.connect(kankan_upper_main, "Marah's Orchard to Kankan", Has("Mountainborn Cleared") & Has("Locked Sphere"))
     marahs_orchard_faceblob.connect(underheads_right, "Marah's Orchard to Underheads")
     marahs_orchard_entrance.connect(faceless_mountains_darsh, "Marah's Orchard Entrance to Faceless Mountains Darsh")
     # Interzone
@@ -433,31 +438,31 @@ def connect_regions(world: Grime2World) -> None:
     underheads_left_middle.connect(mudfalls, "Underheads to Mudfalls")
     underheads_alveoli.connect(faceless_mountains_main, "Underheads to Faceless Mountains")
     underheads_right.connect(marahs_orchard_faceblob, "Underheads to Marah's Orchard")
-    underheads_right.connect(underheads_tree_roots, "Underheads to Tree Roots", lambda state: canClimbWalls(world.player, state) and canHighJump(world.player, state))
+    underheads_right.connect(underheads_tree_roots, "Underheads to Tree Roots", can_climb_walls() & can_high_jump())
     underheads_nailglade_transition.connect(nailglade, "Underheads Lahav Knight to Nailglade Transition")
     underheads_left_lower.connect(dregbourg, "Underheads Left Lower to Dregbourg")
     # Interzone
     underheads_lahav_knight.connect(underheads_nailglade_transition, "Underheads to Lahav Knight")
-    underheads_left_upper.connect(underheads_alveoli, "Underheads to Underhead Alveoli", lambda state: canGraspHook(world.player, state))
+    underheads_left_upper.connect(underheads_alveoli, "Underheads to Underhead Alveoli", can_grasp_hook())
     underheads_left_middle.connect(underheads_surrogate_left, "Underheads Left Middle to Underheads Surrogate")
     underheads_surrogate_left.connect(underheads_left_middle, "Underheads Surrogate to Underheads Left Middle")
-    underheads_surrogate_left.connect(underheads_forged_pick, "Underheads Surrogate to Underheads Forged Pick", lambda state: canHighJump(world.player, state) or canClimbWalls(world.player, state) or canGraspHook(world.player, state))
+    underheads_surrogate_left.connect(underheads_forged_pick, "Underheads Surrogate to Underheads Forged Pick", can_high_jump() | can_climb_walls() | can_grasp_hook())
     underheads_lower_hunt.connect(underheads_left_middle, "Underheads Lower Hunt to Underheads Left Middle")
     underheads_left_middle.connect(underheads_lower_hunt, "Underheads Left Middle to Underheads Lower Hunt")
     underheads_lower_hunt.connect(underheads_left_lower, "Underheads Lower Hunt to Underheads Left Lower")
     underheads_lower_hunt.connect(underheads_scatter_stone, "Underheads Lower Hunt to Underheads Scatter Stone")
     underheads_lower_hunt.connect(underheads_surrogate_left, "Underheads Lower Hunt to Underheads Surrogate")
     underheads_surrogate_left.connect(underheads_forged_little, "Underheads Surrogate to Underheads Forged Little")
-    underheads_surrogate_left.connect(underheads_boulder_hands, "Underheads Surrogate to Underheads Boulder Hands", lambda state: canGraspHook(world.player, state) and (canAirDash(world.player, state) or canClimbWalls(world.player, state)))
+    underheads_surrogate_left.connect(underheads_boulder_hands, "Underheads Surrogate to Underheads Boulder Hands", can_grasp_hook() & (can_air_dash() | can_climb_walls()))
     underheads_boulder_hands.connect(underheads_before_mountainborn, "Underheads Boulder Hands to Underheads Before Mountainborn")
     underheads_before_mountainborn.connect(underheads_surrogate_left, "Underheads Before Mountainborn to Underheads Surrogate")
     underheads_before_mountainborn.connect(underheads_mountainborn, "Underheads Before Mountainborn to Underheads Mountainborn")
     underheads_before_mountainborn.connect(underheads_tree_roots, "Underheads Before Mountainborn to Underheads Tree Roots")
     underheads_mountainborn.connect(underheads_right, "Underheads Mountainborn to Underheads Right")
     underheads_right.connect(underheads_lahav_knight, "Underheads Right to Underheads Lahav Knight")
-    underheads_before_mountainborn.connect(underheads_surrogate_smidge, "Underheads Before Mountainborn to Underheads Smidge", lambda state: canClimbWalls(world.player, state) or canGraspHook(world.player, state))
-    underheads_mountainborn.connect(underheads_mountainborn_marah, "Underheads Mountainborn to Underheads Mountainborn Marah", lambda state: canClimbWalls(world.player, state) and canBurstJump(world.player, state) and canAirDash(world.player, state))
-    underheads_right.connect(underheads_overgrown_blob, "Underheads Right to Underheads Overgrown Blob", lambda state: canClimbWalls(world.player, state) and canHighJump(world.player, state))
+    underheads_before_mountainborn.connect(underheads_surrogate_smidge, "Underheads Before Mountainborn to Underheads Smidge", can_climb_walls() | can_grasp_hook())
+    underheads_mountainborn.connect(underheads_mountainborn_marah, "Underheads Mountainborn to Underheads Mountainborn Marah", can_climb_walls() & can_burst_jump() & can_air_dash())
+    underheads_right.connect(underheads_overgrown_blob, "Underheads Right to Underheads Overgrown Blob", can_climb_walls() & can_high_jump())
     
     # # # # # # #
     # Kankan
@@ -466,19 +471,19 @@ def connect_regions(world: Grime2World) -> None:
     kankan_upper_main.connect(marahs_orchard_prime, "Kankan Upper to Marah's Orchard")
     kankan_lower_main.connect(jagged_forest_kankan, "Kankan Lower to Jagged Forest")
     # Interzone
-    kankan_upper_main.connect(kankan_upper_heart, "Kankan Upper to Kankan Upper Heart", lambda state: canGraspHookSlide(world.player, state))
-    kankan_upper_heart.connect(kankan_upper_dropot, "Kankan Upper to Kankan Upper Dropot", lambda state: canHighJump(world.player, state))
-    kankan_upper_dropot.connect(kankan_upper_heod, "Kankan Upper Dropot to Kankan Upper Heod", lambda state: canItemExplode(world.player, state))
+    kankan_upper_main.connect(kankan_upper_heart, "Kankan Upper to Kankan Upper Heart", can_grasp_hook_slide())
+    kankan_upper_heart.connect(kankan_upper_dropot, "Kankan Upper to Kankan Upper Dropot", can_high_jump())
+    kankan_upper_dropot.connect(kankan_upper_heod, "Kankan Upper Dropot to Kankan Upper Heod")
     kankan_upper_main.connect(kankan_upper_before_palace, "Kankan Upper to Kankan Upper Before Palace")
-    kankan_upper_before_palace.connect(kankan_upper_palace, "Kankan Upper Before Palace to Kankan Upper Palace", lambda state: state.has(EnumItem.QI_BREATHSMITH_LOCATION_INFO.value, world.player))
-    kankan_upper_palace.connect(kankan_upper_jail, "Kankan Upper Palace to Kankan Upper Jail", lambda state: state.has(EnumItem.QI_LOCKED_SPHERE.value, world.player))
+    kankan_upper_before_palace.connect(kankan_upper_palace, "Kankan Upper Before Palace to Kankan Upper Palace", Has(EnumItem.QI_BREATHSMITH_LOCATION_INFO.value))
+    kankan_upper_palace.connect(kankan_upper_jail, "Kankan Upper Palace to Kankan Upper Jail", Has(EnumItem.QI_LOCKED_SPHERE.value))
     kankan_upper_main.connect(kankan_lower_main, "Kankan Upper to Kankan Lower")
-    kankan_upper_main.connect(kankan_upper_javelin, "Kankan Upper to Kankan Upper Javelin", lambda state: canHighJump(world.player, state))
+    kankan_upper_main.connect(kankan_upper_javelin, "Kankan Upper to Kankan Upper Javelin", can_high_jump())
     kankan_lower_main.connect(kankan_upper_main, "Kankan Lower to Kankan Upper")
-    kankan_lower_main.connect(kankan_lower_alv_house, "Kankan Lower to Kankan Lower Alveoli House", lambda state: canClimbWalls(world.player, state))
-    kankan_lower_main.connect(kankan_lower_alv_house_top, "Kankan Lower to Kankan Lower Alveoli House Top", lambda state: canClimbWalls(world.player, state))
-    kankan_lower_main.connect(kankan_lower_holster, "Kankan Lower to Kankan Lower Holster", lambda state: canAirDash(world.player, state) or canHighJump(world.player, state) or canItemGrasp(world.player, state))
-    kankan_lower_main.connect(kankan_lower_atrium, "Kankan Lower to Atrium", lambda state: canClimbWalls(world.player, state))
+    kankan_lower_main.connect(kankan_lower_alv_house, "Kankan Lower to Kankan Lower Alveoli House", can_climb_walls())
+    kankan_lower_main.connect(kankan_lower_alv_house_top, "Kankan Lower to Kankan Lower Alveoli House Top", can_climb_walls())
+    kankan_lower_main.connect(kankan_lower_holster, "Kankan Lower to Kankan Lower Holster", can_air_dash() | can_high_jump() | can_item_grasp())
+    kankan_lower_main.connect(kankan_lower_atrium, "Kankan Lower to Atrium", can_climb_walls())
     kankan_lower_main.connect(kankan_lower_preacher, "Kankan Lower to Preacher")
     
     # # # # # # #
@@ -489,9 +494,9 @@ def connect_regions(world: Grime2World) -> None:
     jagged_forest_main.connect(nailglade, "JF Main to Nailglade")
     jagged_forest_garden_trans.connect(blade_garden_upper, "JF Main to Blade Garden")
     # Interzone
-    jagged_forest_kankan.connect(jagged_forest_main, "JF Kankan to JF Main", lambda state: canGraspHook(world.player, state) or canClimbWalls(world.player, state))
-    jagged_forest_main.connect(jagged_forest_legs, "JF Main to JF Legs", lambda state: canAirDash(world.player, state))
-    jagged_forest_main.connect(jagged_forest_cave, "JF Main to JF Cave", lambda state: canDashSlide(world.player, state) or canAirDash(world.player, state))# ghook&wjump&(airdashORDashslide)
+    jagged_forest_kankan.connect(jagged_forest_main, "JF Kankan to JF Main", can_grasp_hook() | can_climb_walls())
+    jagged_forest_main.connect(jagged_forest_legs, "JF Main to JF Legs", can_air_dash())
+    jagged_forest_main.connect(jagged_forest_cave, "JF Main to JF Cave", can_grasp_hook() & can_climb_walls() & (can_air_dash() | can_dash_slide()))
     jagged_forest_cave.connect(jagged_forest_main, "JF Cave to JF Main")
     jagged_forest_cave.connect(jagged_forest_lahav_knight, "JF Cave to JF Lahav Knight")
     jagged_forest_main.connect(jagged_forest_learning, "JF Main to JF Learning")
@@ -521,7 +526,7 @@ def connect_regions(world: Grime2World) -> None:
     nailglade.connect(paint_reef, "Nailglade to Paint Reef")
     nailglade.connect(blade_garden_upper, "Nailglade to Blade Garden")
     nailglade.connect(jagged_forest_main, "Nailglade to Jagged Forest")
-    nailglade.connect(underheads_nailglade_transition, "Nailglade to Underheads", lambda state: isBreathcrowned(world.player, state))
+    nailglade.connect(underheads_nailglade_transition, "Nailglade to Underheads", is_breathcrowned())
     nailglade.connect(dregbourg, "Nailglade to Dregbourg")
     # Interzone
     
@@ -533,7 +538,7 @@ def connect_regions(world: Grime2World) -> None:
     tree_roots.connect(underheads_before_mountainborn, "Tree Roots to Underheads Before Mountainborn")
     tree_roots.connect(faceless_mountains_main, "Tree Roots to Faceless Mountains")
     # Interzone
-    tree_roots.connect(tree_roots_visage, "Tree Roots to Tree Roots Visage", lambda state: canHighJump(world.player, state))
+    tree_roots.connect(tree_roots_visage, "Tree Roots to Tree Roots Visage", can_high_jump())
     
     # # # # # # #
     # Dregbourg

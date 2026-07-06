@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING, Self
 from BaseClasses import CollectionState, Location
 from rule_builder.rules import CanReachLocation, Has, CanReachRegion, HasAll, HasAny
 from worlds.generic.Rules import add_rule, set_rule
+from worldstasis.blasphemous.Options import WallClimbShuffle
 
 from .options import ItemGrasp
 from .enums import EnumItem, EnumLoc, EnumRegions
@@ -133,8 +134,11 @@ def set_all_location_rules(world: Grime2World) -> None:
 #         set_rule(right_room_enemy, lambda state: state.has("Sword", world.player))
     
     # Discarded Flesh requires Grasp
-    set_rule(world.get_location(EnumLoc.KANKAN_DISCARDED_FLESH.value), lambda state: canGrasp(world.player, state))
-    set_rule(world.get_location(EnumLoc.MARAHS_DISCARDED_FLESH.value), lambda state: canGrasp(world.player, state))
+    world.set_rule(world.get_location(EnumLoc.KANKAN_DISCARDED_FLESH.value), can_grasp())
+    world.set_rule(world.get_location(EnumLoc.MARAHS_DISCARDED_FLESH.value), can_grasp())
+    world.set_rule(world.get_location(EnumLoc.DREGBOURG_DISCARDED_FLESH.value), can_grasp())
+    world.set_rule(world.get_location(EnumLoc.REEF_DISCARDED_FLESH.value), can_grasp())
+    world.set_rule(world.get_location(EnumLoc.NAILGLADE_DISCARDED_FLESH.value), can_grasp())
 
     # # # # # # # # # # 
     # Main Logic Rules
@@ -172,69 +176,49 @@ def set_all_location_rules(world: Grime2World) -> None:
     # # # # # # # # # # # # # # # # # # # # 
     # Temple of Hands
     # # # # # # # # # # 
-    world.set_rule(
-        world.get_location(EnumLoc.BIRTHPLACE_UPPER_FORCE_CAPACITY.value), 
-        lambda state: canClimbWalls(world.player, state) and canCrossSpikeTunnels(world.player, state))
+    world.set_rule(world.get_location(EnumLoc.BIRTHPLACE_UPPER_FORCE_CAPACITY.value),  can_climb_walls() & can_cross_spike_tunnels())
+    
+
+    # # # # # # # # # # 
+    # Mudfalls
+    # # # # # # # # # # 
+    world.set_rule(world.get_entrance("Mudfalls to Mudfalls Spike Pit"), can_item_grasp()
+    )
     
 
     # # # # # # # # # # 
     # Underheads
     # # # # # # # # # # 
-    world.set_rule(
-        world.get_entrance("Underheads Lahav Knight to Nailglade Transition"),
-        lambda state: isBreathcrowned(world.player, state))
-    world.set_rule(
-        world.get_entrance("Underheads Left Lower to Dregbourg"),
-        lambda state: isBreathcrowned(world.player, state))
+    world.set_rule(world.get_entrance("Underheads Lahav Knight to Nailglade Transition"), is_breathcrowned())
+    world.set_rule(world.get_entrance("Underheads Left Lower to Dregbourg"), is_breathcrowned())
     
 
     # # # # # # # # # # 
     # Kankan
     # # # # # # # # # # 
-    world.set_rule(
-        world.get_entrance("Kankan Lower to Jagged Forest"),
-        lambda state: isBreathcrowned(world.player, state))
+    world.set_rule(world.get_entrance("Kankan Lower to Jagged Forest"), is_breathcrowned())
+    world.set_rule(world.get_entrance("Kankan Upper Dropot to Kankan Upper Heod"), can_item_explode())
     
 
     # # # # # # # # # # 
     # Jagged Forest
     # # # # # # # # # # 
-    world.set_rule(
-        world.get_location(EnumLoc.JAGGED_FORCE.value),
-        lambda state: canClimbWalls(world.player, state) and (canDashSlide(world.player, state) or canItemGrasp(world.player, state)))
-    world.set_rule(
-        world.get_location(EnumLoc.JAGGED_CHAIN_JAVELIN_PIT.value),
-        lambda state: canItemGrasp(world.player, state))
-    world.set_rule(
-        world.get_location(EnumLoc.JAGGED_BLOODROOT_LEARNING.value),
-        HasAll(EnumItem.AC_GRASP.value, EnumItem.AM_WALLJUMP.value) & HasAny(EnumItem.AM_BURSTJUMP, EnumItem.AM_HANDJUMP))
-    world.set_rule(
-        world.get_location(EnumLoc.JAGGED_MARAH_STRAND_LAHAV.value),
-        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value))
+    world.set_rule(world.get_location(EnumLoc.JAGGED_FORCE.value), can_climb_walls() & (can_dash_slide() | can_item_grasp()) )
+    world.set_rule(world.get_location(EnumLoc.JAGGED_CHAIN_JAVELIN_PIT.value), can_item_grasp())
+    world.set_rule(world.get_location(EnumLoc.JAGGED_BLOODROOT_LEARNING.value), can_grasp() & can_climb_walls() & can_high_jump())
+    world.set_rule(world.get_location(EnumLoc.JAGGED_MARAH_STRAND_LAHAV.value), can_high_jump())
 
     # # # # # # # # # # 
     # Blade Garden
     # # # # # # # # # # 
     # Location Rules
-    world.set_rule(
-        world.get_location(EnumLoc.GARDEN_MARAH_STRAND_SEAL_BELOW.value),
-        Has(EnumItem.AM_AIRDASH.value))
-    world.set_rule(
-        world.get_location(EnumLoc.GARDEN_ATRIUM_GREATBLADE_LEGS.value),
-        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value) | HasAny(EnumItem.AC_ITEM_GRASP.value, EnumItem.AM_AIRDASH.value))
-    world.set_rule(
-        world.get_location(EnumLoc.GARDEN_MARAH_STRAND_AXE.value),
-        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value))
-    world.set_rule(
-        world.get_location(EnumLoc.GARDEN_ALVEOLI_TREE.value),
-        HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value))
+    world.set_rule(world.get_location(EnumLoc.GARDEN_MARAH_STRAND_SEAL_BELOW.value), can_air_dash())
+    world.set_rule(world.get_location(EnumLoc.GARDEN_ATRIUM_GREATBLADE_LEGS.value), can_high_jump() | (can_item_grasp() | can_air_dash()))
+    world.set_rule(world.get_location(EnumLoc.GARDEN_MARAH_STRAND_AXE.value), can_high_jump())
+    world.set_rule(world.get_location(EnumLoc.GARDEN_ALVEOLI_TREE.value), can_high_jump())
     # Connection rules
-    world.set_rule(
-        world.get_entrance("BG_Upper to BG_Middle"), 
-        Has(EnumItem.AM_AIRDASH.value))
-    world.set_rule(
-        world.get_entrance("BG_Middle to BG_Lower"), 
-        lambda state: canGraspHookSlide(world.player, state))
+    world.set_rule(world.get_entrance("BG_Upper to BG_Middle"), can_air_dash())
+    world.set_rule(world.get_entrance("BG_Middle to BG_Lower"), can_grasp_hook_slide())
     
     
     
@@ -262,62 +246,41 @@ def set_completion_condition(world: Grime2World) -> None:
     """
     world.multiworld.completion_condition[world.player] = lambda state: state.has("Victory", world.player)
     
-def canCrossSpikeTunnels(player: int, state: CollectionState) -> bool:
-    return lambda state: (
-        state.has(EnumItem.IM_EMBEDDING_NAIL.value, player)
-        or state.has_all([EnumItem.AM_HANDJUMP.value, EnumItem.AM_AIRDASH.value], player)
-    )
+def can_cross_spike_tunnels() -> Has | HasAll:
+    return Has(EnumItem.IM_EMBEDDING_NAIL.value) | HasAll(EnumItem.AM_HANDJUMP.value, EnumItem.AM_AIRDASH.value)
 
-def canClimbWalls(player, state: CollectionState) -> bool:
-    return lambda state: state.has(EnumItem.AM_WALLJUMP.value, player)
+def can_climb_walls() -> Has:
+    return Has(EnumItem.AM_WALLJUMP.value)
 
-def canBurstJump(player, state: CollectionState) -> bool:
-    return lambda state: state.has(EnumItem.AM_BURSTJUMP.value, player)
+def can_burst_jump() -> Has:
+    return Has(EnumItem.AM_BURSTJUMP.value)
 
-def canHandJump(player, state: CollectionState) -> bool:
-    return lambda state: state.has(EnumItem.AM_HANDJUMP.value, player)
+def can_hand_jump() -> Has:
+    return Has(EnumItem.AM_HANDJUMP.value)
 
-def canHighJump(player, state: CollectionState) -> bool:
-    return lambda state: state.has_any([EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value], player)
+def can_high_jump() -> HasAny:
+    return HasAny(EnumItem.AM_BURSTJUMP.value, EnumItem.AM_HANDJUMP.value)
 
-def canGrasp(player, state: CollectionState) -> bool:
-    return lambda state: state.has(EnumItem.AC_GRASP.value, player)
+def can_grasp() -> Has:
+    return Has(EnumItem.AC_GRASP.value)
 
-def canGraspHook(player, state: CollectionState) -> bool:
-    return lambda state: state.has_all([EnumItem.AC_GRASP.value, EnumItem.AM_GRASPHOOK.value], player)
+def can_grasp_hook() -> Has:
+    return Has(EnumItem.AC_GRASP.value) & Has(EnumItem.AM_GRASPHOOK.value)
 
-def canItemGrasp(player, state: CollectionState) -> bool:
-    if ItemGrasp:
-        return lambda state: state.has_all([EnumItem.AC_GRASP.value, EnumItem.AC_ITEM_GRASP.value], player)
-    else:
-        return lambda state: state.has(EnumItem.MI_THIRD_OF_FLESH.value, player, 3)
+def can_item_grasp() -> Has:
+    return Has(EnumItem.AC_GRASP.value) & (Has(EnumItem.MI_THIRD_OF_FLESH.value, 3) | Has(EnumItem.AC_ITEM_GRASP.value))
 
-def canGraspHookSlide(player, state: CollectionState) -> bool:
-    return lambda state: state.has_all([EnumItem.AC_GRASP.value, EnumItem.AM_GRASPHOOK.value, EnumItem.AM_GRASPSLIDE.value], player)
+def can_grasp_hook_slide() -> Has:
+    return Has(EnumItem.AC_GRASP.value) & Has(EnumItem.AM_GRASPHOOK.value) & Has(EnumItem.AM_GRASPSLIDE.value)
 
-def canAirDash(player, state: CollectionState) -> bool:
-    return lambda state: state.has(EnumItem.AM_AIRDASH.value, player)
+def can_air_dash() -> Has:
+    return Has(EnumItem.AM_AIRDASH.value)
 
-def canDashSlide(player, state: CollectionState) -> bool:
-    return lambda state: state.has_all([EnumItem.AM_WALLJUMP.value, EnumItem.AM_DASHSLIDE], player)
+def can_dash_slide() -> HasAll:
+    return HasAll(EnumItem.AM_WALLJUMP.value, EnumItem.AM_DASHSLIDE.value)
 
-def canItemExplode(player, state: CollectionState) -> bool:
-    return lambda state: state.has_any([EnumItem.IM_VOLATILE_VASE.value, EnumItem.IM_OVERGROWN_BLOB.value], player)
+def can_item_explode() -> HasAny:
+    return HasAny(EnumItem.IM_VOLATILE_VASE.value, EnumItem.IM_OVERGROWN_BLOB.value)
 
-def isBreathcrowned(player, state: CollectionState) -> bool:
-    return lambda state: state.has_any(EnumItem.BC_MANZILS_BREATHCROWN, player)
-    
-
-# def set_dredge_rule(world_location: Location, location: DREDGELocationData, player: int) -> None:
-#     add_rule(world_location, lambda state: state.has("Dredge Crane", player))
-#     match location.requirement:
-#         case "explosives":
-#             add_rule(world_location, lambda state: state.has("Packed Explosives", player))
-#         case "icebreaker":
-#             add_rule(world_location, lambda state: state.has("Icebreaker", player))
-#         case "":
-#             return
-#         case _:
-#             #maybe log here
-#             return
-#     return
+def is_breathcrowned() -> HasAny:
+    return HasAny(EnumItem.BC_MANZILS_BREATHCROWN)
