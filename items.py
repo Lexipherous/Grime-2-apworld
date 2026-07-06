@@ -51,6 +51,8 @@ def populate_items():
     item_list_ability_movement = populate_items_ability_movement()
     item_list_ability_combat = populate_items_ability_combat()
     item_list_traits = populate_items_traits()
+    item_list_grasp_flesh = populate_items_grasp_flesh()
+    item_list_grasp_ability = populate_items_grasp_ability()
     
     item_list = (item_list_weapons + 
                  item_list_armor_sets +
@@ -62,7 +64,9 @@ def populate_items():
                  item_list_breathcrowns + 
                  item_list_ability_movement + 
                  item_list_ability_combat + 
-                 item_list_traits)
+                 item_list_traits +
+                 item_list_grasp_flesh +
+                 item_list_grasp_ability)
     
     return item_list
 
@@ -309,6 +313,13 @@ def populate_items_misc():
         Grime2ItemData(EnumItem.MI_THIRD_OF_FLESH.value, IC.filler, item_base_id + 10406, 3),
     ]
     return item_list
+
+def populate_items_grasp_flesh():
+    item_list: list[Grime2ItemData] = [
+        Grime2ItemData(EnumItem.MI_THIRD_OF_FLESH.value, IC.progression, item_base_id + 10406, 3),
+    ]
+    return item_list
+
 def populate_items_breathcrowns():
     item_list: list[Grime2ItemData] = [
         Grime2ItemData(EnumItem.BC_HANDPAINT_BREATHCROWN.value, IC.filler, item_base_id + 10431),
@@ -322,6 +333,7 @@ def populate_items_breathcrowns():
         Grime2ItemData(EnumItem.BC_BLADEBEAST_BREATHCROWN.value, IC.filler, item_base_id + 10439),
     ]
     return item_list
+
 def populate_items_ability_movement():
     item_list: list[Grime2ItemData] = [
         Grime2ItemData(EnumItem.AM_BURSTJUMP.value, IC.progression, item_base_id + 10480), # "Trait_Special_Super Jump"
@@ -334,6 +346,7 @@ def populate_items_ability_movement():
         Grime2ItemData(EnumItem.AM_CHAINDASH.value, IC.progression, item_base_id + 10487), # "Trait_Growth_Chain dash"
     ]
     return item_list
+
 def populate_items_ability_combat():
     item_list: list[Grime2ItemData] = [
         Grime2ItemData(EnumItem.AC_MOLD_WARDS.value, IC.progression, item_base_id + 10500), # "Trait_Growth_Mold I Frame"
@@ -344,13 +357,20 @@ def populate_items_ability_combat():
         Grime2ItemData(EnumItem.AC_DASH_COUNTER.value, IC.progression, item_base_id + 10505), # "Trait_Special_Dash Counter"
         Grime2ItemData(EnumItem.AC_RAGE_VULNERABILITY.value, IC.progression, item_base_id + 10506), # "Trait_Special_Bonus Damage On Red Attacks"
         Grime2ItemData(EnumItem.AC_ADDITIONAL_MOLD.value, IC.progression, item_base_id + 10507), # "Trait_Special_Additional Mold Set"
-        Grime2ItemData(EnumItem.AC_ITEM_GRASP.value, IC.filler, item_base_id + 10508), # "Trait_Special_Item Grasp"   -   Unlocked via Third of Flesh
+        # Grime2ItemData(EnumItem.AC_ITEM_GRASP.value, IC.progression, item_base_id + 10508), # "Trait_Special_Item Grasp"   -   Unlocked via Third of Flesh
         Grime2ItemData(EnumItem.AC_EXTENDED_GRASP_RANGE.value, IC.progression, item_base_id + 10509), # "Trait_Special_Grasp Range"
         Grime2ItemData(EnumItem.AC_FLAWLESS_REFORM.value, IC.progression, item_base_id + 10510), # "Trait_Special_Crushing Damage Removal"
         Grime2ItemData(EnumItem.AC_PAINT_RESTORATION.value, IC.progression, item_base_id + 10511), # "Trait_Special_Checkpoint Paint Restoration"
         Grime2ItemData(EnumItem.AC_PROJECTILE_PARRY.value, IC.progression, item_base_id + 10512), # "Trait_Special_Projectile Parry"
     ]
     return item_list
+
+def populate_items_grasp_ability():
+    item_list: list[Grime2ItemData] = [
+        Grime2ItemData(EnumItem.AC_ITEM_GRASP.value, IC.progression, item_base_id + 10508), # "Trait_Special_Item Grasp"   -   Unlocked via Third of Flesh
+    ]
+    return item_list
+
 def populate_items_traits():
     item_list: list[Grime2ItemData] = [
         Grime2ItemData(EnumItem.T_FORCE_PARRY.value, IC.filler, item_base_id + 10550, 3), # "Trait_Growth_Force On Parry" 
@@ -416,7 +436,14 @@ def create_all_items(world: Grime2World) -> None:
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_ability_movement()}) # Populate Ability Movement
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_ability_combat()}) # Populate Ability Combat
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_traits()}) # Populate Traits
-        
+    
+    # Grasp Ability Option
+    match world.options.itemgrasp.value:
+        case world.options.itemgrasp.option_true:
+            item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_grasp_flesh()})
+        case world.options.itemgrasp.option_false:
+            item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_grasp_ability()})
+    
     # Consider if we're starting with a weapon
     match world.options.starting_weapon.value:
         case 0:
