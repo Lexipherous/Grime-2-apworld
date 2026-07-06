@@ -108,9 +108,9 @@ def populate_items_weapons():
         Grime2ItemData(EnumItem.W_ZEV_BLADES.value, IC.useful, item_base_id + 10033, isWeapon=True, ),
         
         # Weapons - Cut
-        # Grime2ItemData(EnumItem.W_ALLOYBARK_CLEAVERS, IC.useful, item_base_id + 10034, ),
-        # Grime2ItemData(EnumItem.W_BLADEROOT_JAVELIN, IC.useful, item_base_id + 10035, ),
-        # Grime2ItemData(EnumItem.W_CODA_SCYTHESWORD, IC.useful, item_base_id + 10036, ),
+        # Grime2ItemData(EnumItem.W_ALLOYBARK_CLEAVERS, IC.useful, item_base_id + 10034, isWeapon=True, ),
+        # Grime2ItemData(EnumItem.W_BLADEROOT_JAVELIN, IC.useful, item_base_id + 10035, isWeapon=True, ),
+        # Grime2ItemData(EnumItem.W_CODA_SCYTHESWORD, IC.useful, item_base_id + 10036, isWeapon=True, ),
     ]
     return item_list
 def populate_items_armor_sets():
