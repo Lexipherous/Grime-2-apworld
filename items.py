@@ -37,6 +37,7 @@ class Grime2ItemData:
     ap_id: int
     count: int = 1
     isStarterWeapon: bool = False
+    isWeapon: bool = False
 
 def populate_items():
     item_list_weapons = populate_items_weapons()
@@ -68,39 +69,39 @@ def populate_items():
 def populate_items_weapons():
     item_list: list[Grime2ItemData] = [
         # Weapons
-        Grime2ItemData(EnumItem.W_ATTUNING_BOW.value, IC.useful, item_base_id + 10001),
-        Grime2ItemData(EnumItem.W_BARBED_SWORD.value, IC.useful, item_base_id + 10002),
-        Grime2ItemData(EnumItem.W_BEAK_FISTS.value, IC.useful, item_base_id + 10003),
-        Grime2ItemData(EnumItem.W_BEAST_BOW.value, IC.useful, item_base_id + 10004),
-        Grime2ItemData(EnumItem.W_BLADEROOT_GREATSWORD.value, IC.useful, item_base_id + 10005),
-        Grime2ItemData(EnumItem.W_BLADEROOT_SWORD.value, IC.useful, item_base_id + 10006),
-        Grime2ItemData(EnumItem.W_BLOODMETAL_SCYTHE.value, IC.useful, item_base_id + 10007),
-        Grime2ItemData(EnumItem.W_BOWBLADES.value, IC.useful, item_base_id + 10008),
-        Grime2ItemData(EnumItem.W_CLASPED_MACE.value, IC.useful, item_base_id + 10009, isStarterWeapon=True),
-        Grime2ItemData(EnumItem.W_CLAWING_SCYTHE.value, IC.useful, item_base_id + 10010),
-        Grime2ItemData(EnumItem.W_FACELESS_SPEAR.value, IC.useful, item_base_id + 10011),
-        Grime2ItemData(EnumItem.W_FINGER_FISTS.value, IC.useful, item_base_id + 10012),
-        Grime2ItemData(EnumItem.W_FINGERCLUMP_MACE.value, IC.useful, item_base_id + 10013),
-        Grime2ItemData(EnumItem.W_FORGED_FISTS.value, IC.useful, item_base_id + 10014),
-        Grime2ItemData(EnumItem.W_FORGED_PICK.value, IC.useful, item_base_id + 10015),
-        Grime2ItemData(EnumItem.W_FORGED_STAKE.value, IC.useful, item_base_id + 10016),
-        Grime2ItemData(EnumItem.W_GOEL_GREATSWORD.value, IC.useful, item_base_id + 10017),
-        Grime2ItemData(EnumItem.W_GOZ_SICKLE.value, IC.useful, item_base_id + 10018),
-        Grime2ItemData(EnumItem.W_GRIPPING_GREATAXE.value, IC.useful, item_base_id + 10019),
-        Grime2ItemData(EnumItem.W_JAW_AXE.value, IC.useful, item_base_id + 10020),
-        Grime2ItemData(EnumItem.W_KNIFEHAND.value, IC.useful, item_base_id + 10021, isStarterWeapon=True),
-        Grime2ItemData(EnumItem.W_MAMMOTH_AXE.value, IC.useful, item_base_id + 10022),
-        Grime2ItemData(EnumItem.W_MAUL_AXE.value, IC.useful, item_base_id + 10023, isStarterWeapon=True),
-        Grime2ItemData(EnumItem.W_NAIL_BOW.value, IC.useful, item_base_id + 10024),
-        Grime2ItemData(EnumItem.W_PITCHER_SPEAR.value, IC.useful, item_base_id + 10025, ),
-        Grime2ItemData(EnumItem.W_RAKING_SWORD.value, IC.useful, item_base_id + 10026, ),
-        Grime2ItemData(EnumItem.W_RUST_FISTS.value, IC.useful, item_base_id + 10027, ),
-        Grime2ItemData(EnumItem.W_SPEARHAND.value, IC.useful, item_base_id + 10028, ),
-        Grime2ItemData(EnumItem.W_THROWING_NAILS.value, IC.useful, item_base_id + 10029, ),
-        Grime2ItemData(EnumItem.W_THROWING_STARS.value, IC.useful, item_base_id + 10030, ),
-        Grime2ItemData(EnumItem.W_THROWING_THUMBS.value, IC.useful, item_base_id + 10031, isStarterWeapon=True),
-        Grime2ItemData(EnumItem.W_TOOTH_HAMMER.value, IC.useful, item_base_id + 10032, ),
-        Grime2ItemData(EnumItem.W_ZEV_BLADES.value, IC.useful, item_base_id + 10033, ),
+        Grime2ItemData(EnumItem.W_ATTUNING_BOW.value, IC.useful, item_base_id + 10001, isWeapon=True),
+        Grime2ItemData(EnumItem.W_BARBED_SWORD.value, IC.useful, item_base_id + 10002, isWeapon=True),
+        Grime2ItemData(EnumItem.W_BEAK_FISTS.value, IC.useful, item_base_id + 10003, isWeapon=True),
+        Grime2ItemData(EnumItem.W_BEAST_BOW.value, IC.useful, item_base_id + 10004, isWeapon=True),
+        Grime2ItemData(EnumItem.W_BLADEROOT_GREATSWORD.value, IC.useful, item_base_id + 10005, isWeapon=True),
+        Grime2ItemData(EnumItem.W_BLADEROOT_SWORD.value, IC.useful, item_base_id + 10006, isWeapon=True),
+        Grime2ItemData(EnumItem.W_BLOODMETAL_SCYTHE.value, IC.useful, item_base_id + 10007, isWeapon=True),
+        Grime2ItemData(EnumItem.W_BOWBLADES.value, IC.useful, item_base_id + 10008, isWeapon=True),
+        Grime2ItemData(EnumItem.W_CLASPED_MACE.value, IC.useful, item_base_id + 10009, isWeapon=True, isStarterWeapon=True),
+        Grime2ItemData(EnumItem.W_CLAWING_SCYTHE.value, IC.useful, item_base_id + 10010, isWeapon=True),
+        Grime2ItemData(EnumItem.W_FACELESS_SPEAR.value, IC.useful, item_base_id + 10011, isWeapon=True),
+        Grime2ItemData(EnumItem.W_FINGER_FISTS.value, IC.useful, item_base_id + 10012, isWeapon=True),
+        Grime2ItemData(EnumItem.W_FINGERCLUMP_MACE.value, IC.useful, item_base_id + 10013, isWeapon=True),
+        Grime2ItemData(EnumItem.W_FORGED_FISTS.value, IC.useful, item_base_id + 10014, isWeapon=True),
+        Grime2ItemData(EnumItem.W_FORGED_PICK.value, IC.useful, item_base_id + 10015, isWeapon=True),
+        Grime2ItemData(EnumItem.W_FORGED_STAKE.value, IC.useful, item_base_id + 10016, isWeapon=True),
+        Grime2ItemData(EnumItem.W_GOEL_GREATSWORD.value, IC.useful, item_base_id + 10017, isWeapon=True),
+        Grime2ItemData(EnumItem.W_GOZ_SICKLE.value, IC.useful, item_base_id + 10018, isWeapon=True),
+        Grime2ItemData(EnumItem.W_GRIPPING_GREATAXE.value, IC.useful, item_base_id + 10019, isWeapon=True),
+        Grime2ItemData(EnumItem.W_JAW_AXE.value, IC.useful, item_base_id + 10020, isWeapon=True),
+        Grime2ItemData(EnumItem.W_KNIFEHAND.value, IC.useful, item_base_id + 10021, isWeapon=True, isStarterWeapon=True),
+        Grime2ItemData(EnumItem.W_MAMMOTH_AXE.value, IC.useful, item_base_id + 10022, isWeapon=True),
+        Grime2ItemData(EnumItem.W_MAUL_AXE.value, IC.useful, item_base_id + 10023, isWeapon=True, isStarterWeapon=True),
+        Grime2ItemData(EnumItem.W_NAIL_BOW.value, IC.useful, item_base_id + 10024, isWeapon=True),
+        Grime2ItemData(EnumItem.W_PITCHER_SPEAR.value, IC.useful, item_base_id + 10025, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_RAKING_SWORD.value, IC.useful, item_base_id + 10026, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_RUST_FISTS.value, IC.useful, item_base_id + 10027, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_SPEARHAND.value, IC.useful, item_base_id + 10028, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_THROWING_NAILS.value, IC.useful, item_base_id + 10029, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_THROWING_STARS.value, IC.useful, item_base_id + 10030, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_THROWING_THUMBS.value, IC.useful, item_base_id + 10031, isWeapon=True, isStarterWeapon=True),
+        Grime2ItemData(EnumItem.W_TOOTH_HAMMER.value, IC.useful, item_base_id + 10032, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_ZEV_BLADES.value, IC.useful, item_base_id + 10033, isWeapon=True, ),
         
         # Weapons - Cut
         # Grime2ItemData(EnumItem.W_ALLOYBARK_CLEAVERS, IC.useful, item_base_id + 10034, ),
@@ -417,37 +418,36 @@ def create_all_items(world: Grime2World) -> None:
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_traits()}) # Populate Traits
         
     # Consider if we're starting with a weapon
-    if world.options.starting_weapon:
-        match 1:
-            case 0:
-                # Maul Axe as Starter
-                starter_weapon = world.random.choice([
-                    item for item in ITEM_TABLE.values() if item.name == EnumItem.W_MAUL_AXE
-                ])
-            case 1:
-                # Any usable starter
-                starter_weapon = world.random.choice([
-                    item for item in ITEM_TABLE.values() if item.isStarterWeapon
-                ])
-            case 2:
-                # Any usable starter except Maul Axe
-                # Any usable starter
-                starter_weapon = world.random.choice([
-                    item for item in ITEM_TABLE.values() if item.isStarterWeapon and item.name != EnumItem.W_MAUL_AXE
-                ])
-            case 3:
-                # Any weapon
-                starter_weapon = world.random.choice([
-                    item for item in ITEM_TABLE.values()
-                ])
-        # Push the starter weapon to the maul axe location
-        maul_axe_location = world.get_location(EnumLoc.BIRTHPLACE_LOWER_MAUL_AXE.value)
-        maul_axe_location.place_locked_item(world.create_item(starter_weapon.name))
-        # Remove start weapon from item_pool
-        for i, item in enumerate(item_pool):
-            if item.name == starter_weapon.name:
-                item_pool.pop(i)
-                break
+    match world.options.starting_weapon.value:
+        case 0:
+            # Maul Axe as Starter
+            starter_weapon = world.random.choice([
+                item for item in ITEM_TABLE.values() if item.name == EnumItem.W_MAUL_AXE
+            ])
+        case 1:
+            # Any usable starter
+            starter_weapon = world.random.choice([
+                item for item in ITEM_TABLE.values() if item.isStarterWeapon
+            ])
+        case 2:
+            # Any usable starter except Maul Axe
+            # Any usable starter
+            starter_weapon = world.random.choice([
+                item for item in ITEM_TABLE.values() if item.isStarterWeapon and item.name != EnumItem.W_MAUL_AXE
+            ])
+        case 3:
+            # Any weapon
+            starter_weapon = world.random.choice([
+                item for item in ITEM_TABLE.values() if item.isWeapon
+            ])
+    # Push the starter weapon to the maul axe location
+    maul_axe_location = world.get_location(EnumLoc.BIRTHPLACE_LOWER_MAUL_AXE.value)
+    maul_axe_location.place_locked_item(world.create_item(starter_weapon.name))
+    # Remove start weapon from item_pool
+    for i, item in enumerate(item_pool):
+        if item.name == starter_weapon.name:
+            item_pool.pop(i)
+            break
     
     # We have our item pool, now check if we need filler items
     number_of_items = len(item_pool)
