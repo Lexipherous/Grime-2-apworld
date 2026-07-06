@@ -41,6 +41,7 @@ class Grime2ItemData:
 
 def populate_items():
     item_list_weapons = populate_items_weapons()
+    item_list_weapons_cut = populate_items_weapons_cut()
     item_list_armor_sets = populate_items_armor_sets()
     item_list_armor_pieces = populate_items_armor_pieces()
     item_list_quest_items = populate_items_quest_items()
@@ -55,6 +56,7 @@ def populate_items():
     item_list_grasp_ability = populate_items_grasp_ability()
     
     item_list = (item_list_weapons + 
+                 item_list_weapons_cut +
                  item_list_armor_sets +
                  item_list_armor_pieces +
                  item_list_quest_items + 
@@ -106,11 +108,15 @@ def populate_items_weapons():
         Grime2ItemData(EnumItem.W_THROWING_THUMBS.value, IC.useful, item_base_id + 10031, isWeapon=True, isStarterWeapon=True),
         Grime2ItemData(EnumItem.W_TOOTH_HAMMER.value, IC.useful, item_base_id + 10032, isWeapon=True, ),
         Grime2ItemData(EnumItem.W_ZEV_BLADES.value, IC.useful, item_base_id + 10033, isWeapon=True, ),
-        
-        # Weapons - Cut
-        # Grime2ItemData(EnumItem.W_ALLOYBARK_CLEAVERS, IC.useful, item_base_id + 10034, isWeapon=True, ),
-        # Grime2ItemData(EnumItem.W_BLADEROOT_JAVELIN, IC.useful, item_base_id + 10035, isWeapon=True, ),
-        # Grime2ItemData(EnumItem.W_CODA_SCYTHESWORD, IC.useful, item_base_id + 10036, isWeapon=True, ),
+    ]
+    return item_list
+
+
+def populate_items_weapons_cut():
+    item_list: list[Grime2ItemData] = [
+        Grime2ItemData(EnumItem.W_ALLOYBARK_CLEAVERS.value, IC.useful, item_base_id + 10034, isWeapon=True, ),
+        Grime2ItemData(EnumItem.W_BLADEROOT_JAVELIN.value, IC.useful, item_base_id + 10035, isWeapon=True, ),
+        # Grime2ItemData(EnumItem.W_CODA_SCYTHESWORD, IC.useful, item_base_id + 10036, isWeapon=True, ), # Weapon currently broken
     ]
     return item_list
 def populate_items_armor_sets():
@@ -442,6 +448,11 @@ def create_all_items(world: Grime2World) -> None:
             item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_grasp_flesh()})
         case world.options.itemgrasp.option_false:
             item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_grasp_ability()})
+    
+    # Cut Weapons Option
+    match world.options.addcutweapons.value:
+        case world.options.addcutweapons.option_true:
+            item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_weapons_cut()})
     
     # Consider if we're starting with a weapon
     match world.options.starting_weapon.value:

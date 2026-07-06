@@ -136,6 +136,10 @@ class EnumItem(StrEnum):
     W_TOOTH_HAMMER = "Tooth Hammer"
     W_ZEV_BLADES = "Zev Blades"
     
+    W_ALLOYBARK_CLEAVERS = "Alloybark Cleavers"
+    W_BLADEROOT_JAVELIN = "Bladeroot Javelin"
+    W_CODA_SCYTHESWORD = "Coda Scythesword"
+    
     A_BEASTPLATE_SET = "Beastplate Set"
     A_BEASTPLATE_CHEST = "Beastplate Chest"
     A_BEASTPLATE_HANDS = "Beastplate Hands"

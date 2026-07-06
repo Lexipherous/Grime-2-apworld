@@ -61,10 +61,17 @@ class ItemGrasp(Toggle):
     display_name = "Item Grasp"
     default = 0
 
+class AddCutWeapons(Toggle):
+    """
+    If yes, two additional weapons will be added to the poo, these might not work properly or scale correctly.
+    """
+    display_name = "Add Cut Weapons"
+    default = 0
+
 option_groups = [
     OptionGroup(
         "Gameplay Options",
-        [CompletionGoal, StartingWeapon, Armorsets, ItemMolds, ItemGrasp],
+        [CompletionGoal, StartingWeapon, Armorsets, ItemMolds, ItemGrasp, AddCutWeapons],
     ),
 ]
 
@@ -75,5 +82,6 @@ class Grime2Options(PerGameCommonOptions):
     armorsets: Armorsets
     itemmolds: ItemMolds
     itemgrasp: ItemGrasp
+    addcutweapons: AddCutWeapons
 
 option_presets = {}
