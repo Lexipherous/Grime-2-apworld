@@ -403,10 +403,10 @@ def create_all_items(world: Grime2World) -> None:
     item_pool: list[Item] = []
     
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_weapons()}) # Populate Weapons
-    if True:
-        item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_armor_sets()})  # Populate Armor Sets
-    else:
+    if world.options.armorsets.value:
         item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_armor_pieces()})  # Populate Armor Pieces
+    else:
+        item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_armor_sets()})  # Populate Armor Sets
         
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_quest_items()}) # Populate Quest Items
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_item_molds()}) # Populate Item Molds
