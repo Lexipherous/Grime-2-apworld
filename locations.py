@@ -56,7 +56,7 @@ def create_regular_locations(world: Grime2World) -> None:
     
     marahs_orchard_entrance = world.get_region("Marah's Orchard Entrance")
     marahs_orchard_faceblob = world.get_region("Marah's Orchard Faceblob")
-    marahs_orchard_main = world.get_region("Marah's Orchard Main")
+    marahs_orchard_main = world.get_region(EnumRegions.MARAHS_ORCHARD_MAIN.value)
     marahs_orchard_prime_above = world.get_region("Marah's Orchard Above Prime Pitcher")
     marahs_orchard_prime_dropot = world.get_region("Marah's Orchard Above Prime Pitcher Dropot")
     marahs_orchard_prime = world.get_region("Marah's Orchard Prime Pitcher")
@@ -81,7 +81,7 @@ def create_regular_locations(world: Grime2World) -> None:
     underheads_mountainborn_marah = world.get_region(EnumRegions.UNDERHEADS_MOUNTAINBORN_MARAH.value)
     underheads_overgrown_blob = world.get_region(EnumRegions.UNDERHEADS_MOUNTAINBORN_OVERGROWN_BLOB.value)
     
-    kankan = world.get_region("Kankan Upper Main")
+    kankan = world.get_region(EnumRegions.KANKAN_UPPER_MAIN.value)
     
     jagged_forest = world.get_region("Jagged Forest")
     # blade_garden_upper = world.get_region("Blade Garden Upper")

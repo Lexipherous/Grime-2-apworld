@@ -56,7 +56,7 @@ def create_all_regions(world: Grime2World) -> None:
     
     marahs_orchard_entrance = Region("Marah's Orchard Entrance", world.player, world.multiworld)
     marahs_orchard_faceblob = Region("Marah's Orchard Faceblob", world.player, world.multiworld)
-    marahs_orchard_main = Region("Marah's Orchard Main", world.player, world.multiworld)
+    marahs_orchard_main = Region(EnumRegions.MARAHS_ORCHARD_MAIN.value, world.player, world.multiworld)
     marahs_orchard_prime_above = Region("Marah's Orchard Above Prime Pitcher", world.player, world.multiworld)
     marahs_orchard_prime_dropot = Region("Marah's Orchard Above Prime Pitcher Dropot", world.player, world.multiworld)
     marahs_orchard_prime = Region("Marah's Orchard Prime Pitcher", world.player, world.multiworld)
@@ -81,7 +81,7 @@ def create_all_regions(world: Grime2World) -> None:
     underheads_tree_roots = Region(EnumRegions.UNDERHEADS_TREE_ROOTS.value, world.player, world.multiworld)
     underheads_overgrown_blob = Region(EnumRegions.UNDERHEADS_MOUNTAINBORN_OVERGROWN_BLOB.value, world.player, world.multiworld)
     
-    kankan_upper_main = Region("Kankan Upper Main", world.player, world.multiworld)
+    kankan_upper_main = Region(EnumRegions.KANKAN_UPPER_MAIN.value, world.player, world.multiworld)
     kankan_upper_heart = Region("Kankan Upper Heart", world.player, world.multiworld)
     kankan_upper_dropot = Region("Kankan Upper Dropot", world.player, world.multiworld)
     kankan_upper_heod = Region("Kankan Upper Heod", world.player, world.multiworld)
@@ -337,12 +337,7 @@ def connect_regions(world: Grime2World) -> None:
     wanting_tree = world.get_region(EnumRegions.WANTING_TREE.value)
 
 
-    # # # # # # #
-    # Temple of Hands
-    # # # # # # #
     menu.connect(temple_of_hands_birthplace_lower, "Menu to Temple of Hands")
-    
-    
     # # # # # # #
     # Mudfalls
     # # # # # # #
