@@ -72,6 +72,36 @@ class AddCutWeapons(Toggle):
     display_name = "Add Cut Weapons"
     default = 0
 
+# class WIP_SurrogateSeals(Choice):
+#     """
+#     Choose if Surrogates and Seals should count as locations.
+#     """
+#     display_name = "Surrogates and Seals"
+#     option_none = 0
+#     option_surrogates_only = 1
+#     option_seals_only = 2
+#     option_surrogates_and_seals = 3
+#     default = 0
+
+# class WIP_BloodrootMarah(Choice):
+#     """
+#     Choose if Bloodroot and Marah Strands are locations.
+#     """
+#     display_name = "Surrogates and Seals"
+#     option_none = 0
+#     option_bloodroots = 1
+#     option_marah_strands = 2
+#     option_bloodroots_and_marah_strands = 3
+#     default = 0
+
+# class WIP_Traits(Choice):
+#     """
+#     Choose if unlocking traits are locations.
+#     """
+#     display_name = "Traits"
+#     option_none = 0
+#     default = 0
+
 option_groups = [
     OptionGroup(
         "Gameplay Options",
