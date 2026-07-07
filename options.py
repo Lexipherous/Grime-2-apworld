@@ -29,7 +29,11 @@ class CompletionGoal(Choice):
 
 class StartingWeapon(Choice):
     """
-    Determine the weapon that replaces Maul Axe at the start.
+    The weapon provided at the start:
+    Maul Axe - The vanilla experience. Start with the Maul Axe.
+    Any Usable - The starting weapon will be any weapon that has 0 stat requirements: Maul Axe, Clasped Mace, Knifehand or Throwing Thumbs.
+    Any Usable except Maul Axe - The starting weapon will be any weapon that has 0 stat requirements except Maul Axe: Clasped Mace, Knifehand or Throwing Thumbs.
+    Any Weapon - The starting weapon will be any weapon regardless of stat requirements.
     """
     display_name = "Starter weapon"
     option_maul_axe = 0
@@ -47,11 +51,11 @@ class Armorsets(Toggle):
     display_name = "Armorsets"
     default = 0
 
-class ItemMolds(Toggle):
+class ProgressiveItemMolds(Toggle):
     """
     If yes, a check will grant enough item molds to get the item mold to Tier 2, then Tier 3. As opposed to receiving each Item Mold seperately.
     """
-    display_name = "Item Molds"
+    display_name = "Progressive Item Molds"
     default = 0
 
 class ItemGrasp(Toggle):
@@ -63,7 +67,7 @@ class ItemGrasp(Toggle):
 
 class AddCutWeapons(Toggle):
     """
-    If yes, two additional weapons will be added to the poo, these might not work properly or scale correctly.
+    If yes, two additional weapons will be added to the pool, these might not work properly or scale correctly.
     """
     display_name = "Add Cut Weapons"
     default = 0
@@ -71,7 +75,7 @@ class AddCutWeapons(Toggle):
 option_groups = [
     OptionGroup(
         "Gameplay Options",
-        [CompletionGoal, StartingWeapon, Armorsets, ItemMolds, ItemGrasp, AddCutWeapons],
+        [CompletionGoal, StartingWeapon, Armorsets, ProgressiveItemMolds, ItemGrasp, AddCutWeapons],
     ),
 ]
 
@@ -80,7 +84,7 @@ class Grime2Options(PerGameCommonOptions):
     completion_goal: CompletionGoal
     starting_weapon: StartingWeapon
     armorsets: Armorsets
-    itemmolds: ItemMolds
+    progressiveitemmolds: ProgressiveItemMolds
     itemgrasp: ItemGrasp
     addcutweapons: AddCutWeapons
 

@@ -46,6 +46,7 @@ def populate_items():
     item_list_armor_pieces = populate_items_armor_pieces()
     item_list_quest_items = populate_items_quest_items()
     item_list_item_molds = populate_items_item_molds()
+    item_list_item_molds_prog = populate_items_item_molds_prog()
     item_list_prey_molds = populate_items_prey_molds()
     item_list_misc = populate_items_misc()
     item_list_breathcrowns = populate_items_breathcrowns()
@@ -61,6 +62,7 @@ def populate_items():
                  item_list_armor_pieces +
                  item_list_quest_items + 
                  item_list_item_molds +
+                 item_list_item_molds_prog +
                  item_list_prey_molds + 
                  item_list_misc + 
                  item_list_breathcrowns + 
@@ -238,28 +240,54 @@ def populate_items_quest_items():
     return item_list
 def populate_items_item_molds():
     item_list: list[Grime2ItemData] = [
-        Grime2ItemData(EnumItem.IM_CELEBRATION_BELL.value, IC.useful, item_base_id + 10280, ),
-        Grime2ItemData(EnumItem.IM_CHAIN_JAVELIN.value, IC.useful, item_base_id + 10281, ),
-        Grime2ItemData(EnumItem.IM_CHARGING_JAVELIN.value, IC.useful, item_base_id + 10282, ),
-        Grime2ItemData(EnumItem.IM_DEFENSE_SIGILS.value, IC.useful, item_base_id + 10283, ),
-        Grime2ItemData(EnumItem.IM_DRIED_ALVEOLI.value, IC.useful, item_base_id + 10284, ),
-        Grime2ItemData(EnumItem.IM_EMBEDDING_NAIL.value, IC.useful, item_base_id + 10285, ),
-        Grime2ItemData(EnumItem.IM_HOMING_DROPLET.value, IC.useful, item_base_id + 10286, ),
-        Grime2ItemData(EnumItem.IM_KNOCKBACK_WEAVE.value, IC.useful, item_base_id + 10287, ),
-        Grime2ItemData(EnumItem.IM_LUMP_OF_HANDS.value, IC.useful, item_base_id + 10288, ),
-        Grime2ItemData(EnumItem.IM_OVERGROWN_BLOB.value, IC.useful, item_base_id + 10289, ),
-        Grime2ItemData(EnumItem.IM_PRIMING_SPEAR.value, IC.useful, item_base_id + 10290, ),
-        Grime2ItemData(EnumItem.IM_REINFORCING_WEAVE.value, IC.useful, item_base_id + 10291, ),
-        Grime2ItemData(EnumItem.IM_SCATTER_STONE.value, IC.useful, item_base_id + 10292, ),
-        Grime2ItemData(EnumItem.IM_SHARPENING_WEAVE.value, IC.useful, item_base_id + 10293, ),
-        Grime2ItemData(EnumItem.IM_SIGIL_BARRIER.value, IC.useful, item_base_id + 10294, ),
-        Grime2ItemData(EnumItem.IM_SMASHING_BLOCK.value, IC.useful, item_base_id + 10295, ),
-        Grime2ItemData(EnumItem.IM_SMIDGE_OF_PAINT.value, IC.useful, item_base_id + 10296, ),
-        Grime2ItemData(EnumItem.IM_SPIKE_BALL.value, IC.useful, item_base_id + 10297, ),
-        Grime2ItemData(EnumItem.IM_TRIGGER_BOMB.value, IC.useful, item_base_id + 10298, ),
-        Grime2ItemData(EnumItem.IM_VOLATILE_VASE.value, IC.useful, item_base_id + 10299, ),
+        Grime2ItemData(EnumItem.IM_CELEBRATION_BELL.value, IC.useful, item_base_id + 10280, 10), # 4/10
+        Grime2ItemData(EnumItem.IM_CHAIN_JAVELIN.value, IC.useful, item_base_id + 10281, 10), # 6/10
+        Grime2ItemData(EnumItem.IM_CHARGING_JAVELIN.value, IC.useful, item_base_id + 10282, 8), # 5/8
+        Grime2ItemData(EnumItem.IM_DEFENSE_SIGILS.value, IC.useful, item_base_id + 10283, 6), # 4/6
+        Grime2ItemData(EnumItem.IM_DRIED_ALVEOLI.value, IC.useful, item_base_id + 10284, 14), # 7/14
+        Grime2ItemData(EnumItem.IM_EMBEDDING_NAIL.value, IC.useful, item_base_id + 10285, 8), # 4/8
+        Grime2ItemData(EnumItem.IM_HOMING_DROPLET.value, IC.useful, item_base_id + 10286, 12), # 6/12
+        Grime2ItemData(EnumItem.IM_KNOCKBACK_WEAVE.value, IC.useful, item_base_id + 10287, 10), # 6/10
+        Grime2ItemData(EnumItem.IM_LUMP_OF_HANDS.value, IC.useful, item_base_id + 10288, 8), # 6/8
+        Grime2ItemData(EnumItem.IM_OVERGROWN_BLOB.value, IC.useful, item_base_id + 10289, 8), # 5/8
+        Grime2ItemData(EnumItem.IM_PRIMING_SPEAR.value, IC.useful, item_base_id + 10290, 12), # 8/12
+        Grime2ItemData(EnumItem.IM_REINFORCING_WEAVE.value, IC.useful, item_base_id + 10291, 7), # 4/7
+        Grime2ItemData(EnumItem.IM_SCATTER_STONE.value, IC.useful, item_base_id + 10292, 8), # 4/8
+        Grime2ItemData(EnumItem.IM_SHARPENING_WEAVE.value, IC.useful, item_base_id + 10293, 8), # 4/8
+        Grime2ItemData(EnumItem.IM_SIGIL_BARRIER.value, IC.useful, item_base_id + 10294, 7), # 4/7
+        Grime2ItemData(EnumItem.IM_SMASHING_BLOCK.value, IC.useful, item_base_id + 10295, 8), # 4/8
+        Grime2ItemData(EnumItem.IM_SMIDGE_OF_PAINT.value, IC.useful, item_base_id + 10296, 8), # 6/8
+        Grime2ItemData(EnumItem.IM_SPIKE_BALL.value, IC.useful, item_base_id + 10297, 8), # 5/8
+        Grime2ItemData(EnumItem.IM_TRIGGER_BOMB.value, IC.useful, item_base_id + 10298, 12), # 6/12
+        Grime2ItemData(EnumItem.IM_VOLATILE_VASE.value, IC.useful, item_base_id + 10299, 8), # 5/8
     ]
     return item_list
+
+def populate_items_item_molds_prog():
+    item_list: list[Grime2ItemData] = [
+        Grime2ItemData(EnumItem.IM_PROG_CELEBRATION_BELL.value, IC.useful, item_base_id + 10300, 3),
+        Grime2ItemData(EnumItem.IM_PROG_CHAIN_JAVELIN.value, IC.useful, item_base_id + 10301, 3),
+        Grime2ItemData(EnumItem.IM_PROG_CHARGING_JAVELIN.value, IC.useful, item_base_id + 10302, 3),
+        Grime2ItemData(EnumItem.IM_PROG_DEFENSE_SIGILS.value, IC.useful, item_base_id + 10303, 3),
+        Grime2ItemData(EnumItem.IM_PROG_DRIED_ALVEOLI.value, IC.useful, item_base_id + 10304, 3),
+        Grime2ItemData(EnumItem.IM_PROG_EMBEDDING_NAIL.value, IC.useful, item_base_id + 10305, 3),
+        Grime2ItemData(EnumItem.IM_PROG_HOMING_DROPLET.value, IC.useful, item_base_id + 10306, 3),
+        Grime2ItemData(EnumItem.IM_PROG_KNOCKBACK_WEAVE.value, IC.useful, item_base_id + 10307, 3),
+        Grime2ItemData(EnumItem.IM_PROG_LUMP_OF_HANDS.value, IC.useful, item_base_id + 10308, 3),
+        Grime2ItemData(EnumItem.IM_PROG_OVERGROWN_BLOB.value, IC.useful, item_base_id + 10309, 3),
+        Grime2ItemData(EnumItem.IM_PROG_PRIMING_SPEAR.value, IC.useful, item_base_id + 10310, 3),
+        Grime2ItemData(EnumItem.IM_PROG_REINFORCING_WEAVE.value, IC.useful, item_base_id + 10311, 3),
+        Grime2ItemData(EnumItem.IM_PROG_SCATTER_STONE.value, IC.useful, item_base_id + 10312, 3),
+        Grime2ItemData(EnumItem.IM_PROG_SHARPENING_WEAVE.value, IC.useful, item_base_id + 10313, 3),
+        Grime2ItemData(EnumItem.IM_PROG_SIGIL_BARRIER.value, IC.useful, item_base_id + 10314, 3),
+        Grime2ItemData(EnumItem.IM_PROG_SMASHING_BLOCK.value, IC.useful, item_base_id + 10315, 3),
+        Grime2ItemData(EnumItem.IM_PROG_SMIDGE_OF_PAINT.value, IC.useful, item_base_id + 10316, 3),
+        Grime2ItemData(EnumItem.IM_PROG_SPIKE_BALL.value, IC.useful, item_base_id + 10317, 3),
+        Grime2ItemData(EnumItem.IM_PROG_TRIGGER_BOMB.value, IC.useful, item_base_id + 10318, 3),
+        Grime2ItemData(EnumItem.IM_PROG_VOLATILE_VASE.value, IC.useful, item_base_id + 10319, 3),
+    ]
+    return item_list
+
 def populate_items_prey_molds():
     item_list: list[Grime2ItemData] = [
         Grime2ItemData(EnumItem.PM_CURLED_FINGER.value, IC.useful, item_base_id + 10330, ),
@@ -434,7 +462,7 @@ def create_all_items(world: Grime2World) -> None:
         item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_armor_sets()})  # Populate Armor Sets
         
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_quest_items()}) # Populate Quest Items
-    item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_item_molds()}) # Populate Item Molds
+    # item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_item_molds()}) # Populate Item Molds
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_prey_molds()}) # Populate Prey Molds
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_misc()}) # Populate Misc Items
     item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_breathcrowns()}) # Populate Breathcrowns
@@ -448,6 +476,13 @@ def create_all_items(world: Grime2World) -> None:
             item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_grasp_flesh()})
         case world.options.itemgrasp.option_false:
             item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_grasp_ability()})
+    
+    # Item Molds Option
+    match world.options.progressiveitemmolds.value:
+        case world.options.progressiveitemmolds.option_true:
+            item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_item_molds_prog()})
+        case world.options.progressiveitemmolds.option_false:
+            item_pool = create_all_items_helper(item_pool, world, {item.name: item for item in populate_items_item_molds()})
     
     # Cut Weapons Option
     match world.options.addcutweapons.value:

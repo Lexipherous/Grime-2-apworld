@@ -3,7 +3,6 @@ from typing import TYPE_CHECKING, Self
 from BaseClasses import CollectionState, Location
 from rule_builder.rules import CanReachLocation, Has, CanReachRegion, HasAll, HasAny
 from worlds.generic.Rules import add_rule, set_rule
-from worldstasis.blasphemous.Options import WallClimbShuffle
 
 from .options import ItemGrasp
 from .enums import EnumItem, EnumLoc, EnumRegions
