@@ -1,9 +1,5 @@
 from __future__ import annotations
-
-from typing import TYPE_CHECKING
-
 from BaseClasses import Entrance, Region
-
 from .rules import *
 from .enums import EnumRegions, EnumLoc, EnumItem
 
